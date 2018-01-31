@@ -9,7 +9,7 @@ import datastream
 import licencescreatedatabases
 import postingscreatedatabase
 import unittest
-import licenceTest
+import tests.licenceTest
 import sys
 from licences import ABLicenceManager, BCLicenceManager, SKLicenceManager, MBLicenceManager, LicenceDatabase
 

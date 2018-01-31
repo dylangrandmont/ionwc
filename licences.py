@@ -611,15 +611,15 @@ class BCLicenceManager(LicenceManager):
 
 	def populate_database(self):
 		for row in self.allLicencesReader:
-			if len(row) > 2:
-				year = row[2].split('-')[-1]
+			try:
+				if len(row) > 2:
+					year = row[2].split('-')[-1]
 
-				if int(year) >= self.startYear:
-					try:
+					if int(year) >= self.startYear:
 						licence = BCLicence(row)
 						self.licenceDatabase.add_licence(licence)
-					except:
-						print 'WARN: Skipping row: ', row
+			except:
+				print 'WARN: Skipping row: ', row
 
 class SKLicenceManager(LicenceManager):
 	licenceDirectory = IONWC_HOME + '/data/licences/sask/'
