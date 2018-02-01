@@ -6,17 +6,15 @@ Author: Dylan Grandmont, (C) 2016-2018
 # Introduction
 
 Eye on Western Canada (IONWC) has three components: 
-		(1) WEBSITE: web-based mapping platform hosted at http://ionwc.com
-		(2) SERVER CODE: collection of code to download, update, and parse data for mapping.
-		(3) GOOGLE ACCOUNT: account hosts Fusion Tables, which act as the database which
-			is read by (1). The account name is ionwestcan@gmail.com
+* WEBSITE: web-based mapping platform hosted at http://ionwc.com
+* SERVER CODE: collection of code to download, update, and parse data for mapping.
+* GOOGLE ACCOUNT: account hosts Fusion Tables, which act as the database which is read by (1). The account name is ionwestcan@gmail.com
 
 This folder contains component (2). It generally works as follows:
-	 - Data is downloaded from online government sources
-	 - Data is parsed into consistent formats and placed in database files (csv files)
-	 - The databases are uploaded and stored in Google Fusion Tables
-	 - Finally, http://ionwc.com reads these Fusion tables and plots them in dynamic maps and 
-	 charts
+* Data is downloaded from online government sources
+* Data is parsed into consistent formats and placed in database files (csv files)
+* The databases are uploaded and stored in Google Fusion Tables
+* Finally, http://ionwc.com reads these Fusion tables and plots them in dynamic maps and charts
 
 These steps are automated as much as possible, this README details the manual steps involved
 
@@ -27,22 +25,22 @@ These steps are automated as much as possible, this README details the manual st
 This code package was developed on Ubuntu operating system but will work on most Linux distributions
 
 Depedencies: 
-			Python 2.7
-			wget
+* Python 2.7
+* wget
 
 ## Setting Environment Variables
 
-ONE environment variable, 'IONWC_HOME', must be set.
+One environment variable, 'IONWC_HOME', must be set.
 This variable is the directory location of this folder (i.e. this directory must sit in $IONWC_HOME/scripts)
 
 ## Package Contents
 
 IONWC_HOME/data
-			Raw data (txt, pdf, etc.) as downloaded from online government sources
+* Raw data (txt, pdf, etc.) as downloaded from online government sources
 IONWC_HOME/dbs
-			Final databases (csv files) of all data
+* Final databases (csv files) of all data
 IONWC_HOME/scripts
-			All code for updating databases
+* All code for updating databases
 
 ## Running the Package
 
@@ -57,10 +55,11 @@ You will be prompted with login credentials in order to update the Fusion Tables
 
 ## SK Land Postings
 The URLs for Land Postings and Results are not organized in a predictable manner.
-		Because of this, they must be chcked and downloaded manually
+Because of this, they must be chcked and downloaded manually
 
 ## Data Retrieval Dates
-URLs used in data retrieval require an input of the year. Currently, these are string constants.
+URLs used in data retrieval require an input of the year.
+Currently, these are string constants.
 Improvements should be made to grab the current year, next year, etc. instead of using constants.
 
 ## Constants.py
@@ -69,45 +68,45 @@ SKPostingNumberToSaleDate
 
 # Data Sources
 
-Well Licences
-		BC: 
-		AB: http://www.aer.ca/data/well-lic/WELLS
-		SK: http://www.economy.gov.sk.ca/Files/oilandgas/wellbullfile/archives/
-		MB:
+## Well Licences
+* BC: 
+* AB: http://www.aer.ca/data/well-lic/WELLS
+* SK: http://www.economy.gov.sk.ca/Files/oilandgas/wellbullfile/archives/
+* MB:
 
-Drilling
-		BC:
-		AB: http://www.aer.ca/data/WELLS/
-		SK: http://www.economy.gov.sk.ca/Archived-Drilling-Activity-Reports
-		MB:
+## Drilling
+* BC:
+* AB: http://www.aer.ca/data/WELLS/
+* SK: http://www.economy.gov.sk.ca/Archived-Drilling-Activity-Reports
+* MB:
 
-Land Postings (Offerings)
-		BC: http://www2.gov.bc.ca/gov/content/industry/natural-gas-oil/petroleum-natural-gas-tenure
-		AB: http://www.energy.alberta.ca/Tenure/607.asp
-		SK: http://www.saskatchewan.ca/business/agriculture-natural-resources-and-industry/oil-and-gas/crown-land-sales-dispositions-and-tenure/public-offerings/schedule-of-crown-land-sales
-		MB: http://www.gov.mb.ca/iem/petroleum/landinfo/landsale.html
+## Land Postings (Offerings)
+* BC: http://www2.gov.bc.ca/gov/content/industry/natural-gas-oil/petroleum-natural-gas-tenure
+* AB: http://www.energy.alberta.ca/Tenure/607.asp
+* SK: http://www.saskatchewan.ca/business/agriculture-natural-resources-and-industry/oil-and-gas/crown-land-sales-dispositions-and-tenure/public-offerings/schedule-of-crown-land-sales
+* MB: http://www.gov.mb.ca/iem/petroleum/landinfo/landsale.html
 
-Land Postings (Results)
-		BC: http://www2.gov.bc.ca/gov/content/industry/natural-gas-oil/petroleum-natural-gas-tenure/sales-results-statistics/2016-sale-results
-		AB: http://www.energy.alberta.ca/Tenure/607.asp
-		SK: http://www.saskatchewan.ca/business/agriculture-natural-resources-and-industry/oil-and-gas/crown-land-sales-dispositions-and-tenure/public-offerings/schedule-of-crown-land-sales
-		MB: http://www.gov.mb.ca/iem/petroleum/landinfo/landsale.html
+## Land Postings (Results)
+* BC: http://www2.gov.bc.ca/gov/content/industry/natural-gas-oil/petroleum-natural-gas-tenure/sales-results-statistics/2016-sale-results
+* AB: http://www.energy.alberta.ca/Tenure/607.asp
+* SK: http://www.saskatchewan.ca/business/agriculture-natural-resources-and-industry/oil-and-gas/crown-land-sales-dispositions-and-tenure/public-offerings/schedule-of-crown-land-sales
+* MB: http://www.gov.mb.ca/iem/petroleum/landinfo/landsale.html
 
-All Wells
-		MB: http://www.gov.mb.ca/iem/petroleum/reports/uwi_weekly.xls
+## All Wells
+* MB: http://www.gov.mb.ca/iem/petroleum/reports/uwi_weekly.xls
 
-Facilities
-		BC: https://ams-reports.bcogc.ca/ords-prod/f?p=200:58:15168409196395:CSV::::
-		AB: http://www.aer.ca/data/codes/ActiveFacility.txt
-		SK: http://economy.gov.sk.ca/files/Registry%20Downloads/NewAndActiveFacilitiesReport.csv
-		MB: 
+## Facilities
+* BC: https://ams-reports.bcogc.ca/ords-prod/f?p=200:58:15168409196395:CSV::::
+* AB: http://www.aer.ca/data/codes/ActiveFacility.txt
+* SK: http://economy.gov.sk.ca/files/Registry%20Downloads/NewAndActiveFacilitiesReport.csv
+* MB: 
 
-Formations
-		
+## Formations
+https://landman.ca/pdf/CORELAB.pdf
 
 # Known Issues / Improvements / Technical Debt
-Remove dependencies on wget, replace with python libraries
-	Automate SK posting retrieval
+* Remove dependencies on wget, replace with python libraries
+* Automate SK posting retrieval
 
 # Copyright Notice
 This README and the entire contents of this directory are copyright of Dylan Grandmont, 2016-2018.
