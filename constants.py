@@ -14,6 +14,7 @@ KML_TEMPLATE = "<Polygon><outerBoundaryIs><LinearRing><coordinates>%s,%s %s,%s %
 FORMATION_AGE_DICT = {
     'top surface': 0,
     'surface': 0,
+    'paskapoo': 664,
     'belly river': 750,
     'edmonton': 836,
     'top milk river formation': 835,
@@ -31,6 +32,7 @@ FORMATION_AGE_DICT = {
     'dunvegan': 970,
     'top mannville group': 980,
     'top fish scale zone': 1000,
+    'dunvegan-fish scales': 1025,
     'fish scale-westgate': 1025,
     'top viking formation': 1025,
     'viking': 1020, 
@@ -40,6 +42,7 @@ FORMATION_AGE_DICT = {
     'colorado': 1030,
     'top colony member': 1030,
     'paddy': 1020,
+    'cadotte': 1030,
     'peace river': 1040,
     'paddy-cadotte-harmon': 1040,
     'notikewin': 1030,
@@ -58,6 +61,8 @@ FORMATION_AGE_DICT = {
     'base mannville group': 1250,
     'basal quartz': 1250,
     'ostracod': 1270,
+    'cadomin': 1280,
+    'lower mannville': 1280,
     'lower mannville&jurassic': 1310,
     'ellerslie': 1410,
     'nikanassin': 1470,
@@ -120,6 +125,7 @@ FORMATION_AGE_DICT = {
     'base birdbear formation': 3780,
     'top duperow formation': 3780,
     'winterburn': 3780,
+    'jean marie': 3780,
     'grosmont': 3790,
     'duvernay-majeau lake': 3800,
     'duvernay': 3800,
@@ -127,6 +133,7 @@ FORMATION_AGE_DICT = {
     'woodbend': 3800,
     'woodbend reef': 3800,
     'sulphur point': 3830,
+    'muskeg': 3830,
     'beaverhill lake': 3840,
     'slave point-fort vermilion': 3840,
     'slave point': 3840,
@@ -172,7 +179,7 @@ MONTH_DICT = {
     'DECEMBER': '12'
 }
 
-NumberToMonthMap = {
+NUMBER_TO_MONTH_MAP = {
     '01': 'January',
     '02': 'February',
     '03': 'March',
@@ -187,7 +194,7 @@ NumberToMonthMap = {
     '12': 'December',
 }
 
-BCWellNameToOperatorMap = {
+BC_WELL_NAME_TO_OPERATOR_MAP = {
     'apache '      :'Apache Canada Ltd.',
     'arcres'       :'ARC Resources Ltd.',
     'black swan'   :'Black Swan Energy',
@@ -247,7 +254,7 @@ BCWellNameToOperatorMap = {
     'woodside et al ': 'Woodside et al.'
 }
 
-BCWellNameToFieldMap = {
+BC_WELL_NAME_TO_FIELD_MAP = {
     'aitken': 'Aitken Creek',
     'altares': 'Altares',
     ' beg ': 'Beg',
@@ -405,6 +412,18 @@ BCPostingDatesToSaleDateMap = {
     '2017.10': '2017.10.18',
     '2017.11': '2017.11.15',
     '2017.12': '2017.12.13',
+    '2018.01': '2018.01.17',
+    '2018.02': '2018.02.21',
+    '2018.03': '2018.03.21',
+    '2018.04': '2018.04.18',
+    '2018.05': '2018.05.16',
+    '2018.06': '2018.06.13',
+    '2018.07': '2018.07.11',
+    '2018.08': '2018.08.15',
+    '2018.09': '2018.09.12',
+    '2018.10': '2018.10.10',
+    '2018.11': '2018.11.14',
+    '2018.12': '2018.12.12',
 }
 
 # Source: http://www.economy.gov.sk.ca/publicofferings

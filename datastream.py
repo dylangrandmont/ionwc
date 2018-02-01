@@ -43,7 +43,7 @@ class DataStreamBC(DataStream):
 			os.remove(outName)
 
 	def retrieveLicences(self):
-		os.system('wget https://ams-reports.bcogc.ca/ords-prod/f?p=200:21:21525241583986:CSV:::: -O ' + IONWC_HOME +'/data/wells/bc/new_well_authorizations_issued.csv')
+		os.system('wget https://reports.bcogc.ca/ogc/f?p=200:21:13026223742485:CSV:::: -O ' + IONWC_HOME +'/data/wells/bc/new_well_authorizations_issued.csv')
 
 		os.system('grep -F -x -v -f $IONWC_HOME/data/wells/bc/well_authorizations_issued.csv $IONWC_HOME/data/wells/bc/new_well_authorizations_issued.csv > $IONWC_HOME/data/wells/bc/diff_well_authorizations_issued.csv')
 		os.system('cat $IONWC_HOME/data/wells/bc/diff_well_authorizations_issued.csv >> $IONWC_HOME/data/wells/bc/well_authorizations_issued.csv')

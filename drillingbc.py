@@ -13,7 +13,7 @@ import numpy as np
 from coordinatemapping import uwiToLatLng
 from utilities import conformBCOGCLatLon, writeDrillingFile
 from utilities import writeAugmentedLicenceFile
-from constants import MONTH_DICT, BCWellNameToOperatorMap, UNKNOWN, IONWC_HOME
+from constants import MONTH_DICT, BC_WELL_NAME_TO_OPERATOR_MAP, UNKNOWN, IONWC_HOME
 
 def addBCDrillingToDataBase(drillingFileAll, verbose = False):
   """ Query for all BC well spuds, parse them into a common format and add to database (csv) """
@@ -33,9 +33,9 @@ def addBCDrillingToDataBase(drillingFileAll, verbose = False):
 
       #Create Licensee name using the well name
       licencee = UNKNOWN
-      for key in BCWellNameToOperatorMap:
+      for key in BC_WELL_NAME_TO_OPERATOR_MAP:
         if key in wellname.lower():
-          licencee = BCWellNameToOperatorMap[key]
+          licencee = BC_WELL_NAME_TO_OPERATOR_MAP[key]
 
       try:
         uwi = re.findall('[0-9]+[A-Z][0-9]+[A-Z][0-9]+[A-Z][0-9]+', spud)[0]

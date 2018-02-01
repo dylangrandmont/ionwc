@@ -16,7 +16,7 @@ import numpy as np
 
 from utilities import writeLicenseFile, conformSub, getSubCode, kmPerDegreeLatLng, conformBCOGCLatLon
 from coordinatemapping import uwiToLatLng
-from constants import IONWC_HOME, MONTH_DICT, BCWellNameToOperatorMap, BCWellNameToFieldMap, UNKNOWN, MBPoolCodeToZoneMap
+from constants import IONWC_HOME, MONTH_DICT, BC_WELL_NAME_TO_FIELD_MAP, UNKNOWN, MBPoolCodeToZoneMap
 
 class LicenceDatabase:
 	def __init__(self, csvDatabase):
@@ -209,9 +209,9 @@ class BCLicence(Licence):
 		self.day = self.row[2].split('-')[0]
 
 	def _set_field(self):
-		for key in BCWellNameToFieldMap:
+		for key in BC_WELL_NAME_TO_FIELD_MAP:
 			if key in self.wellname.lower():
-				self.field = BCWellNameToFieldMap[key]
+				self.field = BC_WELL_NAME_TO_FIELD_MAP[key]
 
 	def _set_zone(self):
 		self.zone = self.row[13]
