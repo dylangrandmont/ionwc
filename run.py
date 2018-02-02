@@ -2,14 +2,12 @@
 #
 # Script to update databases and push changes to a google FusionTable
 
-# run indefinitely with while sleep 1; do echo "Hi"; done
-
 import os
 import datastream
 import licencescreatedatabases
 import postingscreatedatabase
 import unittest
-import tests.licenceTest
+import licence_test
 import sys
 from licences import ABLicenceManager, BCLicenceManager, SKLicenceManager, MBLicenceManager, LicenceDatabase
 
@@ -20,10 +18,8 @@ from constants import IONWC_HOME
 # Update raw data collection
 datastream.run_all()
 
-# Convert raw data to formatted database
-
 def run_unit_tests():
-	suite = unittest.TestLoader().loadTestsFromTestCase(licenceTest.TestABLicence)
+	suite = unittest.TestLoader().loadTestsFromTestCase(licence_test.TestABLicence)
 	result = unittest.TextTestRunner(verbosity=2).run(suite)
 	if len(result.errors) > 0:
 		sys.exit()

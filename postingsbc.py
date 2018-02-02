@@ -12,7 +12,7 @@ import numpy as np
 import glob
 
 from coordinatemapping import uwiToLatLng
-from constants import MONTH_DICT, FORMATION_AGE_DICT, BCPostingDatesToSaleDateMap, KML_TEMPLATE
+from constants import MONTH_DICT, FORMATION_AGE_DICT, BC_POSTING_DATES_TO_SALE_DATE_MAP, KML_TEMPLATE
 from constants import IONWC_HOME
 from utilities import writePostingResultDataBaseFile, writePostingResultAggregateDataBaseFile
 
@@ -163,7 +163,7 @@ def addBCOfferingsToDataBase(ponDataBaseFile, ponAggregateDataBaseFile):
     month = MONTH_DICT[bcOfferingFile.split('/')[-1][:3].upper()]
     year = bcOfferingFile.split('/')[-1][3:5]
     saleDate = '20' + year + '.' + month
-    saleDate = BCPostingDatesToSaleDateMap[saleDate]
+    saleDate = BC_POSTING_DATES_TO_SALE_DATE_MAP[saleDate]
 
     lines = open(bcOfferingFile).readlines()
     allLines = ''.join(lines)

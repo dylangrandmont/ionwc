@@ -16,7 +16,7 @@ import numpy as np
 
 from utilities import writeLicenseFile, conformSub, getSubCode, kmPerDegreeLatLng, conformBCOGCLatLon
 from coordinatemapping import uwiToLatLng
-from constants import IONWC_HOME, MONTH_DICT, BC_WELL_NAME_TO_FIELD_MAP, UNKNOWN, MBPoolCodeToZoneMap
+from constants import IONWC_HOME, MONTH_DICT, BC_WELL_NAME_TO_FIELD_MAP, UNKNOWN, MB_POOL_CODE_TO_ZONE_MAP
 
 class LicenceDatabase:
 	def __init__(self, csvDatabase):

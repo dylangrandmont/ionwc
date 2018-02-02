@@ -12,7 +12,7 @@ import glob
 import numpy as np
 
 from coordinatemapping import uwiToLatLng
-from constants import FORMATION_AGE_DICT, SKPostingNumberToSaleDate, KML_TEMPLATE
+from constants import FORMATION_AGE_DICT, SK_POSTING_NUMBER_TO_SALE_DATE, KML_TEMPLATE
 from constants import IONWC_HOME
 from utilities import writePostingResultDataBaseFile, writePostingResultAggregateDataBaseFile
 
@@ -110,7 +110,7 @@ def addSKOfferingsToDataBase(ponDataBaseFile, ponAggregateDataBaseFile):
             leases = re.split('Petroleum and Natural Gas Lease', fileContents)[1]
 
         saleNumber = re.findall('PUBLIC NOTICE [0-9]+', fileContents)[0].split()[2]
-        saleDate = SKPostingNumberToSaleDate[saleNumber]
+        saleDate = SK_POSTING_NUMBER_TO_SALE_DATE[saleNumber]
         entries = re.findall('.+[0-9]+.[0-9]+\s+Oil and Gas+.+', fileContents)
 
         parcelNumber = 1
@@ -183,7 +183,7 @@ def addSKResultsToDataBase(psrDataBaseFile, psrAggregateDataBaseFile, ponDataBas
             saleNumberLine = re.findall('Public Offering [0-9]+', fileContents)  
 
         saleNumber = re.findall('[0-9]+', saleNumberLine[0])[0]
-        saleDate = SKPostingNumberToSaleDate[saleNumber]
+        saleDate = SK_POSTING_NUMBER_TO_SALE_DATE[saleNumber]
 
         noSubmittedBids = re.findall('.+No Bids Submitted', fileContents)
         noAcceptableBids = re.findall('.+No Acceptable Bids', fileContents)

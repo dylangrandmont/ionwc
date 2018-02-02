@@ -51,6 +51,7 @@ FORMATION_AGE_DICT = {
     'middle mannville': 1130,
     'basal blairmore': 1190,
     'bullhead': 1250,
+    'bluesky': 1250,
     'bluesky-bullhead': 1250,
     'bluesky-gething': 1250,
     'bluesky-gething-dunlevy': 1250,
@@ -317,7 +318,7 @@ BC_WELL_NAME_TO_FIELD_MAP = {
     'weasel': 'Weasel'
 }
 
-MBWellNameToOperatorMap = {
+MB_WELL_NAME_TO_OPERATOR_MAP = {
     'arc'   :"ARC Resources Ltd.",
     'black gold': 'Black Gold Energy Ltd.',
     'cnrl ': 'Canadian Natural Resources Limited',
@@ -348,7 +349,7 @@ MBWellNameToOperatorMap = {
 
 # Source for pool codes:
 # http://www.gov.mb.ca/iem/petroleum/f_p_codes/poolbook.pdf
-MBPoolCodeToZoneMap = {
+MB_POOL_CODE_TO_ZONE_MAP = {
     '159' :'Lodgepole',
     '160' :'Bakken',
     '162' :'Bakken-Three Forks',
@@ -387,7 +388,7 @@ MBPoolCodeToZoneMap = {
     '9944' :'Mission Canyon'
 }
 
-BCPostingDatesToSaleDateMap = {
+BC_POSTING_DATES_TO_SALE_DATE_MAP = {
     '2016.01': '2016.01.20',
     '2016.02': '2016.02.24',
     '2016.03': '2016.03.23',    
@@ -427,7 +428,7 @@ BCPostingDatesToSaleDateMap = {
 }
 
 # Source: http://www.economy.gov.sk.ca/publicofferings
-SKPostingNumberToSaleDate = {
+SK_POSTING_NUMBER_TO_SALE_DATE = {
     '369': '2016.02.02',
     '370': '2016.04.12',
     '371': '2016.06.07',

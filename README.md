@@ -63,19 +63,19 @@ Currently, these are string constants.
 Improvements should be made to grab the current year, next year, etc. instead of using constants.
 
 ## Constants.py
-BCPostingDatesToSaleDateMap
-SKPostingNumberToSaleDate
+BC_POSTING_DATES_TO_SALE_DATE_MAP
+SK_POSTING_NUMBER_TO_SALE_DATE
 
 # Data Sources
 
 ## Well Licences
-* BC: 
+* BC: https://reports.bcogc.ca/ogc/f?p=AMS_REPORTS:WA_ISSUED:16572487065452:
 * AB: http://www.aer.ca/data/well-lic/WELLS
 * SK: http://www.economy.gov.sk.ca/Files/oilandgas/wellbullfile/archives/
 * MB:
 
 ## Drilling
-* BC:
+* BC: https://iris.bcogc.ca/reports/rwservlet?prd_ogcr9985
 * AB: http://www.aer.ca/data/WELLS/
 * SK: http://www.economy.gov.sk.ca/Archived-Drilling-Activity-Reports
 * MB:

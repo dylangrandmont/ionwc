@@ -12,7 +12,7 @@ import numpy as np
 
 from coordinatemapping import uwiToLatLng
 from utilities import writeDrillingFile
-from constants import MONTH_DICT, MBWellNameToOperatorMap, UNKNOWN, IONWC_HOME
+from constants import MONTH_DICT, MB_WELL_NAME_TO_OPERATOR_MAP, UNKNOWN, IONWC_HOME
 
 def addMBDrillingToDataBase(drillingFileAll, verbose = False):
   """ Query for all MB well spuds, parse them into a common format and add to database (csv) """
@@ -45,9 +45,9 @@ def addMBDrillingToDataBase(drillingFileAll, verbose = False):
                   licencee = well[indexLicensee].strip().split(':')[1].strip()
               except: 
                   #Create Licensee name using the well name
-                  for key in MBWellNameToOperatorMap:
+                  for key in MB_WELL_NAME_TO_OPERATOR_MAP:
                     if key in wellname.lower():
-                      licencee = MBWellNameToOperatorMap[key]
+                      licencee = MB_WELL_NAME_TO_OPERATOR_MAP[key]
                   if licencee == UNKNOWN:
                     print "WARN: No Operator found for MB drilling well ", well
 

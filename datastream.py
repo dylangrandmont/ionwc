@@ -8,10 +8,10 @@ import glob
 from constants import IONWC_HOME
 
 class DataStream:
-	daysWindow = 20
+	days_window = 20
 	today = datetime.datetime.now()
 
-	urlOpener = urllib.URLopener()
+	url_opener = urllib.URLopener()
 
 	def _isResponseXml(self, url):
 		return 'text/xml' == urllib.urlopen(url).info().type
@@ -24,25 +24,25 @@ class DataStream:
 
 
 class DataStreamBC(DataStream):
-	postingDirectory = IONWC_HOME + '/data/postings/bc'
-	spudDirectory = IONWC_HOME + '/data/spud/bc'
+	postings_directory = IONWC_HOME + '/data/postings/bc'
+	spud_directory = IONWC_HOME + '/data/spud/bc'
 
-	def retrieveSpuds(self):
-		monthAgo = self.today - datetime.timedelta(30)
-		for date in [self.today, monthAgo]:
+	def retrieve_spuds(self):
+		month_ago = self.today - datetime.timedelta(30)
+		for date in [self.today, month_ago]:
 			year = str(date.year)
 			month = '%02d' % date.month
 
-			inName = 'rwservlet?prd_pimsr273+p_report_year=' + year + '+p_report_month=' + month
-			outName = self.spudDirectory + '/bcogc-spud-' + year + '-' + month + '.pdf'
+			in_name = 'rwservlet?prd_pimsr273+p_report_year=' + year + '+p_report_month=' + month
+			out_name = self.spud_directory + '/bcogc-spud-' + year + '-' + month + '.pdf'
 
-			print 'wget https://iris.bcogc.ca/reports/' + inName + ' '  + outName
-			os.system('wget https://iris.bcogc.ca/reports/' + inName + ' '  + outName)
+			print 'wget https://iris.bcogc.ca/reports/' + in_name + ' '  + out_name
+			os.system('wget https://iris.bcogc.ca/reports/' + in_name + ' '  + out_name)
 
-			os.system('pdftotext -layout ' + outName)
-			os.remove(outName)
+			os.system('pdftotext -layout ' + out_name)
+			os.remove(out_name)
 
-	def retrieveLicences(self):
+	def retrieve_licenses(self):
 		os.system('wget https://reports.bcogc.ca/ogc/f?p=200:21:13026223742485:CSV:::: -O ' + IONWC_HOME +'/data/wells/bc/new_well_authorizations_issued.csv')
 
 		os.system('grep -F -x -v -f $IONWC_HOME/data/wells/bc/well_authorizations_issued.csv $IONWC_HOME/data/wells/bc/new_well_authorizations_issued.csv > $IONWC_HOME/data/wells/bc/diff_well_authorizations_issued.csv')
@@ -50,46 +50,46 @@ class DataStreamBC(DataStream):
 		os.remove(IONWC_HOME + '/data/wells/bc/new_well_authorizations_issued.csv')
 		os.remove(IONWC_HOME + '/data/wells/bc/diff_well_authorizations_issued.csv')
 
-	def retrieveLandPostings(self):
-		self._retrieveLandPostingsResults()
-		self._retrieveLandPostingsOfferings()
+	def retrieve_land_postings(self):
+		self._retrieve_land_posting_results()
+		self._retrieve_land_posting_offerings()
 
-	def retrieveFacilities(self):
+	def retrieve_facilities(self):
 		os.system('wget https://ams-reports.bcogc.ca/ords-prod/f?p=200:58:15168409196395:CSV:::: -O ' + IONWC_HOME +'/data/facilities/bc/facilities.csv')
 
-	def _retrieveLandPostingsResults(self):
-		monthAgo = self.today - datetime.timedelta(28)
-		for date in [self.today, monthAgo]:
+	def _retrieve_land_posting_results(self):
+		month_ago = self.today - datetime.timedelta(28)
+		for date in [self.today, month_ago]:
 			year = str(date.year)
 			yr = year[2:4]
 			month = calendar.month_abbr[date.month].lower()
 			url = 'http://www2.gov.bc.ca/assets/gov/farming-natural-resources-and-industry/natural-gas-oil/png-crown-sale/results/' + month + yr + 'res.zip'
 			if self._isXZipCompressed(url):
-				os.system('wget -N ' + url + ' -P ' + self.postingDirectory)
-				os.system('unzip -o ' + self.postingDirectory + '/' + month + yr + 'res.zip -d ' + self.postingDirectory)
+				os.system('wget -N ' + url + ' -P ' + self.postings_directory)
+				os.system('unzip -o ' + self.postings_directory + '/' + month + yr + 'res.zip -d ' + self.postings_directory)
 
-	def _retrieveLandPostingsOfferings(self):
-		oneMonth = self.today + datetime.timedelta(28)
-		twoMonth = self.today + datetime.timedelta(56)
-		threeMonth = self.today + datetime.timedelta(84)
-		for date in [self.today, oneMonth, twoMonth, threeMonth]:
+	def _retrieve_land_posting_offerings(self):
+		one_month = self.today + datetime.timedelta(28)
+		two_months = self.today + datetime.timedelta(56)
+		three_months = self.today + datetime.timedelta(84)
+		for date in [self.today, one_month, two_months, three_months]:
 			year = str(date.year)
 			yr = year[2:4]
 			month = calendar.month_abbr[date.month].lower()
 
-			urlOctet = 'http://www2.gov.bc.ca/assets/gov/farming-natural-resources-and-industry/natural-gas-oil/png-crown-sale/sale-notices/' + year + '/' + month + yr + 'sal.rpt'
-			urlZip   = 'http://www2.gov.bc.ca/assets/gov/farming-natural-resources-and-industry/natural-gas-oil/png-crown-sale/sale-notices/' + year + '/' + month + yr + 'sal.zip'
-			if self._isResponseOctet(urlOctet):
-				os.system('wget -N ' + urlOctet + ' -P ' + self.postingDirectory)
+			url_octet = 'http://www2.gov.bc.ca/assets/gov/farming-natural-resources-and-industry/natural-gas-oil/png-crown-sale/sale-notices/' + year + '/' + month + yr + 'sal.rpt'
+			url_zip   = 'http://www2.gov.bc.ca/assets/gov/farming-natural-resources-and-industry/natural-gas-oil/png-crown-sale/sale-notices/' + year + '/' + month + yr + 'sal.zip'
+			if self._isResponseOctet(url_octet):
+				os.system('wget -N ' + url_octet + ' -P ' + self.postings_directory)
 
-			if self._isXZipCompressed(urlZip):
-				os.system('wget -N ' + urlZip + ' -P ' + self.postingDirectory)
-				os.system('unzip -o ' + self.postingDirectory + '/' + month + yr + 'sal.zip -d ' + self.postingDirectory)
+			if self._isXZipCompressed(url_zip):
+				os.system('wget -N ' + url_zip + ' -P ' + self.postings_directory)
+				os.system('unzip -o ' + self.postings_directory + '/' + month + yr + 'sal.zip -d ' + self.postings_directory)
 
 class DataStreamAB(DataStream):
-	postingWindowAhead = 100
-	postingWindowBehind = 20
-	postingDirectory = IONWC_HOME +'/data/postings/ab'
+	posting_window_ahead = 100
+	posting_window_behind = 20
+	postings_directory = IONWC_HOME +'/data/postings/ab'
 
 	def _getDates(self, daysAgo):
 		date = self.today - datetime.timedelta(daysAgo)
@@ -98,48 +98,48 @@ class DataStreamAB(DataStream):
 		day = '%02d' % date.day
 		return year, month, day
 
-	def retrieveSpuds(self):
-		for i in range(self.daysWindow):
+	def retrieve_spuds(self):
+		for i in range(self.days_window):
 			year, month, day = self._getDates(i)
 			url = 'http://www.aer.ca/data/WELLS/SPUD' + month + day + '.TXT'
 			if urllib.urlopen(url).getcode() != 404:
-				self.urlOpener.retrieve(url, IONWC_HOME +'/data/spud/' + year + '/SPUD' + month + day + '.TXT')
+				self.url_opener.retrieve(url, IONWC_HOME +'/data/spud/' + year + '/SPUD' + month + day + '.TXT')
 
-	def retrieveLicences(self):
-		for i in range(self.daysWindow):
+	def retrieve_licenses(self):
+		for i in range(self.days_window):
 			year, month, day = self._getDates(i)
 			url = 'http://www.aer.ca/data/well-lic/WELLS' + month + day + '.TXT'
 			if urllib.urlopen(url).getcode() != 404:
-				self.urlOpener.retrieve(url, IONWC_HOME + '/data/licences/' + year + '/WELLS' + month + day + '.TXT')
+				self.url_opener.retrieve(url, IONWC_HOME + '/data/licences/' + year + '/WELLS' + month + day + '.TXT')
 		
-	def retrieveLandPostings(self):
-		self._retrieveLandPostingsOfferings()
-		self._retrieveLandPostingsResults()
+	def retrieve_land_postings(self):
+		self._retrieve_land_posting_offerings()
+		self._retrieve_land_posting_results()
 
-	def retrieveFacilities(self):
+	def retrieve_facilities(self):
 		url = 'http://www.aer.ca/data/codes/ActiveFacility.txt'
 		if urllib.urlopen(url).getcode() != 404:
-			self.urlOpener.retrieve(url, IONWC_HOME + '/data/facilities/ab/ActiveFacility.txt')
+			self.url_opener.retrieve(url, IONWC_HOME + '/data/facilities/ab/ActiveFacility.txt')
 
-	def _retrieveLandPostingsResults(self):
-		for i in range(self.postingWindowBehind):
+	def _retrieve_land_posting_results(self):
+		for i in range(self.posting_window_behind):
 			year, month, day = self._getDates(i)
 			url = 'http://www.energy.alberta.ca/FTPPNG/' + year + month + day +'PSR.xml'
 			if self._isResponseXml(url):
-				os.system('wget -N ' + url + ' -P ' + self.postingDirectory)
+				os.system('wget -N ' + url + ' -P ' + self.postings_directory)
 
-	def _retrieveLandPostingsOfferings(self):
-		for i in range(-1 * self.postingWindowAhead, self.postingWindowBehind):
+	def _retrieve_land_posting_offerings(self):
+		for i in range(-1 * self.posting_window_ahead, self.posting_window_behind):
 			year, month, day = self._getDates(i)
 			url = 'http://www.energy.alberta.ca/FTPPNG/' + year + month + day +'PON.xml'
 			if self._isResponseXml(url):
-				os.system('wget -N ' + url + ' -P ' + self.postingDirectory)
+				os.system('wget -N ' + url + ' -P ' + self.postings_directory)
 
 
 class DataStreamSK(DataStream):
 
-	def retrieveSpuds(self):
-		for i in range(self.daysWindow):
+	def retrieve_spuds(self):
+		for i in range(self.days_window):
 			date = datetime.datetime.now() - datetime.timedelta(i)
 			year = str(date.year)
 			month = '%02d' % date.month
@@ -147,10 +147,10 @@ class DataStreamSK(DataStream):
 
 			url = 'http://www.economy.gov.sk.ca/Files/oilandgas/DrillingActivity/archives/DailyDrillingActivity-' + year + '-' + month + '-' + day + '.csv'
 			if urllib.urlopen(url).getcode() != 404:
-				self.urlOpener.retrieve(url, IONWC_HOME + '/data/spud/sask/DailyDrillingActivity-' + year + '-' + month + '-' + day + '.csv')
+				self.url_opener.retrieve(url, IONWC_HOME + '/data/spud/sask/DailyDrillingActivity-' + year + '-' + month + '-' + day + '.csv')
 
-	def retrieveLicences(self):
-		for i in range(self.daysWindow):
+	def retrieve_licenses(self):
+		for i in range(self.days_window):
 			date = datetime.datetime.now() - datetime.timedelta(i)
 			year = str(date.year)
 			yr = year[2:]
@@ -159,7 +159,7 @@ class DataStreamSK(DataStream):
 
 			url = 'http://www.economy.gov.sk.ca/Files/oilandgas/wellbullfile/archives/FL' + yr + month + day + '.csv'
 			if urllib.urlopen(url).getcode() != 404:
-				self.urlOpener.retrieve(url, IONWC_HOME + '/data/licences/sask/FL' + yr + month + day + '.csv')
+				self.url_opener.retrieve(url, IONWC_HOME + '/data/licences/sask/FL' + yr + month + day + '.csv')
 
 	def convertLandPostings(self):
 		for file in os.listdir(IONWC_HOME + '/data/postings/sk'):
@@ -168,19 +168,19 @@ class DataStreamSK(DataStream):
 		for file in glob.glob(IONWC_HOME + '/data/postings/sk/' + '*.pdf'):
 			os.system('pdftotext -layout ' + '"' + file + '"')
 
-	def retrieveFacilities(self):
+	def retrieve_facilities(self):
 		url = 'http://economy.gov.sk.ca/files/Registry%20Downloads/NewAndActiveFacilitiesReport.csv'
 		if urllib.urlopen(url).getcode() != 404:
-			self.urlOpener.retrieve(url, IONWC_HOME + '/data/facilities/sk/NewAndActiveFacilitiesReport.csv')
+			self.url_opener.retrieve(url, IONWC_HOME + '/data/facilities/sk/NewAndActiveFacilitiesReport.csv')
 
 
 class DataStreamMB:
-	activityDirectoryData = IONWC_HOME + '/data/activity/mb/'
-	activityDirectoryRaw = IONWC_HOME + '/raw_inputs/activity/mb/'
-	wellsDirectoryData = IONWC_HOME + '/data/wells/mb/'
-	wellsDirectoryRaw = IONWC_HOME + '/raw_inputs/wells/mb/'
-	postingDirectoryData = IONWC_HOME + '/data/postings/mb/'
-	postingDirectoryRaw = IONWC_HOME + '/raw_inputs/postings/mb/'
+	activity_directory_data = IONWC_HOME + '/data/activity/mb/'
+	activity_directory_raw = IONWC_HOME + '/raw_inputs/activity/mb/'
+	wells_directory_data = IONWC_HOME + '/data/wells/mb/'
+	wells_directory_raw = IONWC_HOME + '/raw_inputs/wells/mb/'
+	postings_directory_data = IONWC_HOME + '/data/postings/mb/'
+	postings_directory_raw = IONWC_HOME + '/raw_inputs/postings/mb/'
 
 	def _hasConnection(self):
 		try:
@@ -190,62 +190,62 @@ class DataStreamMB:
 			print 'No connection found for MB Data Stream'
 			return False
 
-	def retrieveSpuds(self):
+	def retrieve_spuds(self):
 		if (self._hasConnection()):
-			os.system('wget -N -r -l1 --no-parent -A.pdf http://www.gov.mb.ca/iem/petroleum/wwar/ -P ' + self.activityDirectoryRaw)
-			os.system('find ' + self.activityDirectoryRaw + ' -name \'*.pdf\' -exec cp -n -t ' + self.activityDirectoryData + ' {} +')
-			os.system('find ' + self.activityDirectoryData + ' -type f ! -name \'*.pdf\' -delete')
-			os.system('for file in ' + self.activityDirectoryData + '*.pdf; do pdftotext -layout "$file" "$file.txt"; done')
-			for file in glob.glob(self.activityDirectoryData + '*.pdf'):
+			os.system('wget -N -r -l1 --no-parent -A.pdf http://www.gov.mb.ca/iem/petroleum/wwar/ -P ' + self.activity_directory_raw)
+			os.system('find ' + self.activity_directory_raw + ' -name \'*.pdf\' -exec cp -n -t ' + self.activity_directory_data + ' {} +')
+			os.system('find ' + self.activity_directory_data + ' -type f ! -name \'*.pdf\' -delete')
+			os.system('for file in ' + self.activity_directory_data + '*.pdf; do pdftotext -layout "$file" "$file.txt"; done')
+			for file in glob.glob(self.activity_directory_data + '*.pdf'):
 				os.remove(file)
 
-	def retrieveLicences(self):
+	def retrieve_licenses(self):
 		oneKiloByte = 1000
 		uwiWeekly = urllib.urlopen('http://www.gov.mb.ca/iem/petroleum/reports/uwi_weekly.xls')
 		if (uwiWeekly.info().getheaders("Content-Length")[0] > oneKiloByte):
-			os.system('wget -N http://www.gov.mb.ca/iem/petroleum/reports/uwi_weekly.xls -P ' + self.wellsDirectoryRaw)
-			os.system('libreoffice --headless --convert-to csv ' + self.wellsDirectoryRaw + 'uwi_weekly.xls --outdir ' + self.wellsDirectoryData)
+			os.system('wget -N http://www.gov.mb.ca/iem/petroleum/reports/uwi_weekly.xls -P ' + self.wells_directory_raw)
+			os.system('libreoffice --headless --convert-to csv ' + self.wells_directory_raw + 'uwi_weekly.xls --outdir ' + self.wells_directory_data)
 
-	def retrieveLandPostings(self):
-		os.system('wget -N -r -l1 --no-parent -A_results.pdf http://www.gov.mb.ca/iem/petroleum/landinfo/ -P ' + self.postingDirectoryRaw)
-		os.system('wget -N -r -l1 --no-parent -A_sale.pdf http://www.gov.mb.ca/iem/petroleum/landinfo/ -P ' + self.postingDirectoryRaw)
-		os.chdir(self.postingDirectoryRaw)
+	def retrieve_land_postings(self):
+		os.system('wget -N -r -l1 --no-parent -A_results.pdf http://www.gov.mb.ca/iem/petroleum/landinfo/ -P ' + self.postings_directory_raw)
+		os.system('wget -N -r -l1 --no-parent -A_sale.pdf http://www.gov.mb.ca/iem/petroleum/landinfo/ -P ' + self.postings_directory_raw)
+		os.chdir(self.postings_directory_raw)
 
 		for year in range(2006, 2016):
 			os.system('find . -type f -name \'*' + str(year) + '*\' -delete')
 
-		os.system('for file in ' + self.postingDirectoryRaw + 'www.gov.mb.ca/iem/petroleum/landinfo/*.pdf; do pdftotext -layout "$file"; done')
-		os.system('find -name \'*results.txt\' -exec mv {} ' + self.postingDirectoryData + ' \;')
-		os.system('find -name \'*sale.txt\' -exec mv {} ' + self.postingDirectoryData + ' \;')
+		os.system('for file in ' + self.postings_directory_raw + 'www.gov.mb.ca/iem/petroleum/landinfo/*.pdf; do pdftotext -layout "$file"; done')
+		os.system('find -name \'*results.txt\' -exec mv {} ' + self.postings_directory_data + ' \;')
+		os.system('find -name \'*sale.txt\' -exec mv {} ' + self.postings_directory_data + ' \;')
 
 
-def createArchive():
+def create_archive():
 	now = datetime.datetime.now()
-	dateStamp = str(now.year) + '-' + str(now.month) + '-' + str(now.day)
-	os.system('zip -r ' + IONWC_HOME + '/archives/data-' + dateStamp + '.zip ' + IONWC_HOME + '/data/ ')
+	date_stamp = str(now.year) + '-' + str(now.month) + '-' + str(now.day)
+	os.system('zip -r ' + IONWC_HOME + '/archives/data-' + date_stamp + '.zip ' + IONWC_HOME + '/data/ ')
 
 def run_all():
 	dataStreamBC = DataStreamBC()
-	#dataStreamBC.retrieveLicences()
-	#dataStreamBC.retrieveSpuds()
-	dataStreamBC.retrieveLandPostings()
-	#dataStreamBC.retrieveFacilities()
+	#dataStreamBC.retrieve_licenses()
+	#dataStreamBC.retrieve_spuds()
+	dataStreamBC.retrieve_land_postings()
+	#dataStreamBC.retrieve_facilities()
 
 	dataStreamAB = DataStreamAB()
-	dataStreamAB.retrieveSpuds()
-	dataStreamAB.retrieveLicences()
-	dataStreamAB.retrieveLandPostings()
-	#dataStreamAB.retrieveFacilities()
+	dataStreamAB.retrieve_spuds()
+	dataStreamAB.retrieve_licenses()
+	dataStreamAB.retrieve_land_postings()
+	#dataStreamAB.retrieve_facilities()
 
 	dataStreamSK = DataStreamSK()
-	dataStreamSK.retrieveSpuds()
-	dataStreamSK.retrieveLicences()
+	dataStreamSK.retrieve_spuds()
+	dataStreamSK.retrieve_licenses()
 	dataStreamSK.convertLandPostings()
-	#dataStreamSK.retrieveFacilities()
+	#dataStreamSK.retrieve_facilities()
 
 	dataStreamMB = DataStreamMB()
-	dataStreamMB.retrieveSpuds()
-	dataStreamMB.retrieveLicences()
-	dataStreamMB.retrieveLandPostings()
+	dataStreamMB.retrieve_spuds()
+	dataStreamMB.retrieve_licenses()
+	dataStreamMB.retrieve_land_postings()
 
-	createArchive()
+	create_archive()
