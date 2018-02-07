@@ -1,5 +1,7 @@
 #!/usr/bin/python
 
+# Copyright (C) 2016-2018, Dylan Grandmont
+
 import urllib2
 import urllib
 import simplejson

@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+# Copyright (C) 2016-2018, Dylan Grandmont
+
 import unittest
 import licences
 

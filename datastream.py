@@ -1,3 +1,5 @@
+# Copyright (C) 2017-2018, Dylan Grandmont
+
 import urllib
 import urllib2
 import os

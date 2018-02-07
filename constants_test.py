@@ -1,3 +1,5 @@
+# Copyright (C) 2018, Dylan Grandmont
+
 from constants import FORMATION_AGE_DICT
 import unittest
 

@@ -1,11 +1,4 @@
-#!/usr/bin/python
-
-##################################################################
-# Copyright (C) 2016-2017 Eye on Western Canada
-#
-# Create Database (csv) of Well Licences and Well Spuds
-#
-##################################################################
+# Copyright (C) 2016-2018, Dylan Grandmont
 
 import os
 import numpy as np

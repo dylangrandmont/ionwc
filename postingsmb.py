@@ -1,10 +1,8 @@
+# Copyright (C) 2016-2018, Dylan Grandmont
+
 import glob
 import re
 import numpy as np
-
-# TO DO
-# Need to identify some entries which do contain zone rights
-# Sale Results
 
 from coordinatemapping import uwiToLatLng
 from constants import KML_TEMPLATE, MONTH_DICT, IONWC_HOME

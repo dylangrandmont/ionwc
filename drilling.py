@@ -1,6 +1,4 @@
-# Copyright (C) 2016, Eye on Western Canada
-#
-# 
+# Copyright (C) 2016-2018, Dylan Grandmont
 
 import os
 import re

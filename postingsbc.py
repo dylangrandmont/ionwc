@@ -1,11 +1,4 @@
-#!/bin/bash
-
-##################################################################
-# Copyright (C) 2016, Eye on Western Canada
-#
-# Methods for parsing BC land postings
-#
-##################################################################
+# Copyright (C) 2016-2018, Dylan Grandmont
 
 import re
 import numpy as np

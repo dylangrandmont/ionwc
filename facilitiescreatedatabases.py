@@ -1,9 +1,4 @@
-##################################################################
-# Copyright (C) 2016-2017 Eye on Western Canada
-#
-# Create Database (csv) of Land Postings and Sale Results
-#
-##################################################################
+# Copyright (C) 2016-2018, Dylan Grandmont
 
 from facilities import addBCFacilitiesToDataBase
 import os

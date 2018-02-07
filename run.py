@@ -1,6 +1,4 @@
-# Copyright (C) 2016-2017, Eye on Western Canada
-#
-# Script to update databases and push changes to a google FusionTable
+# Copyright (C) 2016-2018, Dylan Grandmont
 
 import os
 import datastream

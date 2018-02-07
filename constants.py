@@ -1,5 +1,4 @@
-# Copyright (C) 2016-2017, Eye on Western Canada
-#
+# Copyright (C) 2016-2018, Dylan Grandmont
 
 import os
 

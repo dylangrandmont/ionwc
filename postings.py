@@ -1,3 +1,5 @@
+# Copyright (C) 2016-2018, Dylan Grandmont
+
 from coordinatemapping import uwiToLatLng
 from constants import FORMATION_AGE_DICT, KML_TEMPLATE, IONWC_HOME, UNKNOWN
 from utilities import writePostingOfferingDataBaseFile, writePostingOfferingAggregateDataBaseFile, writePostingResultDataBaseFile

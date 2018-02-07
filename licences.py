@@ -1,11 +1,4 @@
-#!/bin/bash
-
-##################################################################
-# Copyright (C) 2017 Eye on Western Canada
-#
-# Well Licence Parsing
-#
-##################################################################
+# Copyright (C) 2016-2018, Dylan Grandmont
 
 import datetime
 import os

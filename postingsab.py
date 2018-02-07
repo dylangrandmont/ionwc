@@ -1,11 +1,4 @@
-#!/bin/bash
-
-##################################################################
-# Copyright (C) 2016, Eye on Western Canada
-#
-# Methods for parsing Public Offering Notice (PON) and Public Sale Result (PSR) xml files
-#
-##################################################################
+# Copyright (C) 2016-2018, Dylan Grandmont
 
 import xml.etree.ElementTree as ET
 import numpy as np

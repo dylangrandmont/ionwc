@@ -1,3 +1,5 @@
+# Copyright (C) 2016-2018, Dylan Grandmont
+
 import math
 import numpy as np
 import xml.etree.ElementTree as ET
