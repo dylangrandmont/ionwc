@@ -2,7 +2,7 @@ app.controller('annotationController', ['$scope', '$sce', function($scope, $sce)
 
   $scope.advert = {
     label:"Petrel Robertson Consulting Ltd. Reports",
-    val: true,
+    val: false,
     edges: [{
       url: 'http://ionwc.com/prcl/kml/wilrich.kml?v=3',
       text: "../prcl/prcl-wilrich-report",
