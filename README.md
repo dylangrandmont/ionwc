@@ -72,13 +72,13 @@ SK_POSTING_NUMBER_TO_SALE_DATE
 * BC: https://reports.bcogc.ca/ogc/f?p=AMS_REPORTS:WA_ISSUED:16572487065452:
 * AB: http://www.aer.ca/data/well-lic/WELLS
 * SK: http://www.economy.gov.sk.ca/Files/oilandgas/wellbullfile/archives/
-* MB:
+* MB: http://www.manitoba.ca/iem/petroleum/wwar/index.html
 
 ## Drilling
 * BC: https://iris.bcogc.ca/reports/rwservlet?prd_ogcr9985
 * AB: http://www.aer.ca/data/WELLS/
 * SK: http://www.economy.gov.sk.ca/Archived-Drilling-Activity-Reports
-* MB:
+* MB: http://www.manitoba.ca/iem/petroleum/wwar/index.html
 
 ## Land Postings (Offerings)
 * BC: http://www2.gov.bc.ca/gov/content/industry/natural-gas-oil/petroleum-natural-gas-tenure
