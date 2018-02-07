@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- Copyright (C) 2016-2017 Eye on Western Canada
+       Author: Dylan Grandmont 
+     -->
+  <head>
+    <title>Eye on Western Canada</title>
+    <meta charset="utf-8">
+    <meta name="description" content="Dynamic Oil and Gas mapping products to track industry activity across Western Canada.">
+    <meta name="keywords" content="IONWC,Eye,Western,Canada,Well,Activity,License,Licence,Spud,Map,Alberta,BC,Saskatchewan,Manitoba,Pipeline,Facilities">
+    <meta name="author" content="Dylan Grandmont">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Cache-Control" content="no-cache" />
+    <meta name="theme-color" content="#f4511e">
+    <link rel="icon" href="favicon.ico?v=2" />
+    <link rel="stylesheet" href="css/w3.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Montserrat" />
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lato" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> 
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/themes/smoothness/jquery-ui.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyBpzML-TxjPkxtZlj0J7ry9OfyGb1RoEZk"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" type="text/css" href="deps/font-awesome-4.6.3/css/font-awesome.min.css"> 
+    <link rel="stylesheet" type="text/css" href="css/ionwc.css" />
+    <style>
+      #welcome-panel {
+        line-height: 1.2;
+        position: absolute;
+        width: calc(100% - 2px);
+        max-height: calc(100% - 51px);
+        top: 50px;
+        right: 1px;
+        z-index: 5;
+        background-color : rgba(255,255,255,0.9);
+        border: 1px solid #999;
+        text-align: left;
+        overflow-x: hidden;
+      }
+      .thumbnail {
+        padding: 10px 10px 15px 10px;
+        border-radius: 6px;
+      }
+      .container-fluid {
+        padding: 60px 40px;
+      }
+      .map-product {
+        height: 450px;
+        width: 100%;
+      }
+      .overlay {
+        width: 100%;
+        height: 100%;
+        z-index:20;
+        opacity: 1;
+      }
+      .overlay:hover {
+        opacity: 0.7;
+        background-color: white;
+      }
+      .map-button {
+        background-color: white;
+        opacity: 0.9;
+        position: absolute; 
+        top:200px; 
+        height: 80px; 
+        width: 30%; 
+        right: 0px; 
+        left: 0px; 
+        margin: 0 auto; 
+        z-index: 30; 
+        border: 2px solid #f4511e;
+        border-radius: 4px;
+      }
+      .map-button:hover {
+        opacity: 1;
+      }
+      @media screen and ( max-width: 1000px ) {
+        #titleForPage:after {
+          content: "IONWC";
+        }
+      }
+      @media screen and ( min-width: 1001px ) {
+        #titleForPage:after {
+          content: "Eye on Western Canada";
+        }
+      }
+      @media screen and ( max-width: 1500px ) {
+        #welcomeTitle {
+          font-size: 6vw;
+        }
+        #slogan {
+          font-size: 3vw;
+        }
+      }
+      @media screen and ( min-width: 1501px ) {
+        #welcomeTitle {
+          font-size: 60px;
+        }
+        #slogan {
+          font-size: 30px;
+        }
+      }
+
+      #pricing-table {
+        margin: 100px auto;
+        text-align: center;
+        width: 100%; /* total computed width = 222 x 3 + 226 */
+      }
+
+      #pricing-table .plan {
+        font: 12px 'Lucida Sans', 'trebuchet MS', Arial, Helvetica;
+        text-shadow: 0 1px rgba(255,255,255,.8);        
+        background: #fff;      
+        border: 1px solid #ddd;
+        color: #333;
+        padding: 20px;
+        width: 50%; /* plan width = 180 + 20 + 20 + 1 + 1 = 222px */      
+        float: left;
+        position: relative;
+      }
+
+      #pricing-table #most-popular {
+        z-index: 2;
+        top: -13px;
+        border-width: 3px;
+        padding: 30px 20px;
+        -moz-border-radius: 5px;
+        -webkit-border-radius: 5px;
+        border-radius: 5px;
+        -moz-box-shadow: 20px 0 10px -10px rgba(0, 0, 0, .15), -20px 0 10px -10px rgba(0, 0, 0, .15);
+        -webkit-box-shadow: 20px 0 10px -10px rgba(0, 0, 0, .15), -20px 0 10px -10px rgba(0, 0, 0, .15);
+        box-shadow: 20px 0 10px -10px rgba(0, 0, 0, .15), -20px 0 10px -10px rgba(0, 0, 0, .15);    
+      }
+
+      #pricing-table .plan:nth-child(1) {
+        -moz-border-radius: 5px 0 0 5px;
+        -webkit-border-radius: 5px 0 0 5px;
+        border-radius: 5px 0 0 5px;        
+      }
+
+      #pricing-table .plan:nth-child(4) {
+        -moz-border-radius: 0 5px 5px 0;
+        -webkit-border-radius: 0 5px 5px 0;
+        border-radius: 0 5px 5px 0;        
+      }
+
+      /* --------------- */ 
+
+      #pricing-table h3 {
+        font-size: 20px;
+        font-weight: normal;
+        padding: 20px;
+        margin: -20px -20px 50px -20px;
+        background-color: #eee;
+        background-image: -moz-linear-gradient(#fff,#eee);
+        background-image: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#eee));    
+        background-image: -webkit-linear-gradient(#fff, #eee);
+        background-image: -o-linear-gradient(#fff, #eee);
+        background-image: -ms-linear-gradient(#fff, #eee);
+        background-image: linear-gradient(#fff, #eee);
+      }
+
+      #pricing-table #most-popular h3 {
+        background-color: #ddd;
+        background-image: -moz-linear-gradient(#eee,#ddd);
+        background-image: -webkit-gradient(linear, left top, left bottom, from(#eee), to(#ddd));    
+        background-image: -webkit-linear-gradient(#eee, #ddd);
+        background-image: -o-linear-gradient(#eee, #ddd);
+        background-image: -ms-linear-gradient(#eee, #ddd);
+        background-image: linear-gradient(#eee, #ddd);
+        margin-top: -30px;
+        padding-top: 30px;
+        -moz-border-radius: 5px 5px 0 0;
+        -webkit-border-radius: 5px 5px 0 0;
+        border-radius: 5px 5px 0 0;     
+      }
+
+      #pricing-table .plan:nth-child(1) h3 {
+        -moz-border-radius: 5px 0 0 0;
+        -webkit-border-radius: 5px 0 0 0;
+        border-radius: 5px 0 0 0;       
+      }
+
+      #pricing-table .plan:nth-child(4) h3 {
+        -moz-border-radius: 0 5px 0 0;
+        -webkit-border-radius: 0 5px 0 0;
+        border-radius: 0 5px 0 0;       
+      } 
+
+      #pricing-table h3 span {
+        display: block;
+        font: bold 25px/100px Georgia, Serif;
+        color: #777;
+        background: #fff;
+        border: 5px solid #fff;
+        height: 100px;
+        width: 100px;
+        margin: 10px auto -65px;
+        -moz-border-radius: 100px;
+        -webkit-border-radius: 100px;
+        border-radius: 100px;
+        -moz-box-shadow: 0 5px 20px #ddd inset, 0 3px 0 #999 inset;
+        -webkit-box-shadow: 0 5px 20px #ddd inset, 0 3px 0 #999 inset;
+        box-shadow: 0 5px 20px #ddd inset, 0 3px 0 #999 inset;
+      }
+
+      /* --------------- */
+
+      #pricing-table ul {
+        margin: 20px 0 0 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      #pricing-table li {
+        border-top: 1px solid #ddd;
+        padding: 10px 0;
+      }
+
+      /* --------------- */
+        
+      #pricing-table .signup {
+        position: relative;
+        padding: 8px 20px;
+        margin: 20px 0 0 0;  
+        color: #fff;
+        font: bold 14px Arial, Helvetica;
+        text-transform: uppercase;
+        text-decoration: none;
+        display: inline-block;       
+        background-color: #1ec1f4;
+        background-image: -moz-linear-gradient(#1ec1f4, #67d5f8);
+        background-image: -webkit-gradient(linear, left top, left bottom, from(#1ec1f4), to(#67d5f8));    
+        background-image: -webkit-linear-gradient(#1ec1f4, #67d5f8);
+        background-image: -o-linear-gradient(#1ec1f4, #67d5f8);
+        background-image: -ms-linear-gradient(#1ec1f4, #67d5f8);
+        background-image: linear-gradient(#1ec1f4, #67d5f8);
+        -moz-border-radius: 3px;
+        -webkit-border-radius: 3px;
+        border-radius: 3px;     
+        text-shadow: 0 1px 0 rgba(0,0,0,.3);        
+        -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, .5), 0 2px 0 rgba(0, 0, 0, .7);
+        -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, .5), 0 2px 0 rgba(0, 0, 0, .7);
+        box-shadow: 0 1px 0 rgba(255, 255, 255, .5), 0 2px 0 rgba(0, 0, 0, .7);
+      }
+
+      #pricing-table .signup:hover {
+        background-color: #67d5f8;
+        background-image: -moz-linear-gradient(#67d5f8, #1ec1f4);
+        background-image: -webkit-gradient(linear, left top, left bottom, from(#67d5f8), to(#1ec1f4));      
+        background-image: -webkit-linear-gradient(#67d5f8, #1ec1f4);
+        background-image: -o-linear-gradient(#67d5f8, #1ec1f4);
+        background-image: -ms-linear-gradient(#67d5f8, #1ec1f4);
+        background-image: linear-gradient(#67d5f8, #1ec1f4); 
+      }
+
+      #pricing-table .signup:active, #pricing-table .signup:focus {
+        background: #67d5f8;       
+        top: 2px;
+        -moz-box-shadow: 0 0 3px rgba(0, 0, 0, .7) inset;
+        -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, .7) inset;
+        box-shadow: 0 0 3px rgba(0, 0, 0, .7) inset; 
+      }
+
+      /* --------------- */
+
+      .clear:before, .clear:after {
+        content:"";
+        display:table
+      }
+
+      .clear:after {
+        clear:both
+      }
+
+      .clear {
+        zoom:1
+      }
+
+
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100);
+
+/*** Table Styles **/
+
+#database-table .table-fill {
+  background: white;
+  border-radius:3px;
+  border-collapse: collapse;
+  height: 320px;
+  margin: auto;
+  max-width: 900px;
+  padding:5px;
+  width: 100%;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  animation: float 5s infinite;
+}
+ 
+#database-table th {
+  color: white;
+  background: #1ec1f4;
+  border-bottom:4px solid #9ea7af;
+  border-right: 1px solid #343a45;
+  font-size:23px;
+  font-weight: 100;
+  padding:24px;
+  text-align:left;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  vertical-align:middle;
+}
+
+#database-table th:first-child {
+  border-top-left-radius:3px;
+}
+ 
+#database-table th:last-child {
+  border-top-right-radius:3px;
+  border-right:none;
+}
+  
+#database-table tr {
+  border-top: 1px solid #C1C3D1;
+  border-bottom-: 1px solid #C1C3D1;
+  color:#666B85;
+  font-size:16px;
+  font-weight:normal;
+  text-shadow: 0 1px 1px rgba(256, 256, 256, 0.1);
+}
+ 
+#database-table tr:hover td {
+  background:#4E5066;
+  color:#FFFFFF;
+  border-top: 1px solid #22262e;
+}
+ 
+#database-table tr:first-child {
+  border-top:none;
+}
+
+#database-table tr:last-child {
+  border-bottom:none;
+}
+ 
+#database-table tr:nth-child(odd) td {
+  background:#EBEBEB;
+}
+ 
+#database-table tr:nth-child(odd):hover td {
+  background:#4E5066;
+}
+
+#database-tabletr:last-child td:first-child {
+  border-bottom-left-radius:3px;
+}
+ 
+#database-tabletr:last-child td:last-child {
+  border-bottom-right-radius:3px;
+}
+ 
+#database-table td {
+  background:#FFFFFF;
+  padding:20px;
+  text-align:left;
+  vertical-align:middle;
+  font-weight:300;
+  font-size:15px;
+  text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
+  border-right: 1px solid #C1C3D1;
+}
+
+#database-table td:last-child {
+  border-right: 0px;
+}
+
+#database-table th.text-left {
+  text-align: left;
+}
+
+#database-table th.text-center {
+  text-align: center;
+}
+
+#database-table th.text-right {
+  text-align: right;
+}
+
+#database-table td.text-left {
+  text-align: left;
+}
+
+#database-table td.text-center {
+  text-align: center;
+}
+
+#database-table td.text-right {
+  text-align: right;
+}
+
+    </style>
+    <script type="text/javascript">
+      getFormatDateDaysAgo = function(daysAgo) {
+        var today = new Date(),
+            dateAgo = new Date(today - 1000 * 60 * 60 * 24 * daysAgo),
+            day,
+            month,
+            year = dateAgo.getFullYear();
+
+        day = ('0' + dateAgo.getDate()).slice(-2);
+        month = ('0' + (dateAgo.getMonth() + 1)).slice(-2); //January is 0!
+
+        return year + "." + month + "." + day;
+      };
+
+      var map,
+          previewMap,
+          mapLicensing,
+          mapLandSales,
+          layerDrilling,
+          layerLicensing,
+          layerLandSales;
+
+      var app = angular.module('previewMapApp', []);
+      app.controller('previewMapCtrl', function($scope) {
+
+        $scope.mapName = "Drilling";
+        $scope.mapDescription = "Drilling Activity by Operator, Play, and Substance";
+        $scope.mapUrl = "drilling";
+
+        $scope.displayDrillingMap = function()
+        {
+          $scope.mapName = "Drilling";
+          $scope.mapDescription = "Drilling Activity by Operator, Play, and Substance";
+          $scope.mapUrl = "drilling";
+          layerDrilling.setMap(previewMap);
+          layerLicensing.setMap(null);
+          layerLandSales.setMap(null);
+        }
+
+        $scope.displayLicensingMap = function()
+        {
+          $scope.mapName = "Licensing";
+          $scope.mapDescription = "View Well Licensing by Operator, Play, and Substance";
+          $scope.mapUrl = "licences";
+          layerDrilling.setMap(null);
+          layerLicensing.setMap(previewMap);
+          layerLandSales.setMap(null);
+        }
+
+        $scope.displayLandSalesMap = function()
+        {
+          $scope.mapName = "Land Sales";
+          $scope.mapDescription = "View Current Land Postings and Sale Results";
+          $scope.mapUrl = "landsales";
+          layerDrilling.setMap(null);
+          layerLicensing.setMap(null);
+          layerLandSales.setMap(previewMap);
+        }
+      });
+
+      initialize = function() {
+        var mapOptions;
+
+        mapOptions = {
+          suppressInfoWindows: true,
+          center: {lat: 55, lng: -111},
+          zoom: 5,
+          scaleControl: true,
+          streetViewControl: false,
+          disableDefaultUI: true,
+          mapTypeId: google.maps.MapTypeId.TERRAIN,
+          mapTypeControlOptions: {
+            position: google.maps.ControlPosition.BOTTOM_CENTER
+          },
+          draggable: false,
+          zoomControl: false,
+          scrollwheel: false,
+          disableDoubleClickZoom: true
+        };
+
+        var markerColors = [
+          {where: "'SubstanceCode' = '4'", markerOptions:{ iconName: "small_yellow"}},
+          {where: "'SubstanceCode' = '2'", markerOptions:{ iconName: "measle_brown"}},
+          {where: "'SubstanceCode' = '0'", markerOptions:{ iconName: "small_green"}},
+          {where: "'SubstanceCode' = '3'", markerOptions:{ iconName: "small_blue"}}
+        ];
+
+        map = new google.maps.Map(document.getElementById("map"), mapOptions);
+        previewMap = new google.maps.Map(document.getElementById("preview-map"), mapOptions);
+
+        bc = new  google.maps.KmlLayer('http://ionwc.com/data/kml/bc_border.kml', {preserveViewport: true});
+        ab = new  google.maps.KmlLayer('http://ionwc.com/data/kml/ab_wcsb.kml', {preserveViewport: true});
+        sk = new  google.maps.KmlLayer('http://ionwc.com/data/kml/sk_wcsb.kml', {preserveViewport: true});
+        mb = new  google.maps.KmlLayer('http://ionwc.com/data/kml/mb_wcsb.kml', {preserveViewport: true});
+
+        bc.setMap(map);
+        ab.setMap(map);
+        sk.setMap(map);
+        mb.setMap(map);
+
+        layerDrilling = new google.maps.FusionTablesLayer({
+          query: {
+            select: 'address',
+            from: '1lc9vWq_M45gnsL5VLLNsLKBPlPQ2LgCOWxt_kUHI',
+            where: "'DrillDate' >= '" +  getFormatDateDaysAgo(21) + "' AND 'DrillDate' <= '" + getFormatDateDaysAgo(0) + "'"
+          },
+          styles: markerColors
+        });
+
+        layerDrilling.setMap(previewMap);
+
+        layerLicensing = new google.maps.FusionTablesLayer({
+          query: {
+            select: 'address',
+            from: '1y5xOfRjx-FnsGz7LWc4SeJNoOxgG54i7V-6iEsnX',
+            where: "'Date' >= '" +  getFormatDateDaysAgo(21) + "' AND 'Date' <= '" + getFormatDateDaysAgo(0) + "'"
+          },
+          styles: markerColors
+        });
+
+        layerLandSales = new google.maps.FusionTablesLayer({
+          suppressInfoWindows: true,
+          query: {
+            select: '\'Geocodable address\'',
+            from: '1kEPGipJ6rVtYNDcj96g7sGwzCvdxlY2WyU1cHY-L',
+            where: "'saleDate' >= '" + getFormatDateDaysAgo(0) + "'"
+          }
+        });
+      };
+      google.maps.event.addDomListener(window, 'load', initialize); 
+    </script>
+  </head>
+  <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container" style="height: 50px;">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>                        
+          </button>
+          <a class='navbar-brand' ><div id="titleForPage"></div></a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar"> 
+          <ul class="nav navbar-nav navbar-right" style="background-color: #f4511e; margin-top: 0px;">
+            <li><a href="index.html">HOME</a></li>
+            <li class="w3-small w3-dropdown-hover">
+              <a href="javascript:void(0)"  class="w3-hover-none" style="height:50px; vertical-align: middle;">MAPS <i class="fa fa-caret-down"></i></a>     
+              <div class="w3-dropdown-content w3-white w3-card-4" style="background-color:#f4511e;">
+                <a href="map?view=drilling" style="background-color:#f4511e;">Drilling</a>
+                <a href="map?view=licences" style="background-color:#f4511e;">Licensing</a>
+                <a href="map?view=landsales" style="background-color:#f4511e;">Land Sales</a>
+              </div>
+            </li>
+            <li><a href="index.html#subscribe">SUBSCRIBE</a></li>
+            <li><a href="index.html#contact">CONTACT</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div id="map"></div>
+
+    <div id="welcome-panel" class="w3-animate-opacity">
+      <div style="width:100%; text-align: center; background-color: rgba(255,255,255,0); color: black; padding-top: calc(35vh);  padding-bottom: calc(35vh);" id="welcome-button">
+        <center style= 'display: inline-block;'>
+          <h1 id="welcomeTitle">Eye On Western Canada<img src='imgs/ionwcIconInvert.png' style='height:1em; padding-left: 15px;'></h1>
+          <p id="slogan">Making Public Energy Data Accessible</p>
+        </center> 
+      </div>
+      <div>
+
+        <div class="container-fluid">
+          <div class="row">
+            <div id="subscribe" class="col-sm-8">
+              <h2>About Us</h2>
+              <h4>For Energy Professionals and Investors, Eye on Western Canada<sup>TM</sup> delivers products to monitor Oil and Gas activity across the Western Canadian Sedimentary Basin. Our current content includes <a href="map?view=licences">licensing</a>, <a href="map?view=drilling">drilling activity</a>, and <a href="map?view=landsales">crown land sale</a> maps with associated geological edges and interactive data dashboards. Our source database files are <a href="#pricing">available to purchase through monthly subscriptions or single transactions</a>.</h4>
+
+                <button style="background-color: #f4511e" type="submit" class="btn btn-danger" data-toggle="collapse" data-target="#contact-form" >Click Here To Subscribe</button>
+                <div id="contact-form" class="collapse">
+                  <iframe src='contact/contactform.php' frameborder='0' width='100%' height='450' ></iframe>
+                </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="container-fluid text-center bg-grey" ng-app="previewMapApp" ng-controller="previewMapCtrl">
+          <h2>View Activity Maps</h2>
+          <div class="row text-center">
+            <div class="col-sm-12">
+              <div class="thumbnail">
+                <div class="overlay" style="text-align:center; top: 50px;">
+                <div class="map-button" ><a ng-href="map?view={{mapUrl}}"  style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: black;">Go To Map</a></div>
+                  <div class="navbar navbar-default" >
+                    <div class="container" style="height: 50px;">
+                      <div class="navbar-header">
+                        <a class='navbar-brand' ><div>Map | {{mapName}} </div></a>
+                      </div>
+                    </div>
+                  </div>
+                  <div id="preview-map" class="map-product" style="border: 2px solid #f4511e"></div>
+                </div>
+                <br>
+                <p>{{mapDescription}}</p>
+              </div>
+            </div>
+          </div>
+          <div class="row text-center">
+            <div class="col-sm-4">
+              <div class="thumbnail">
+                <button style="background-color: #f4511e; font-size: 16px; color: white; width: 100%" type="submit" class="btn btn-danger;" ng-click="displayDrillingMap()">Drilling</button>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="thumbnail">
+                <button style="background-color: #f4511e; font-size: 16px; color: white; width: 100%" type="submit" class="btn btn-danger" ng-click="displayLicensingMap()">Licensing</button>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="thumbnail">
+                <button style="background-color: #f4511e; font-size: 16px; color: white; width: 100%" type="submit" class="btn btn-danger" ng-click="displayLandSalesMap()">Land Sales</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="container-fluid text-center" id="pricing">
+          <div class="row">
+            <div class="col-sm-12 center">
+              <h2>Purchase Activity Database Files</h2>
+              <h4>Purchase formated csv databases as used on our mapping products. Available as one-time purchase
+              or as monthly updates. To see the available database columns and date ranges, <a href="#date-range" data-toggle="collapse" data-target="#database-table">click here</a>.</h4>
+
+              <div id="pricing-form">
+                <div id="pricing-table" class="clear">
+                  <div class="plan">
+                      <h3>Historical Databases<span>$200</span></h3>
+                        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                        <input type="hidden" name="cmd" value="_s-xclick">
+                        <input type="hidden" name="hosted_button_id" value="WN4KLAPBDADDN">
+                        <table>
+                        <tr><td><input type="hidden" name="on0" value="Email (for delivery)">Email (for delivery)</td></tr><tr><td><input type="text" name="os0" maxlength="200" placeholder="Your email address" required></td></tr>
+                        </table>
+                        <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                        <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                        </form>
+                      <ul>
+                          <li><b>Email Delivery</b> of all available data to present</li>
+                          <li><b>Well Spuds, Licences, Land Sales</b> data bases included</li>
+                          <li><b>Coverage over BC, AB, SK, MB</b></li>
+                      </ul>
+                  </div>
+                  <div class="plan" id="most-popular">
+                      <h3>Monthly Updates<span>$300</span></h3>
+                        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+                        <input type="hidden" name="cmd" value="_s-xclick">
+                        <input type="hidden" name="hosted_button_id" value="T9HDFLW6M6742">
+                        <table>
+                        <tr><td><input type="hidden" name="on0" value="Email (for delivery)">Email (for delivery)</td></tr><tr><td><input type="text" name="os0" maxlength="200" placeholder="Your email address" required></td></tr>
+                        </table>
+                        <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                        <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                        </form>    
+                      <ul>
+                          <li><b>Email Delivery</b> of 12 Monthly Updates</li>
+                          <li><b>Well Spuds, Licences, Land Sales</b> data bases included</li>
+                          <li><b>Coverage over BC, AB, SK, MB</b></li>
+                      </ul>
+                  </div>
+                </div>
+
+
+                <button style="background-color: #1ec1f4; color: white; border-color:#1ec1f4; font: bold 14px Arial, Helvetica; padding: 8px 20px;" type="submit" class="btn btn-danger" data-toggle="collapse" data-target="#database-table">Click Here For Available Data Range</button>
+                <div id="database-table" class="collapse">
+                  <div class="table-title">
+                    <h3>Available Database Range and Columns</h3>
+                  </div>
+                  <table class="table-fill">
+                    <thead>
+                      <tr>
+                        <th class="text-left">Database</th>
+                        <th class="text-left">Range</th>
+                        <th class="text-left">Columns</th>
+                      </tr>
+                    </thead>
+                    <tbody class="table-hover">
+                      <tr>
+                      <td class="text-left">Well Spuds</td>
+                      <td class="text-left">2015 - Present</td>
+                      <td class="text-left">Licensee, Well Name, License Number, UWI, DrillDate, DrillDateMonth, Contractor, Rig, LicenseDate, Field/Pool, TerminatingZone, Orientation, Substance, SubstanceCode, Surface Latitude, Surface Longitude</td>
+                      </tr>
+                      <tr>
+                      <td class="text-left">Well Licences</td>
+                      <td class="text-left">2011 - Present</td>
+                      <td class="text-left">Licensee, Well Name, License Number, UWI, Licence Date, DateMonth, Field/Pool,
+               Terminating Zone, Orientation, Substance, Surface Latitude, Surface Longitude</td>
+                      </tr>
+                      <tr>
+                      <td class="text-left">Land Sale Postings</td>
+                      <td class="text-left">2016 - Present</td>
+                      <td class="text-left">Sale Date, Contract Type, Contract Number, Hectares, tract Number, UWI, Top Zone, Base Zone, KML geometry, Province</td>
+                      </tr>
+                      <tr>
+                      <td class="text-left">Land Sale Results</td>
+                      <td class="text-left">2016 - Present</td>
+                      <td class="text-left">Sale Date, Status, Bonus, Dollars/Hectare, Client Description, Contract Type, Contract Number, Hectares, tract Number, UWI, Top Zone, Base Zone, KML geometry, Province</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="date-range" class="container-fluid bg-grey">
+          <div class="row">
+            <div id="contact" class="col-sm-4">
+              <h3>CONTACT US</h3>
+              <p>Contact for advertising opportunities and inquiries.</p>
+              <p><span class="glyphicon glyphicon-envelope"></span> contact@ionwc.com</p>
+              <p><span class="glyphicon glyphicon-map-marker"></span> Calgary, AB</p>
+            </div>
+            <div class="col-sm-4">
+              <h3>PRODUCTS</h3>
+              <p><a href="#pricing" style="color: inherit;">CSV Databases</a></p>              
+              <p><a href="map?view=drilling" style="color: inherit;">Drilling Map</a></p>
+              <p><a href="map?view=licences" style="color: inherit;">Licensing Map</a></p>
+              <p><a href="map?view=landsales" style="color: inherit;">Land Sales Map</a></p>
+            </div>
+            <div class="col-sm-4">
+              <h3>CONNECT WITH US</h3>
+              <p>
+                <i class="fa fa-linkedin" aria-hidden="true"></i>
+                <a href="https://www.linkedin.com/company/eye-on-western-canada"> LinkedIn</a>
+              </p>
+              <script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US</script>
+              <script type="IN/FollowCompany" data-id="10692504" data-counter="right"></script>
+            </div>
+          </div>
+        </div>
+        <div id="footer" class="container-fluid bg-grey">
+          <div class="row">
+            <div class="col-sm-12">
+              <b style="font-size: 12px; text-align: center;">IONWC | &copy; 2016-2017 Eye on Western Canada</b>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      $(document).ready(function(){
+        $(".navbar a, footer a[href='#myPage']").on('click', function(event) {
+          if (this.hash !== "") {
+            event.preventDefault();
+
+            var hash = this.hash;
+
+            $('html, body').animate({
+              scrollTop: $(hash).offset().top
+            }, 900, function(){
+              window.location.hash = hash;
+            });
+          }
+        });
+
+        $(window).scroll(function() {
+          $(".slideanim").each(function(){
+            var pos = $(this).offset().top;
+
+            var winTop = $(window).scrollTop();
+            if (pos < winTop + 600) {
+              $(this).addClass("slide");
+            }
+          });
+        });
+      })
+    </script>
+  </body>
+</html>
+
+

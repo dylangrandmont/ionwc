@@ -1,0 +1,756 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Document id="root_doc">
+<Schema name="abmissreport" id="abmissreport">
+	<SimpleField name="FILE_NAME" type="string"></SimpleField>
+	<SimpleField name="TRM" type="string"></SimpleField>
+	<SimpleField name="M" type="int"></SimpleField>
+	<SimpleField name="RGE" type="int"></SimpleField>
+	<SimpleField name="TWP" type="int"></SimpleField>
+	<SimpleField name="DESCRIPTOR" type="string"></SimpleField>
+	<SimpleField name="PID" type="string"></SimpleField>
+</Schema>
+<Folder><name>abmissreport</name>
+  <Placemark>
+	<Style><LineStyle><color>FF1E51F4</color><width>1.2</width></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#abmissreport">
+		<SimpleData name="FILE_NAME">426020</SimpleData>
+		<SimpleData name="TRM">020264</SimpleData>
+		<SimpleData name="M">4</SimpleData>
+		<SimpleData name="RGE">26</SimpleData>
+		<SimpleData name="TWP">20</SimpleData>
+		<SimpleData name="DESCRIPTOR">TWP-020 RGE-26 MER-4</SimpleData>
+		<SimpleData name="PID">426020</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><altitudeMode>clampToGround</altitudeMode><coordinates>-113.60596563000001,50.746831559999976 -113.46747798000001,50.74689351</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>FF1E51F4</color><width>1.2</width></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#abmissreport">
+		<SimpleData name="FILE_NAME">420020</SimpleData>
+		<SimpleData name="TRM">020204</SimpleData>
+		<SimpleData name="M">4</SimpleData>
+		<SimpleData name="RGE">20</SimpleData>
+		<SimpleData name="TWP">20</SimpleData>
+		<SimpleData name="DESCRIPTOR">TWP-020 RGE-20 MER-4</SimpleData>
+		<SimpleData name="PID">420020</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><altitudeMode>clampToGround</altitudeMode><coordinates>-112.63657009899998,50.659542860999977 -112.63622794000003,50.746676260000015 -112.63657009899998,50.659542860999977</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>FF1E51F4</color><width>1.2</width></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#abmissreport">
+		<SimpleData name="FILE_NAME">429020</SimpleData>
+		<SimpleData name="TRM">020294</SimpleData>
+		<SimpleData name="M">4</SimpleData>
+		<SimpleData name="RGE">29</SimpleData>
+		<SimpleData name="TWP">20</SimpleData>
+		<SimpleData name="DESCRIPTOR">TWP-020 RGE-29 MER-4</SimpleData>
+		<SimpleData name="PID">429020</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><altitudeMode>clampToGround</altitudeMode><coordinates>-114.001598324144,50.659439569499966 -114.00147329451902,50.746428312785561 -113.74680466352619,50.746297908288028</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>FF1E51F4</color><width>1.2</width></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#abmissreport">
+		<SimpleData name="FILE_NAME">427001</SimpleData>
+		<SimpleData name="TRM">001274</SimpleData>
+		<SimpleData name="M">4</SimpleData>
+		<SimpleData name="RGE">27</SimpleData>
+		<SimpleData name="TWP">1</SimpleData>
+		<SimpleData name="DESCRIPTOR">TWP-001 RGE-27 MER-4</SimpleData>
+		<SimpleData name="PID">427001</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><altitudeMode>clampToGround</altitudeMode><coordinates>-113.47492265,48.99814819 -113.47492272900001,48.997965779000026 -113.52694445100002,48.997833328000013 -113.58247221699997,48.998111111000014 -113.608945746,48.99797612899999 -113.47492265,48.99814819</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>FF1E51F4</color><width>1.2</width></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#abmissreport">
+		<SimpleData name="FILE_NAME">420019</SimpleData>
+		<SimpleData name="TRM">019204</SimpleData>
+		<SimpleData name="M">4</SimpleData>
+		<SimpleData name="RGE">20</SimpleData>
+		<SimpleData name="TWP">19</SimpleData>
+		<SimpleData name="DESCRIPTOR">TWP-019 RGE-20 MER-4</SimpleData>
+		<SimpleData name="PID">420019</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><altitudeMode>clampToGround</altitudeMode><coordinates>-112.63657078,50.659362040000019 -112.636886753,50.572009341000012</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>FF1E51F4</color><width>1.2</width></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#abmissreport">
+		<SimpleData name="FILE_NAME">420013</SimpleData>
+		<SimpleData name="TRM">013204</SimpleData>
+		<SimpleData name="M">4</SimpleData>
+		<SimpleData name="RGE">20</SimpleData>
+		<SimpleData name="TWP">13</SimpleData>
+		<SimpleData name="DESCRIPTOR">TWP-013 RGE-20 MER-4</SimpleData>
+		<SimpleData name="PID">420013</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><altitudeMode>clampToGround</altitudeMode><coordinates>-112.59809253,50.135179390000019 -112.59807973,50.04784206</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>FF1E51F4</color><width>1.2</width></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#abmissreport">
+		<SimpleData name="FILE_NAME">423020</SimpleData>
+		<SimpleData name="TRM">020234</SimpleData>
+		<SimpleData name="M">4</SimpleData>
+		<SimpleData name="RGE">23</SimpleData>
+		<SimpleData name="TWP">20</SimpleData>
+		<SimpleData name="DESCRIPTOR">TWP-020 RGE-23 MER-4</SimpleData>
+		<SimpleData name="PID">423020</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><altitudeMode>clampToGround</altitudeMode><coordinates>-113.19043341000003,50.746927589999984 -113.05197694,50.74691565</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>FF1E51F4</color><width>1.2</width></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#abmissreport">
+		<SimpleData name="FILE_NAME">421020</SimpleData>
+		<SimpleData name="TRM">020214</SimpleData>
+		<SimpleData name="M">4</SimpleData>
+		<SimpleData name="RGE">21</SimpleData>
+		<SimpleData name="TWP">20</SimpleData>
+		<SimpleData name="DESCRIPTOR">TWP-020 RGE-21 MER-4</SimpleData>
+		<SimpleData name="PID">421020</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><altitudeMode>clampToGround</altitudeMode><coordinates>-112.91332031,50.74685661 -112.77470209000001,50.74685782 -112.63611503911032,50.747092315855987</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>FF1E51F4</color><width>1.2</width></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#abmissreport">
+		<SimpleData name="FILE_NAME">428001</SimpleData>
+		<SimpleData name="TRM">001284</SimpleData>
+		<SimpleData name="M">4</SimpleData>
+		<SimpleData name="RGE">28</SimpleData>
+		<SimpleData name="TWP">1</SimpleData>
+		<SimpleData name="DESCRIPTOR">TWP-001 RGE-28 MER-4</SimpleData>
+		<SimpleData name="PID">428001</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><altitudeMode>clampToGround</altitudeMode><coordinates>-113.69230525400002,48.997514543000015 -113.74262503599999,48.997765539 -113.608945746,48.99797612899999 -113.69230525400002,48.997514543000015</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>FF1E51F4</color><width>1.2</width></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#abmissreport">
+		<SimpleData name="FILE_NAME">420008</SimpleData>
+		<SimpleData name="TRM">008204</SimpleData>
+		<SimpleData name="M">4</SimpleData>
+		<SimpleData name="RGE">20</SimpleData>
+		<SimpleData name="TWP">8</SimpleData>
+		<SimpleData name="DESCRIPTOR">TWP-008 RGE-20 MER-4</SimpleData>
+		<SimpleData name="PID">420008</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><altitudeMode>clampToGround</altitudeMode><coordinates>-112.57876521,49.698461220000013 -112.578799,49.61105246</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>FF1E51F4</color><width>1.2</width></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#abmissreport">
+		<SimpleData name="FILE_NAME">420009</SimpleData>
+		<SimpleData name="TRM">009204</SimpleData>
+		<SimpleData name="M">4</SimpleData>
+		<SimpleData name="RGE">20</SimpleData>
+		<SimpleData name="TWP">9</SimpleData>
+		<SimpleData name="DESCRIPTOR">TWP-009 RGE-20 MER-4</SimpleData>
+		<SimpleData name="PID">420009</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><altitudeMode>clampToGround</altitudeMode><coordinates>-112.57868803000002,49.785779180000013 -112.57876521,49.698461220000013</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>FF1E51F4</color><width>1.2</width></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#abmissreport">
+		<SimpleData name="FILE_NAME">427020</SimpleData>
+		<SimpleData name="TRM">020274</SimpleData>
+		<SimpleData name="M">4</SimpleData>
+		<SimpleData name="RGE">27</SimpleData>
+		<SimpleData name="TWP">20</SimpleData>
+		<SimpleData name="DESCRIPTOR">TWP-020 RGE-27 MER-4</SimpleData>
+		<SimpleData name="PID">427020</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><altitudeMode>clampToGround</altitudeMode><coordinates>-113.74444491000003,50.746779600000025 -113.60596563000001,50.746831559999976</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>FF1E51F4</color><width>1.2</width></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#abmissreport">
+		<SimpleData name="FILE_NAME">420001</SimpleData>
+		<SimpleData name="TRM">001204</SimpleData>
+		<SimpleData name="M">4</SimpleData>
+		<SimpleData name="RGE">20</SimpleData>
+		<SimpleData name="TWP">1</SimpleData>
+		<SimpleData name="DESCRIPTOR">TWP-001 RGE-20 MER-4</SimpleData>
+		<SimpleData name="PID">420001</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><altitudeMode>clampToGround</altitudeMode><coordinates>-112.544265,49.086646159999987 -112.544211507,48.998723365999979 -112.67714167000001,48.998668103</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>FF1E51F4</color><width>1.2</width></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#abmissreport">
+		<SimpleData name="FILE_NAME">420002</SimpleData>
+		<SimpleData name="TRM">002204</SimpleData>
+		<SimpleData name="M">4</SimpleData>
+		<SimpleData name="RGE">20</SimpleData>
+		<SimpleData name="TWP">2</SimpleData>
+		<SimpleData name="DESCRIPTOR">TWP-002 RGE-20 MER-4</SimpleData>
+		<SimpleData name="PID">420002</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><altitudeMode>clampToGround</altitudeMode><coordinates>-112.54423997599997,49.09044068799999 -112.544265,49.086646159999987 -112.54370864,49.17393389 -112.54370864,49.17393389 -112.54423997599997,49.09044068799999</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>FF1E51F4</color><width>1.2</width></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#abmissreport">
+		<SimpleData name="FILE_NAME">420003</SimpleData>
+		<SimpleData name="TRM">003204</SimpleData>
+		<SimpleData name="M">4</SimpleData>
+		<SimpleData name="RGE">20</SimpleData>
+		<SimpleData name="TWP">3</SimpleData>
+		<SimpleData name="DESCRIPTOR">TWP-003 RGE-20 MER-4</SimpleData>
+		<SimpleData name="PID">420003</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><altitudeMode>clampToGround</altitudeMode><coordinates>-112.56166663,49.17413904 -112.56166692,49.17394520900001 -112.561536,49.261088070000028 -112.56166663,49.17413904</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>FF1E51F4</color><width>1.2</width></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#abmissreport">
+		<SimpleData name="FILE_NAME">420004</SimpleData>
+		<SimpleData name="TRM">004204</SimpleData>
+		<SimpleData name="M">4</SimpleData>
+		<SimpleData name="RGE">20</SimpleData>
+		<SimpleData name="TWP">4</SimpleData>
+		<SimpleData name="DESCRIPTOR">TWP-004 RGE-20 MER-4</SimpleData>
+		<SimpleData name="PID">420004</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><altitudeMode>clampToGround</altitudeMode><coordinates>-112.56153589299998,49.261268922999989 -112.561536,49.261088070000028 -112.56148510000003,49.348383090000027 -112.56153589299998,49.261268922999989</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>FF1E51F4</color><width>1.2</width></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#abmissreport">
+		<SimpleData name="FILE_NAME">420005</SimpleData>
+		<SimpleData name="TRM">005204</SimpleData>
+		<SimpleData name="M">4</SimpleData>
+		<SimpleData name="RGE">20</SimpleData>
+		<SimpleData name="TWP">5</SimpleData>
+		<SimpleData name="DESCRIPTOR">TWP-005 RGE-20 MER-4</SimpleData>
+		<SimpleData name="PID">420005</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><altitudeMode>clampToGround</altitudeMode><coordinates>-112.56148528099999,49.348563946000013 -112.56148510000003,49.348383090000027 -112.56157156,49.43574837 -112.56148528099999,49.348563946000013</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>FF1E51F4</color><width>1.2</width></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#abmissreport">
+		<SimpleData name="FILE_NAME">420006</SimpleData>
+		<SimpleData name="TRM">006204</SimpleData>
+		<SimpleData name="M">4</SimpleData>
+		<SimpleData name="RGE">20</SimpleData>
+		<SimpleData name="TWP">6</SimpleData>
+		<SimpleData name="DESCRIPTOR">TWP-006 RGE-20 MER-4</SimpleData>
+		<SimpleData name="PID">420006</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><altitudeMode>clampToGround</altitudeMode><coordinates>-112.56157173899999,49.435929226999974 -112.56157156,49.43574837 -112.56165651,49.523387300000017 -112.56157173899999,49.435929226999974</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>FF1E51F4</color><width>1.2</width></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#abmissreport">
+		<SimpleData name="FILE_NAME">420007</SimpleData>
+		<SimpleData name="TRM">007204</SimpleData>
+		<SimpleData name="M">4</SimpleData>
+		<SimpleData name="RGE">20</SimpleData>
+		<SimpleData name="TWP">7</SimpleData>
+		<SimpleData name="DESCRIPTOR">TWP-007 RGE-20 MER-4</SimpleData>
+		<SimpleData name="PID">420007</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><altitudeMode>clampToGround</altitudeMode><coordinates>-112.578799,49.61105246 -112.57884151799999,49.523365035999973</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>FF1E51F4</color><width>1.2</width></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#abmissreport">
+		<SimpleData name="FILE_NAME">430018</SimpleData>
+		<SimpleData name="TRM">018304</SimpleData>
+		<SimpleData name="M">4</SimpleData>
+		<SimpleData name="RGE">30</SimpleData>
+		<SimpleData name="TWP">18</SimpleData>
+		<SimpleData name="DESCRIPTOR">TWP-018 RGE-30 MER-4</SimpleData>
+		<SimpleData name="PID">430018</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><altitudeMode>clampToGround</altitudeMode><coordinates>-114.00178082000002,50.48452519 -114.0017881,50.571924860000024 -114.00018514,50.57192554</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>FF1E51F4</color><width>1.2</width></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#abmissreport">
+		<SimpleData name="FILE_NAME">430012</SimpleData>
+		<SimpleData name="TRM">012304</SimpleData>
+		<SimpleData name="M">4</SimpleData>
+		<SimpleData name="RGE">30</SimpleData>
+		<SimpleData name="TWP">12</SimpleData>
+		<SimpleData name="DESCRIPTOR">TWP-012 RGE-30 MER-4</SimpleData>
+		<SimpleData name="PID">430012</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><altitudeMode>clampToGround</altitudeMode><coordinates>-114.00174743000002,49.961582140000012 -114.00179757000001,50.048283340000012</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>FF1E51F4</color><width>1.2</width></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#abmissreport">
+		<SimpleData name="FILE_NAME">430013</SimpleData>
+		<SimpleData name="TRM">013304</SimpleData>
+		<SimpleData name="M">4</SimpleData>
+		<SimpleData name="RGE">30</SimpleData>
+		<SimpleData name="TWP">13</SimpleData>
+		<SimpleData name="DESCRIPTOR">TWP-013 RGE-30 MER-4</SimpleData>
+		<SimpleData name="PID">430013</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><altitudeMode>clampToGround</altitudeMode><coordinates>-114.00179757000001,50.048283340000012 -114.00177922,50.13543581</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>FF1E51F4</color><width>1.2</width></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#abmissreport">
+		<SimpleData name="FILE_NAME">430010</SimpleData>
+		<SimpleData name="TRM">010304</SimpleData>
+		<SimpleData name="M">4</SimpleData>
+		<SimpleData name="RGE">30</SimpleData>
+		<SimpleData name="TWP">10</SimpleData>
+		<SimpleData name="DESCRIPTOR">TWP-010 RGE-30 MER-4</SimpleData>
+		<SimpleData name="PID">430010</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><altitudeMode>clampToGround</altitudeMode><coordinates>-114.00156111000001,49.785830910000016 -114.00162739000001,49.873655639999981</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>FF1E51F4</color><width>1.2</width></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#abmissreport">
+		<SimpleData name="FILE_NAME">430016</SimpleData>
+		<SimpleData name="TRM">016304</SimpleData>
+		<SimpleData name="M">4</SimpleData>
+		<SimpleData name="RGE">30</SimpleData>
+		<SimpleData name="TWP">16</SimpleData>
+		<SimpleData name="DESCRIPTOR">TWP-016 RGE-30 MER-4</SimpleData>
+		<SimpleData name="PID">430016</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><altitudeMode>clampToGround</altitudeMode><coordinates>-114.00177783,50.309798170000022 -114.00179224,50.397141639999973</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>FF1E51F4</color><width>1.2</width></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#abmissreport">
+		<SimpleData name="FILE_NAME">430017</SimpleData>
+		<SimpleData name="TRM">017304</SimpleData>
+		<SimpleData name="M">4</SimpleData>
+		<SimpleData name="RGE">30</SimpleData>
+		<SimpleData name="TWP">17</SimpleData>
+		<SimpleData name="DESCRIPTOR">TWP-017 RGE-30 MER-4</SimpleData>
+		<SimpleData name="PID">430017</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><altitudeMode>clampToGround</altitudeMode><coordinates>-114.00150938500002,50.397141848999979 -114.00179224,50.397141639999973 -114.00178082000002,50.48452519 -114.00150938500002,50.397141848999979</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>FF1E51F4</color><width>1.2</width></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#abmissreport">
+		<SimpleData name="FILE_NAME">430014</SimpleData>
+		<SimpleData name="TRM">014304</SimpleData>
+		<SimpleData name="M">4</SimpleData>
+		<SimpleData name="RGE">30</SimpleData>
+		<SimpleData name="TWP">14</SimpleData>
+		<SimpleData name="DESCRIPTOR">TWP-014 RGE-30 MER-4</SimpleData>
+		<SimpleData name="PID">430014</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><altitudeMode>clampToGround</altitudeMode><coordinates>-114.00177922,50.13543581 -114.00177998,50.22268749</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>FF1E51F4</color><width>1.2</width></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#abmissreport">
+		<SimpleData name="FILE_NAME">430015</SimpleData>
+		<SimpleData name="TRM">015304</SimpleData>
+		<SimpleData name="M">4</SimpleData>
+		<SimpleData name="RGE">30</SimpleData>
+		<SimpleData name="TWP">15</SimpleData>
+		<SimpleData name="DESCRIPTOR">TWP-015 RGE-30 MER-4</SimpleData>
+		<SimpleData name="PID">430015</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><altitudeMode>clampToGround</altitudeMode><coordinates>-114.00177998,50.22268749 -114.00177783,50.309798170000022</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>FF1E51F4</color><width>1.2</width></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#abmissreport">
+		<SimpleData name="FILE_NAME">424020</SimpleData>
+		<SimpleData name="TRM">020244</SimpleData>
+		<SimpleData name="M">4</SimpleData>
+		<SimpleData name="RGE">24</SimpleData>
+		<SimpleData name="TWP">20</SimpleData>
+		<SimpleData name="DESCRIPTOR">TWP-020 RGE-24 MER-4</SimpleData>
+		<SimpleData name="PID">424020</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><altitudeMode>clampToGround</altitudeMode><coordinates>-113.25940589700002,50.746964304000016 -113.19043341000003,50.746927589999984 -113.32896359,50.74694861 -113.25940589700002,50.746964304000016</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>FF1E51F4</color><width>1.2</width></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#abmissreport">
+		<SimpleData name="FILE_NAME">425020</SimpleData>
+		<SimpleData name="TRM">020254</SimpleData>
+		<SimpleData name="M">4</SimpleData>
+		<SimpleData name="RGE">25</SimpleData>
+		<SimpleData name="TWP">20</SimpleData>
+		<SimpleData name="DESCRIPTOR">TWP-020 RGE-25 MER-4</SimpleData>
+		<SimpleData name="PID">425020</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><altitudeMode>clampToGround</altitudeMode><coordinates>-113.334661036,50.746949045 -113.32896359,50.74694861 -113.46719299599999,50.746893746000012 -113.39821796,50.746941409999977 -113.334661036,50.746949045</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>FF1E51F4</color><width>1.2</width></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#abmissreport">
+		<SimpleData name="FILE_NAME">420018</SimpleData>
+		<SimpleData name="TRM">018204</SimpleData>
+		<SimpleData name="M">4</SimpleData>
+		<SimpleData name="RGE">20</SimpleData>
+		<SimpleData name="TWP">18</SimpleData>
+		<SimpleData name="DESCRIPTOR">TWP-018 RGE-20 MER-4</SimpleData>
+		<SimpleData name="PID">420018</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><altitudeMode>clampToGround</altitudeMode><coordinates>-112.63693070532703,50.572237875855997 -112.61652956585596,50.572003380000012 -112.61634756000001,50.484636869999974</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>FF1E51F4</color><width>1.2</width></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#abmissreport">
+		<SimpleData name="FILE_NAME">430009</SimpleData>
+		<SimpleData name="TRM">009304</SimpleData>
+		<SimpleData name="M">4</SimpleData>
+		<SimpleData name="RGE">30</SimpleData>
+		<SimpleData name="TWP">9</SimpleData>
+		<SimpleData name="DESCRIPTOR">TWP-009 RGE-30 MER-4</SimpleData>
+		<SimpleData name="PID">430009</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><altitudeMode>clampToGround</altitudeMode><coordinates>-114.00145352,49.69858468000001 -114.00156111000001,49.785830910000016</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>FF1E51F4</color><width>1.2</width></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#abmissreport">
+		<SimpleData name="FILE_NAME">430008</SimpleData>
+		<SimpleData name="TRM">008304</SimpleData>
+		<SimpleData name="M">4</SimpleData>
+		<SimpleData name="RGE">30</SimpleData>
+		<SimpleData name="TWP">8</SimpleData>
+		<SimpleData name="DESCRIPTOR">TWP-008 RGE-30 MER-4</SimpleData>
+		<SimpleData name="PID">430008</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><altitudeMode>clampToGround</altitudeMode><coordinates>-114.00138216,49.611364980000019 -114.00162524000001,49.633292610000012 -114.00128964,49.647851989999985 -114.00144743,49.662302020000027 -114.00145352,49.69858468000001</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>FF1E51F4</color><width>1.2</width></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#abmissreport">
+		<SimpleData name="FILE_NAME">430001</SimpleData>
+		<SimpleData name="TRM">001304</SimpleData>
+		<SimpleData name="M">4</SimpleData>
+		<SimpleData name="RGE">30</SimpleData>
+		<SimpleData name="TWP">1</SimpleData>
+		<SimpleData name="DESCRIPTOR">TWP-001 RGE-30 MER-4</SimpleData>
+		<SimpleData name="PID">430001</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><altitudeMode>clampToGround</altitudeMode><coordinates>-113.87532163,48.998680920000027 -113.87532161899998,48.998500094 -114.00133672599998,48.998781958 -114.00127816000003,49.088439119999975</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>FF1E51F4</color><width>1.2</width></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#abmissreport">
+		<SimpleData name="FILE_NAME">430003</SimpleData>
+		<SimpleData name="TRM">003304</SimpleData>
+		<SimpleData name="M">4</SimpleData>
+		<SimpleData name="RGE">30</SimpleData>
+		<SimpleData name="TWP">3</SimpleData>
+		<SimpleData name="DESCRIPTOR">TWP-003 RGE-30 MER-4</SimpleData>
+		<SimpleData name="PID">430003</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><altitudeMode>clampToGround</altitudeMode><coordinates>-114.00121874000001,49.175735280000026 -114.00115664,49.261698169999988</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>FF1E51F4</color><width>1.2</width></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#abmissreport">
+		<SimpleData name="FILE_NAME">430002</SimpleData>
+		<SimpleData name="TRM">002304</SimpleData>
+		<SimpleData name="M">4</SimpleData>
+		<SimpleData name="RGE">30</SimpleData>
+		<SimpleData name="TWP">2</SimpleData>
+		<SimpleData name="DESCRIPTOR">TWP-002 RGE-30 MER-4</SimpleData>
+		<SimpleData name="PID">430002</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><altitudeMode>clampToGround</altitudeMode><coordinates>-114.00127816000003,49.088439119999975 -114.00121874000001,49.175735280000026</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>FF1E51F4</color><width>1.2</width></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#abmissreport">
+		<SimpleData name="FILE_NAME">430005</SimpleData>
+		<SimpleData name="TRM">005304</SimpleData>
+		<SimpleData name="M">4</SimpleData>
+		<SimpleData name="RGE">30</SimpleData>
+		<SimpleData name="TWP">5</SimpleData>
+		<SimpleData name="DESCRIPTOR">TWP-005 RGE-30 MER-4</SimpleData>
+		<SimpleData name="PID">430005</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><altitudeMode>clampToGround</altitudeMode><coordinates>-114.0012314,49.348899790000011 -114.00125929000001,49.436138630000016</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>FF1E51F4</color><width>1.2</width></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#abmissreport">
+		<SimpleData name="FILE_NAME">430004</SimpleData>
+		<SimpleData name="TRM">004304</SimpleData>
+		<SimpleData name="M">4</SimpleData>
+		<SimpleData name="RGE">30</SimpleData>
+		<SimpleData name="TWP">4</SimpleData>
+		<SimpleData name="DESCRIPTOR">TWP-004 RGE-30 MER-4</SimpleData>
+		<SimpleData name="PID">430004</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><altitudeMode>clampToGround</altitudeMode><coordinates>-114.00115664,49.261698169999988 -114.0012314,49.348899790000011</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>FF1E51F4</color><width>1.2</width></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#abmissreport">
+		<SimpleData name="FILE_NAME">430007</SimpleData>
+		<SimpleData name="TRM">007304</SimpleData>
+		<SimpleData name="M">4</SimpleData>
+		<SimpleData name="RGE">30</SimpleData>
+		<SimpleData name="TWP">7</SimpleData>
+		<SimpleData name="DESCRIPTOR">TWP-007 RGE-30 MER-4</SimpleData>
+		<SimpleData name="PID">430007</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><altitudeMode>clampToGround</altitudeMode><coordinates>-114.00130665,49.52371709 -114.00138216,49.611364980000019</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>FF1E51F4</color><width>1.2</width></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#abmissreport">
+		<SimpleData name="FILE_NAME">430006</SimpleData>
+		<SimpleData name="TRM">006304</SimpleData>
+		<SimpleData name="M">4</SimpleData>
+		<SimpleData name="RGE">30</SimpleData>
+		<SimpleData name="TWP">6</SimpleData>
+		<SimpleData name="DESCRIPTOR">TWP-006 RGE-30 MER-4</SimpleData>
+		<SimpleData name="PID">430006</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><altitudeMode>clampToGround</altitudeMode><coordinates>-114.00125929000001,49.436138630000016 -114.00130665,49.52371709</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>FF1E51F4</color><width>1.2</width></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#abmissreport">
+		<SimpleData name="FILE_NAME">429019</SimpleData>
+		<SimpleData name="TRM">019294</SimpleData>
+		<SimpleData name="M">4</SimpleData>
+		<SimpleData name="RGE">29</SimpleData>
+		<SimpleData name="TWP">19</SimpleData>
+		<SimpleData name="DESCRIPTOR">TWP-019 RGE-29 MER-4</SimpleData>
+		<SimpleData name="PID">429019</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><altitudeMode>clampToGround</altitudeMode><coordinates>-114.0017881,50.571924860000024 -114.00178769000001,50.659194819999982</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>FF1E51F4</color><width>1.2</width></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#abmissreport">
+		<SimpleData name="FILE_NAME">421001</SimpleData>
+		<SimpleData name="TRM">001214</SimpleData>
+		<SimpleData name="M">4</SimpleData>
+		<SimpleData name="RGE">21</SimpleData>
+		<SimpleData name="TWP">1</SimpleData>
+		<SimpleData name="DESCRIPTOR">TWP-001 RGE-21 MER-4</SimpleData>
+		<SimpleData name="PID">421001</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><altitudeMode>clampToGround</altitudeMode><coordinates>-112.67714167000001,48.998668103 -112.81074518000003,48.998539719</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>FF1E51F4</color><width>1.2</width></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#abmissreport">
+		<SimpleData name="FILE_NAME">420016</SimpleData>
+		<SimpleData name="TRM">016204</SimpleData>
+		<SimpleData name="M">4</SimpleData>
+		<SimpleData name="RGE">20</SimpleData>
+		<SimpleData name="TWP">16</SimpleData>
+		<SimpleData name="DESCRIPTOR">TWP-016 RGE-20 MER-4</SimpleData>
+		<SimpleData name="PID">420016</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><altitudeMode>clampToGround</altitudeMode><coordinates>-112.61638416,50.397320760000014 -112.61643418,50.309961890000011</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>FF1E51F4</color><width>1.2</width></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#abmissreport">
+		<SimpleData name="FILE_NAME">429001</SimpleData>
+		<SimpleData name="TRM">001294</SimpleData>
+		<SimpleData name="M">4</SimpleData>
+		<SimpleData name="RGE">29</SimpleData>
+		<SimpleData name="TWP">1</SimpleData>
+		<SimpleData name="DESCRIPTOR">TWP-001 RGE-29 MER-4</SimpleData>
+		<SimpleData name="PID">429001</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><altitudeMode>clampToGround</altitudeMode><coordinates>-113.74262493,48.997955390000016 -113.74262503599999,48.997765539 -113.87532161899998,48.998500094 -113.74262493,48.997955390000016</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>FF1E51F4</color><width>1.2</width></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#abmissreport">
+		<SimpleData name="FILE_NAME">420012</SimpleData>
+		<SimpleData name="TRM">012204</SimpleData>
+		<SimpleData name="M">4</SimpleData>
+		<SimpleData name="RGE">20</SimpleData>
+		<SimpleData name="TWP">12</SimpleData>
+		<SimpleData name="DESCRIPTOR">TWP-012 RGE-20 MER-4</SimpleData>
+		<SimpleData name="PID">420012</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><altitudeMode>clampToGround</altitudeMode><coordinates>-112.59807973,50.04784206 -112.59807624,49.960691740000016</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>FF1E51F4</color><width>1.2</width></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#abmissreport">
+		<SimpleData name="FILE_NAME">420017</SimpleData>
+		<SimpleData name="TRM">017204</SimpleData>
+		<SimpleData name="M">4</SimpleData>
+		<SimpleData name="RGE">20</SimpleData>
+		<SimpleData name="TWP">17</SimpleData>
+		<SimpleData name="DESCRIPTOR">TWP-017 RGE-20 MER-4</SimpleData>
+		<SimpleData name="PID">420017</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><altitudeMode>clampToGround</altitudeMode><coordinates>-112.61638421399999,50.397501592000026 -112.61638416,50.397320760000014 -112.61634756000001,50.484636869999974 -112.61638421399999,50.397501592000026</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>FF1E51F4</color><width>1.2</width></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#abmissreport">
+		<SimpleData name="FILE_NAME">420015</SimpleData>
+		<SimpleData name="TRM">015204</SimpleData>
+		<SimpleData name="M">4</SimpleData>
+		<SimpleData name="RGE">20</SimpleData>
+		<SimpleData name="TWP">15</SimpleData>
+		<SimpleData name="DESCRIPTOR">TWP-015 RGE-20 MER-4</SimpleData>
+		<SimpleData name="PID">420015</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><altitudeMode>clampToGround</altitudeMode><coordinates>-112.61643418,50.309961890000011 -112.61647985199998,50.222592048000024</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>FF1E51F4</color><width>1.2</width></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#abmissreport">
+		<SimpleData name="FILE_NAME">420014</SimpleData>
+		<SimpleData name="TRM">014204</SimpleData>
+		<SimpleData name="M">4</SimpleData>
+		<SimpleData name="RGE">20</SimpleData>
+		<SimpleData name="TWP">14</SimpleData>
+		<SimpleData name="DESCRIPTOR">TWP-014 RGE-20 MER-4</SimpleData>
+		<SimpleData name="PID">420014</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><altitudeMode>clampToGround</altitudeMode><coordinates>-112.61639622676718,50.222824725855965 -112.598574541712,50.223059221711956 -112.59809253,50.135179390000019</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>FF1E51F4</color><width>1.2</width></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#abmissreport">
+		<SimpleData name="FILE_NAME">420011</SimpleData>
+		<SimpleData name="TRM">011204</SimpleData>
+		<SimpleData name="M">4</SimpleData>
+		<SimpleData name="RGE">20</SimpleData>
+		<SimpleData name="TWP">11</SimpleData>
+		<SimpleData name="DESCRIPTOR">TWP-011 RGE-20 MER-4</SimpleData>
+		<SimpleData name="PID">420011</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><altitudeMode>clampToGround</altitudeMode><coordinates>-112.59807624,49.960691740000016 -112.59816948600002,49.873142331999986</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>FF1E51F4</color><width>1.2</width></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#abmissreport">
+		<SimpleData name="FILE_NAME">420010</SimpleData>
+		<SimpleData name="TRM">010204</SimpleData>
+		<SimpleData name="M">4</SimpleData>
+		<SimpleData name="RGE">20</SimpleData>
+		<SimpleData name="TWP">10</SimpleData>
+		<SimpleData name="DESCRIPTOR">TWP-010 RGE-20 MER-4</SimpleData>
+		<SimpleData name="PID">420010</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><altitudeMode>clampToGround</altitudeMode><coordinates>-112.59730750570098,49.872401298428159 -112.57847450000003,49.87314612 -112.57868803000002,49.785779180000013</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>FF1E51F4</color><width>1.2</width></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#abmissreport">
+		<SimpleData name="FILE_NAME">424001</SimpleData>
+		<SimpleData name="TRM">001244</SimpleData>
+		<SimpleData name="M">4</SimpleData>
+		<SimpleData name="RGE">24</SimpleData>
+		<SimpleData name="TWP">1</SimpleData>
+		<SimpleData name="DESCRIPTOR">TWP-001 RGE-24 MER-4</SimpleData>
+		<SimpleData name="PID">424001</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><altitudeMode>clampToGround</altitudeMode><coordinates>-113.20724890299999,48.998335258999987 -113.207523982,48.998334781999972 -113.07761360400002,48.998511217999969 -113.20724890299999,48.998335258999987</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>FF1E51F4</color><width>1.2</width></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#abmissreport">
+		<SimpleData name="FILE_NAME">422001</SimpleData>
+		<SimpleData name="TRM">001224</SimpleData>
+		<SimpleData name="M">4</SimpleData>
+		<SimpleData name="RGE">22</SimpleData>
+		<SimpleData name="TWP">1</SimpleData>
+		<SimpleData name="DESCRIPTOR">TWP-001 RGE-22 MER-4</SimpleData>
+		<SimpleData name="PID">422001</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><altitudeMode>clampToGround</altitudeMode><coordinates>-112.81624073699999,48.998534613 -112.94429141099999,48.998511893999989 -112.81074518000003,48.998539719 -112.81624073699999,48.998534613</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>FF1E51F4</color><width>1.2</width></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#abmissreport">
+		<SimpleData name="FILE_NAME">426001</SimpleData>
+		<SimpleData name="TRM">001264</SimpleData>
+		<SimpleData name="M">4</SimpleData>
+		<SimpleData name="RGE">26</SimpleData>
+		<SimpleData name="TWP">1</SimpleData>
+		<SimpleData name="DESCRIPTOR">TWP-001 RGE-26 MER-4</SimpleData>
+		<SimpleData name="PID">426001</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><altitudeMode>clampToGround</altitudeMode><coordinates>-113.37424980899999,48.99809158599998 -113.47492272900001,48.997965779000026 -113.34093594,48.998148935000017 -113.37424980899999,48.99809158599998</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>FF1E51F4</color><width>1.2</width></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#abmissreport">
+		<SimpleData name="FILE_NAME">430011</SimpleData>
+		<SimpleData name="TRM">011304</SimpleData>
+		<SimpleData name="M">4</SimpleData>
+		<SimpleData name="RGE">30</SimpleData>
+		<SimpleData name="TWP">11</SimpleData>
+		<SimpleData name="DESCRIPTOR">TWP-011 RGE-30 MER-4</SimpleData>
+		<SimpleData name="PID">430011</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><altitudeMode>clampToGround</altitudeMode><coordinates>-114.00162739000001,49.873655639999981 -114.00174743000002,49.961582140000012</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>FF1E51F4</color><width>1.2</width></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#abmissreport">
+		<SimpleData name="FILE_NAME">425001</SimpleData>
+		<SimpleData name="TRM">001254</SimpleData>
+		<SimpleData name="M">4</SimpleData>
+		<SimpleData name="RGE">25</SimpleData>
+		<SimpleData name="TWP">1</SimpleData>
+		<SimpleData name="DESCRIPTOR">TWP-001 RGE-25 MER-4</SimpleData>
+		<SimpleData name="PID">425001</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><altitudeMode>clampToGround</altitudeMode><coordinates>-113.34066098699998,48.998149462000015 -113.34093594,48.998148935000017 -113.207523982,48.998334781999972 -113.34066098699998,48.998149462000015</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>FF1E51F4</color><width>1.2</width></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#abmissreport">
+		<SimpleData name="FILE_NAME">423001</SimpleData>
+		<SimpleData name="TRM">001234</SimpleData>
+		<SimpleData name="M">4</SimpleData>
+		<SimpleData name="RGE">23</SimpleData>
+		<SimpleData name="TWP">1</SimpleData>
+		<SimpleData name="DESCRIPTOR">TWP-001 RGE-23 MER-4</SimpleData>
+		<SimpleData name="PID">423001</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><altitudeMode>clampToGround</altitudeMode><coordinates>-112.94429133,48.99871013 -112.94429141099999,48.998511893999989 -113.07761360400002,48.998511217999969 -112.94429133,48.99871013</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>FF1E51F4</color><width>1.2</width></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#abmissreport">
+		<SimpleData name="FILE_NAME">422020</SimpleData>
+		<SimpleData name="TRM">020224</SimpleData>
+		<SimpleData name="M">4</SimpleData>
+		<SimpleData name="RGE">22</SimpleData>
+		<SimpleData name="TWP">20</SimpleData>
+		<SimpleData name="DESCRIPTOR">TWP-020 RGE-22 MER-4</SimpleData>
+		<SimpleData name="PID">422020</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><altitudeMode>clampToGround</altitudeMode><coordinates>-112.94213554200002,50.746882219999975 -112.91332031,50.74685661 -113.05197694,50.74691565 -112.94213554200002,50.746882219999975</coordinates></LineString>
+  </Placemark>
+  <Placemark>
+	<Style><LineStyle><color>FF1E51F4</color><width>1.2</width></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#abmissreport">
+		<SimpleData name="FILE_NAME">428020</SimpleData>
+		<SimpleData name="TRM">020284</SimpleData>
+		<SimpleData name="M">4</SimpleData>
+		<SimpleData name="RGE">28</SimpleData>
+		<SimpleData name="TWP">20</SimpleData>
+		<SimpleData name="DESCRIPTOR">TWP-020 RGE-28 MER-4</SimpleData>
+		<SimpleData name="PID">428020</SimpleData>
+	</SchemaData></ExtendedData>
+      <LineString><altitudeMode>clampToGround</altitudeMode><coordinates>-113.74444491000003,50.746779600000025 -113.74444491000003,50.746779600000025</coordinates></LineString>
+  </Placemark>
+</Folder>
+</Document></kml>

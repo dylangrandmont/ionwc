@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Document id="root_doc">
+<Schema name="wild_river" id="wild_river">
+	<SimpleField name="id" type="string"></SimpleField>
+</Schema>
+<Folder><name>wild_river</name>
+  <Placemark>
+	<Style><LineStyle><color>FF1E51F4</color></LineStyle><PolyStyle><fill>0</fill></PolyStyle></Style>
+	<ExtendedData><SchemaData schemaUrl="#wild_river">
+		<SimpleData name="id">1</SimpleData>
+	</SchemaData></ExtendedData>
+      <Polygon><altitudeMode>clampToGround</altitudeMode><outerBoundaryIs><LinearRing><altitudeMode>clampToGround</altitudeMode><coordinates>-118.00028348018108,53.45407736362845 -118.00031974594944,54.064962151520071 -118.00041279115992,54.326913276900505 -116.70162849840271,54.326895754243473 -116.70162075328426,54.064907583754078 -116.67660983555031,54.064684834818046 -116.67708372921382,53.715546804268946 -116.65463091574803,53.7154750300665 -116.65491648355753,53.453842160397841 -118.00028348018108,53.45407736362845</coordinates></LinearRing></outerBoundaryIs></Polygon>
+  </Placemark>
+</Folder>
+</Document></kml>
