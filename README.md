@@ -6,7 +6,7 @@ Author: Dylan Grandmont, (C) 2016-2018
 # Introduction
 
 Eye on Western Canada (IONWC) has three components: 
-* WEBSITE: web-based mapping platform hosted at http://ionwc.com
+* WEBSITE: web-based mapping platform hosted at http://ionwc.com/map
 * SERVER CODE: collection of code to download, update, and parse data for mapping.
 * GOOGLE ACCOUNT: account hosts Fusion Tables, which act as the database which is read by (1). The account name is ionwestcan@gmail.com
 
