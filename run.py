@@ -8,6 +8,7 @@ import licencescreatedatabases
 import postingscreatedatabase
 import unittest
 import licence_test
+import constants_test
 import sys
 from licences import ABLicenceManager, BCLicenceManager, SKLicenceManager, MBLicenceManager, LicenceDatabase
 
@@ -18,11 +19,21 @@ from constants import IONWC_HOME
 # Update raw data collection
 datastream.run_all()
 
-def run_unit_tests():
+def run_licence_unit_tests():
 	suite = unittest.TestLoader().loadTestsFromTestCase(licence_test.TestABLicence)
 	result = unittest.TextTestRunner(verbosity=2).run(suite)
 	if len(result.errors) > 0:
 		sys.exit()
+
+def run_constants_unit_tests():
+	suite = unittest.TestLoader().loadTestsFromTestCase(constants_test.TestConstants)
+	result = unittest.TextTestRunner(verbosity=2).run(suite)
+	if len(result.errors) > 0:
+		sys.exit()
+
+def run_unit_tests():
+	run_licence_unit_tests()
+	run_constants_unit_tests()
 
 
 run_unit_tests();
