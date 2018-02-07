@@ -10,11 +10,8 @@
 import os
 import numpy as np
 
+import drilling
 from utilities import writeAugmentedLicenceFile
-from drillingbc import addBCDrillingToDataBase
-from drillingab import addABDrillingToDataBase
-from drillingsk import addSKDrillingToDataBase
-from drillingmb import addMBDrillingToDataBase
 from constants import UNKNOWN, IONWC_HOME
 
 def augmentLicencesToDrilling(spuds, licences, augmentedLicsAll):
@@ -72,10 +69,10 @@ def run():
   drillingFileAll = open(IONWC_HOME + '/dbs/spuddb.csv','w')
   drillingFileAll.write("Licensee,Well Name,License Number,UWI,Date,DateMonth,Contractor,Rig,latitude,longitude,province\n")
 
-  addBCDrillingToDataBase(drillingFileAll)
-  addABDrillingToDataBase(drillingFileAll)
-  addSKDrillingToDataBase(drillingFileAll)
-  addMBDrillingToDataBase(drillingFileAll)
+  drilling.add_bc_drilling_to_database(drillingFileAll)
+  drilling.add_ab_drilling_to_database(drillingFileAll)
+  drilling.add_sk_drilling_to_database(drillingFileAll)
+  drilling.add_mb_drilling_to_database(drillingFileAll)
 
   drillingFileAll.close()
 

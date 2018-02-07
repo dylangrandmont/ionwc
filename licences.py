@@ -19,10 +19,10 @@ from coordinatemapping import uwiToLatLng
 from constants import IONWC_HOME, MONTH_DICT, BC_WELL_NAME_TO_FIELD_MAP, UNKNOWN, MB_POOL_CODE_TO_ZONE_MAP
 
 class LicenceDatabase:
-	def __init__(self, csvDatabase):
-		self.csvDatabase = open(csvDatabase,'w')
+	def __init__(self, csv_data_base):
+		self.csv_data_base = open(csv_data_base,'w')
 		self.licences = []
-		self.csvDatabase.write("Licensee,Well Name,License Number,UWI,Date,DateMonth,Field/Pool,\
+		self.csv_data_base.write("Licensee,Well Name,License Number,UWI,Date,DateMonth,Field/Pool,\
 						   TerminatingZone,Orientation,Substance,SubstanceCode,latitude,longitude,province\n")
 
 
@@ -31,7 +31,7 @@ class LicenceDatabase:
 
 	def write_to_csv(self):
 		for licence in self.licences:
-			writeLicenseFile(self.csvDatabase, licence.licencee, licence.wellname, licence.licnum,
+			writeLicenseFile(self.csv_data_base, licence.licencee, licence.well_name, licence.licnum,
 				             licence.uwi, licence.year, licence.month, licence.day, licence.field,
 				             licence.zone, licence.direct, licence.sub, licence.subcode, licence.lat,
 				             licence.lng, licence.province)
@@ -41,7 +41,7 @@ class Licence:
 	srcPath = ''
 
 	licencee = UNKNOWN
-	wellname = UNKNOWN
+	well_name = UNKNOWN
 	licnum = UNKNOWN
 	uwi = UNKNOWN
 	year = UNKNOWN
@@ -70,7 +70,7 @@ class Licence:
 
 	def _trim_all(self):
 		self.licencee = self.licencee.strip()
-		self.wellname = self.wellname.strip()
+		self.well_name = self.well_name.strip()
 		self.licnum = self.licnum.strip()
 		self.uwi = self.uwi.strip()
 		self.year = self.year.strip()
@@ -91,7 +91,7 @@ class ABLicence(Licence):
 			self.entry[i] = self.entry[i].strip()
 
 		self._set_licencee()
-		self._set_wellname()
+		self._set_well_name()
 		self._set_licnum()
 		self._set_uwi()
 		self._set_year()
@@ -110,9 +110,9 @@ class ABLicence(Licence):
 		""" Return first set of characters before two or more white spaces """
 		self.licencee = re.split('\s\s+', self.entry[4])[0]
 
-	def _set_wellname(self):
+	def _set_well_name(self):
 		""" Return first set of characters before two or more white-spaces """
-		self.wellname = re.split('\s\s+', self.entry[0])[0]
+		self.well_name = re.split('\s\s+', self.entry[0])[0]
 
 	def _set_licnum(self):
 		""" assume the first number of 5 or more digits is the licence number """
@@ -172,7 +172,7 @@ class BCLicence(Licence):
 		self.row = row
 
 		self._set_licencee()
-		self._set_wellname()
+		self._set_well_name()
 		self._set_licnum()
 		self._set_uwi()
 		self._set_year()
@@ -190,8 +190,8 @@ class BCLicence(Licence):
 	def _set_licencee(self):
 		self.licencee = self.row[1].replace(',','')
 
-	def _set_wellname(self):
-		self.wellname = self.row[4]
+	def _set_well_name(self):
+		self.well_name = self.row[4]
 
 	def _set_licnum(self):
 		self.licnum = self.row[0]
@@ -210,7 +210,7 @@ class BCLicence(Licence):
 
 	def _set_field(self):
 		for key in BC_WELL_NAME_TO_FIELD_MAP:
-			if key in self.wellname.lower():
+			if key in self.well_name.lower():
 				self.field = BC_WELL_NAME_TO_FIELD_MAP[key]
 
 	def _set_zone(self):
@@ -246,7 +246,7 @@ class OldSKLicence(Licence):
 		self.srcFile = srcFile
 
 		self._set_licencee()
-		self._set_wellname()
+		self._set_well_name()
 		self._set_licnum()
 		self._set_uwi()
 		self._set_year()
@@ -265,8 +265,8 @@ class OldSKLicence(Licence):
 	def _set_licencee(self):
 		self.licencee = self.row[122].replace(',','')
 
-	def _set_wellname(self):
-		self.wellname = self.row[30].replace(',','')
+	def _set_well_name(self):
+		self.well_name = self.row[30].replace(',','')
 
 	def _set_licnum(self):
 		self.licnum = self.row[13].replace('\xa0','')
@@ -290,7 +290,7 @@ class OldSKLicence(Licence):
 		self.zone = self.row[90]
 
 	def _set_direct(self):
-		if ' hz ' in self.wellname:
+		if ' hz ' in self.well_name:
 			self.direct = "Horiztonal"
 		else:
 			self.direct = "Vertical"
@@ -336,7 +336,7 @@ class NewSKLicence(Licence):
 		self.srcFile = srcFile
 
 		self._set_licencee()
-		self._set_wellname()
+		self._set_well_name()
 		self._set_licnum()
 		self._set_uwi()
 		self._set_year()
@@ -355,8 +355,8 @@ class NewSKLicence(Licence):
 	def _set_licencee(self):
 		self.licencee = self.well_bore_entry[7].replace(',','')
 
-	def _set_wellname(self):
-		self.wellname = ''
+	def _set_well_name(self):
+		self.well_name = ''
 
 	def _set_licnum(self):
 		self.licnum = self.well_bore_entry[5].replace(' ','')
@@ -418,7 +418,7 @@ class MBLicence(Licence):
 		self._set_month()
 		self._set_day()
 		self._set_licencee()
-		self._set_wellname()
+		self._set_well_name()
 		self._set_licnum()
 		self._set_uwi()
 		self._set_field()
@@ -445,13 +445,13 @@ class MBLicence(Licence):
 	def _set_licencee(self):
 		self.licencee = re.sub('Licensee: ', '', re.findall('Licensee:.*', self.entry)[0])
 
-	def _set_wellname(self):
-		wellNameLine = re.findall('Lic. No.:.*', self.entry)[0]
-		self.wellname = re.sub('Lic. No.: [0-9]+', '', wellNameLine).strip()
-		if '(WPM)' in self.wellname or '(PM)' in self.wellname or 'W1' in self.wellname:
+	def _set_well_name(self):
+		well_nameLine = re.findall('Lic. No.:.*', self.entry)[0]
+		self.well_name = re.sub('Lic. No.: [0-9]+', '', well_nameLine).strip()
+		if '(WPM)' in self.well_name or '(PM)' in self.well_name or 'W1' in self.well_name:
 			self.meridian = '1'
 		else:
-			raise Exception('Unknown meridian found in wellname', self.wellname)
+			raise Exception('Unknown meridian found in well_name', self.well_name)
 
 	def _set_licnum(self):
 		self.licnum = re.sub('Lic. No.[:\s]+', '', re.findall('Lic. No.[:\s]+[0-9]+', self.entry)[0]).strip()
@@ -478,7 +478,7 @@ class MBLicence(Licence):
 		try:
 			self.direct = self.licenceToOrientationMap[self.licnum].title().replace('Hzntl', 'Horizontal')
 		except:
-			if 'HZNTL' in self.wellname:
+			if 'HZNTL' in self.well_name:
 				self.direct = "Horizontal"
 
 
@@ -601,11 +601,11 @@ class ABLicenceManager(LicenceManager):
 		return re.findall(pattern, fileContent)
 
 class BCLicenceManager(LicenceManager):
-	allLicencesFile = IONWC_HOME + '/data/wells/bc/well_authorizations_issued.csv'
+	all_licences_file = IONWC_HOME + '/data/wells/bc/well_authorizations_issued.csv'
 
 	def __init__(self, licenceDatabase):
 		self.licenceDatabase = licenceDatabase
-		self.allLicencesReader = csv.reader(open(self.allLicencesFile))
+		self.allLicencesReader = csv.reader(open(self.all_licences_file))
 		# Skip header (first row)
 		next(self.allLicencesReader)
 
@@ -728,14 +728,14 @@ class SKLicenceManager(LicenceManager):
 
 
 class MBLicenceManager(LicenceManager):
-	allLicencesFile = IONWC_HOME + '/data/wells/mb/uwi_weekly.csv'
+	all_licences_file = IONWC_HOME + '/data/wells/mb/uwi_weekly.csv'
 	activityDirectory = IONWC_HOME + '/data/activity/mb/'
 	poolCodes = []
 	files = []
 
 	def __init__(self, licenceDatabase):
 		self.licenceDatabase = licenceDatabase
-		self.allLicences = np.genfromtxt(self.allLicencesFile, delimiter=",", invalid_raise=False, comments=None, dtype=str)
+		self.allLicences = np.genfromtxt(self.all_licences_file, delimiter=",", invalid_raise=False, comments=None, dtype=str)
 		self.allLicenceNums = list(self.allLicences[:,[2]].ravel())
 		self.allFields = list(self.allLicences[:,[6]].ravel())
 		self.allPools = list(self.allLicences[:,[7]].ravel())

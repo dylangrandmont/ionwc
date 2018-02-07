@@ -7,7 +7,7 @@ class TestABLicence(unittest.TestCase):
 	def _assertEqualsLatLng(self, actual, expected):
 		self.assertTrue(abs(actual - expected) < 0.000001)
 
-	def testABLicence(self):
+	def test_ab_licence(self):
 		testEntry = """    SURGE ENERGY HZ PROVOST 13-24-37-3   0482527   ALBERTA CROWN        742.8M        \r\n                  
     		 100/13-24-037-03W4/00  N   64.9M  E   85.0M    WAINWRIGHT           2280.0M  \r\n
     		 DEV (NC)                             PROVOST                        SPARKY MBR              \r\n  
@@ -20,7 +20,7 @@ class TestABLicence(unittest.TestCase):
 		abLicence = licences.ABLicence(testEntry, srcFile, srcPath)
 
 		self.assertEquals(abLicence.licencee, 'SURGE ENERGY INC.')
-		self.assertEquals(abLicence.wellname, 'SURGE ENERGY HZ PROVOST 13-24-37-3')
+		self.assertEquals(abLicence.well_name, 'SURGE ENERGY HZ PROVOST 13-24-37-3')
 		self.assertEquals(abLicence.licnum, '0482527')
 		self.assertEquals(abLicence.uwi, '100/13-24-037-03W4/00')
 		self.assertEquals(abLicence.year, '2017')
@@ -35,7 +35,7 @@ class TestABLicence(unittest.TestCase):
 		self._assertEqualsLatLng(abLicence.lng, -110.30956809807209)
 		self.assertEquals(abLicence.province, 'AB')
 
-	def testBCLicenceMissingZoneLatLng(self):
+	def test_bc_licence_missing_zone_lat_lng(self):
 		testRow = ["00639","Whitecap Resources Inc.","22-JUL-1960","Development",
 		"WHITECAP ET AL  BOUNDARY  06-24-085-14","Crown","-",
 		"North 607.2m East 609.7m from SW corner of LSD 04 SECT 24","56 22 57.47","120 04 25.09","-","748.2","-","-",
@@ -44,7 +44,7 @@ class TestABLicence(unittest.TestCase):
 		bcLicence = licences.BCLicence(testRow)
 
 		self.assertEquals(bcLicence.licencee, 'Whitecap Resources Inc.')
-		self.assertEquals(bcLicence.wellname, 'WHITECAP ET AL  BOUNDARY  06-24-085-14')
+		self.assertEquals(bcLicence.well_name, 'WHITECAP ET AL  BOUNDARY  06-24-085-14')
 		self.assertEquals(bcLicence.licnum, '00639')
 		self.assertEquals(bcLicence.uwi, '100062408514W600')
 		self.assertEquals(bcLicence.year, '1960')
@@ -59,7 +59,7 @@ class TestABLicence(unittest.TestCase):
 		self.assertEquals(bcLicence.lng, -120.07363611111111)
 		self.assertEquals(bcLicence.province, 'BC')
 
-	def testBCLicenceHasZoneLatLng(self):
+	def test_bc_licence_has_zone_lat_lng(self):
 
 		testRow = ["32842","Kelt Exploration (LNG) Ltd.","20-JAN-2017","Development",
 		"KELT LNG  HZ OAK  14-11-086-18","Private","Gas",
@@ -69,7 +69,7 @@ class TestABLicence(unittest.TestCase):
 		bcLicence = licences.BCLicence(testRow)
 
 		self.assertEquals(bcLicence.licencee, 'Kelt Exploration (LNG) Ltd.')
-		self.assertEquals(bcLicence.wellname, 'KELT LNG  HZ OAK  14-11-086-18')
+		self.assertEquals(bcLicence.well_name, 'KELT LNG  HZ OAK  14-11-086-18')
 		self.assertEquals(bcLicence.licnum, '32842')
 		self.assertEquals(bcLicence.uwi, '100060208618W600')
 		self.assertEquals(bcLicence.year, '2017')
@@ -84,7 +84,7 @@ class TestABLicence(unittest.TestCase):
 		self.assertEquals(bcLicence.lng, -120.73299166666666)
 		self.assertEquals(bcLicence.province, 'BC')
 
-	def testSKLicenceAfterNov2015(self):
+	def test_sk_licence_after_november2015(self):
 		test_well_bore_entry = ["New","Issued","2017-04-18","2017-04-18","","72457","12746","WHITECAP RESOURCES INC.",
 			"Suite 3800 East Tower 525 - 8th Avenue SW CALGARY Alberta T2P 1G1 ","Horizontal","HORIZONTAL","N",
 			"Kindersley","2","200.8","S","633.0","W","15-18-033-23W3","15","18","N","033","N","23","N","3","700",
@@ -104,7 +104,7 @@ class TestABLicence(unittest.TestCase):
 		skLicence = licences.NewSKLicence(test_well_bore_entry, test_completion_entry, testFile)
 
 		self.assertEquals(skLicence.licencee, 'WHITECAP RESOURCES INC.')
-		self.assertEquals(skLicence.wellname, '')
+		self.assertEquals(skLicence.well_name, '')
 		self.assertEquals(skLicence.licnum, '72457')
 		self.assertEquals(skLicence.uwi, 'SK WI 102101903323W300')
 		self.assertEquals(skLicence.year, '2017')
@@ -119,7 +119,7 @@ class TestABLicence(unittest.TestCase):
 		self.assertEquals(skLicence.lng, -109.25840923847824)
 		self.assertEquals(skLicence.province, 'SK')		
 
-	def testSKLicenceBeforeNov2015(self):
+	def test_sk_licence_before_november2015(self):
 		test_entry = ["20061127","NEW LICENSE         ","11","08","22","48","26","3"," "," "," "," "," ","06K336",
 		" ","20061127","  ","  ","  ","  ","  "," "," "," "," "," ","  "," ","        "," ",
 		"CNRL LASHBURN WEST DD 4A8-22-4A8-22-48-26         ","  ","  ","  ","  ","  "," "," "," "," "," "," ",
@@ -143,7 +143,7 @@ class TestABLicence(unittest.TestCase):
 		skLicence = licences.OldSKLicence(test_entry, testFile)
 
 		self.assertEquals(skLicence.licencee, 'CANADIAN NATURAL RESOURCES LIMITED')
-		self.assertEquals(skLicence.wellname, 'CNRL LASHBURN WEST DD 4A8-22-4A8-22-48-26')
+		self.assertEquals(skLicence.well_name, 'CNRL LASHBURN WEST DD 4A8-22-4A8-22-48-26')
 		self.assertEquals(skLicence.licnum, '06K336')
 		self.assertEquals(skLicence.uwi, '08-22-048-26W3')
 		self.assertEquals(skLicence.year, '2006')
@@ -158,7 +158,7 @@ class TestABLicence(unittest.TestCase):
 		self.assertEquals(skLicence.lng, -109.71445481647301)
 		self.assertEquals(skLicence.province, 'SK')	
 
-	def testMBLicence(self):
+	def test_mb_licence(self):
 		testEntry = """Lic. No.: 10645   Tundra Daly Sinclair HZNTL 16-15-9-29 (WPM)
                   UWI: 102.16-15-009-29W1.00
                   Licence Issued: 26-Jan-2017
@@ -180,7 +180,7 @@ class TestABLicence(unittest.TestCase):
 		mbLicence = licences.MBLicence(testEntry, {}, {})
 
 		self.assertEquals(mbLicence.licencee, "Tundra Oil & Gas Partnership")
-		self.assertEquals(mbLicence.wellname, "Tundra Daly Sinclair HZNTL 16-15-9-29 (WPM)")
+		self.assertEquals(mbLicence.well_name, "Tundra Daly Sinclair HZNTL 16-15-9-29 (WPM)")
 		self.assertEquals(mbLicence.licnum, "10645")
 		self.assertEquals(mbLicence.uwi, "102.16-15-009-29W1.00")
 		self.assertEquals(mbLicence.year, "2017")
