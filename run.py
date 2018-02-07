@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 # Copyright (C) 2016-2018, Dylan Grandmont
 
 import os
@@ -6,6 +8,7 @@ import licencescreatedatabases
 import postingscreatedatabase
 import unittest
 import licence_test
+import postings_test
 import constants_test
 import sys
 from licences import ABLicenceManager, BCLicenceManager, SKLicenceManager, MBLicenceManager, LicenceDatabase
@@ -23,6 +26,12 @@ def run_licence_unit_tests():
 	if len(result.errors) > 0:
 		sys.exit()
 
+def run_postings_unit_tests():
+	suite = unittest.TestLoader().loadTestsFromTestCase(postings_test.TestPosting)
+	result = unittest.TextTestRunner(verbosity=2).run(suite)
+	if len(result.errors) > 0:
+		sys.exit()
+
 def run_constants_unit_tests():
 	suite = unittest.TestLoader().loadTestsFromTestCase(constants_test.TestConstants)
 	result = unittest.TextTestRunner(verbosity=2).run(suite)
@@ -31,8 +40,8 @@ def run_constants_unit_tests():
 
 def run_unit_tests():
 	run_licence_unit_tests()
+	run_postings_unit_tests()
 	run_constants_unit_tests()
-
 
 run_unit_tests();
 

@@ -9,7 +9,7 @@ import os
 
 class TestPosting(unittest.TestCase):
 
-	def testPosting(self):
+	def test_posting(self):
 
 		posting = postings.Posting("2014.01.01",
 			                       "lease",
@@ -35,23 +35,7 @@ class TestPosting(unittest.TestCase):
 		self.assertEquals(posting.base_age, "323.0")
 		self.assertEquals(posting.kml_polygon, "KML Polygon Content")
 
-	def testABPosting(self):
-
-		posting = postings.ABPosting("2014.01.01",
-			                         "lease",
-			                         "12345",
-			                         "1000.00",
-			                         "1",
-			                         "100/13-24-037-03W4/00",
-			                         "Base Montney",
-			                         "Base Leduc",
-			                         "252.0",
-			                         "323.0",
-			                         "KML Polygon Content")
-
-		self.assertEquals(posting.province, "AB")
-
-	def testBCPosting(self):
+	def test_bc_posting(self):
 
 		posting = postings.BCPosting("2014.01.01",
 			                         "lease",
@@ -67,7 +51,7 @@ class TestPosting(unittest.TestCase):
 
 		self.assertEquals(posting.province, "BC")
 
-	def testABPosting(self):
+	def test_ab_posting(self):
 
 		posting = postings.ABPosting("2014.01.01",
 			                         "lease",
@@ -83,7 +67,7 @@ class TestPosting(unittest.TestCase):
 
 		self.assertEquals(posting.province, "AB")
 
-	def testSKPosting(self):
+	def test_sk_posting(self):
 
 		posting = postings.SKPosting("2014.01.01",
 			                         "lease",
@@ -99,7 +83,7 @@ class TestPosting(unittest.TestCase):
 
 		self.assertEquals(posting.province, "SK")
 
-	def testMBPosting(self):
+	def test_mb_posting(self):
 
 		posting = postings.MBPosting("2014.01.01",
 			                         "lease",
@@ -115,7 +99,7 @@ class TestPosting(unittest.TestCase):
 
 		self.assertEquals(posting.province, "MB")
 
-	def testPostingsDatabase(self):
+	def test_postings_database(self):
 		database = postings.PostingsDatabase("temp.csv")
 		posting = postings.ABPosting("2014.01.01",
 			                       "lease",
@@ -139,7 +123,7 @@ class TestPosting(unittest.TestCase):
 
 		os.remove("temp.csv")
 
-	def testPostingsAggregateDatabase(self):
+	def test_postings_aggregate_database(self):
 		database = postings.PostingsAggregateDatabase("temp.csv")
 		
 		database.close()
@@ -150,7 +134,7 @@ class TestPosting(unittest.TestCase):
 
 		os.remove("temp.csv")
 
-	def testPostingResultsDatabase(self):
+	def test_posting_results_database(self):
 		database = postings.PostingResultsDatabase("temp.csv")
 		database.close()
 
