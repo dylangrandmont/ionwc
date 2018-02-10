@@ -7,7 +7,7 @@ import csv
 import random
 import numpy as np
 
-from utilities import writeLicenseFile, conformSub, getSubCode, kmPerDegreeLatLng, conformBCOGCLatLon
+from utilities import writeLicenseFile, conform_substance, get_substance_code, km_per_degree_lat_lng, conformBCOGCLatLon
 from coordinatemapping import uwiToLatLng
 from constants import IONWC_HOME, MONTH_DICT, BC_WELL_NAME_TO_FIELD_MAP, UNKNOWN, MB_POOL_CODE_TO_ZONE_MAP
 
@@ -138,10 +138,10 @@ class ABLicence(Licence):
 		self.direct = re.split('\s\s+', self.entry[3])[0]
 
 	def _set_sub(self):
-		self.sub = conformSub( re.split('\s\s+', self.entry[3])[-1]	)
+		self.sub = conform_substance( re.split('\s\s+', self.entry[3])[-1]	)
 
 	def _set_subcode(self):
-		self.subcode = getSubCode(self.sub)
+		self.subcode = get_substance_code(self.sub)
 
 	def _set_lat_lng(self):
 		metersPerKm = 1000.0
@@ -154,7 +154,7 @@ class ABLicence(Licence):
 
 		lat, lng = uwiToLatLng.convert(surfUWI)
 
-		kmPerDegreeLat, kmPerDegreeLng = kmPerDegreeLatLng(lat)
+		kmPerDegreeLat, kmPerDegreeLng = km_per_degree_lat_lng(lat)
 
 		self.lat = lat + self._safe_divide(yOffset, kmPerDegreeLat)
 		self.lng = lng + self._safe_divide(xOffset, kmPerDegreeLng)
@@ -213,10 +213,10 @@ class BCLicence(Licence):
 		self.direct = UNKNOWN
 
 	def _set_sub(self):
-		self.sub = conformSub(self.row[6])
+		self.sub = conform_substance(self.row[6])
 
 	def _set_subcode(self):
-		self.subcode = getSubCode(self.sub)
+		self.subcode = get_substance_code(self.sub)
 
 	def _set_lat_lng(self):
 		try:
@@ -289,10 +289,10 @@ class OldSKLicence(Licence):
 			self.direct = "Vertical"
 
 	def _set_sub(self):
-		self.sub = conformSub(self.row[101])
+		self.sub = conform_substance(self.row[101])
 
 	def _set_subcode(self):
-		self.subcode = getSubCode(self.sub)
+		self.subcode = get_substance_code(self.sub)
 
 	def _set_lat_lng(self):
 		metersPerKm = 1000.0
@@ -304,7 +304,7 @@ class OldSKLicence(Licence):
 		yOffset = self._xy_sign(offsets[0]) * float(offsets[1]) / metersPerKm
 		xOffset = self._xy_sign(offsets[2]) * float(offsets[3]) / metersPerKm
 
-		kmPerDegreeLat, kmPerDegreeLng = kmPerDegreeLatLng(lat)
+		kmPerDegreeLat, kmPerDegreeLng = km_per_degree_lat_lng(lat)
 
 		self.lat = lat + self._safe_divide(yOffset, kmPerDegreeLat)
 		self.lng = lng + self._safe_divide(xOffset, kmPerDegreeLng)
@@ -376,10 +376,10 @@ class NewSKLicence(Licence):
 		self.direct = self.well_bore_entry[10]
 
 	def _set_sub(self):
-		self.sub = conformSub(self.completion_entry[37])
+		self.sub = conform_substance(self.completion_entry[37])
 
 	def _set_subcode(self):
-		self.subcode = getSubCode(self.sub)
+		self.subcode = get_substance_code(self.sub)
 
 	def _set_lat_lng(self):
 		metersPerKm = 1000.0
@@ -392,7 +392,7 @@ class NewSKLicence(Licence):
 		yOffset = self._xy_sign(offsets[0]) * float(offsets[1]) / metersPerKm
 		xOffset = self._xy_sign(offsets[2]) * float(offsets[3]) / metersPerKm
 
-		kmPerDegreeLat, kmPerDegreeLng = kmPerDegreeLatLng(lat)
+		kmPerDegreeLat, kmPerDegreeLng = km_per_degree_lat_lng(lat)
 
 		self.lat = lat + self._safe_divide(yOffset, kmPerDegreeLat)
 		self.lng = lng + self._safe_divide(xOffset, kmPerDegreeLng)
@@ -476,7 +476,7 @@ class MBLicence(Licence):
 
 
 	def _set_subcode(self):
-		self.subcode = getSubCode(self.sub)
+		self.subcode = get_substance_code(self.sub)
 
 	def _set_lat_lng(self):
 		if len(re.findall('Surface Location:.*', self.entry)) == 1:
@@ -539,7 +539,7 @@ class MBLicence(Licence):
 		yOffset = self._xy_sign(yOffsetDirection) * float(yOffsetDistance) / metersPerKm
 		xOffset = self._xy_sign(xOffsetDirection) * float(xOffsetDistance) / metersPerKm
 
-		kmPerDegreeLat, kmPerDegreeLng = kmPerDegreeLatLng(lat)
+		kmPerDegreeLat, kmPerDegreeLng = km_per_degree_lat_lng(lat)
 
 		latOffset = self._safe_divide(yOffset, kmPerDegreeLat)
 		lngOffset = self._safe_divide(xOffset, kmPerDegreeLng)

@@ -9,7 +9,7 @@ import csv
 import numpy as np
 
 from coordinatemapping import uwiToLatLng
-from utilities import getSubCode, conformSub, conformBCOGCLatLon, writeLicenseFile, writeDrillingFile
+from utilities import conformBCOGCLatLon, writeLicenseFile, writeDrillingFile
 from constants import UNKNOWN
 
 IONWC_HOME = os.environ["IONWC_HOME"]

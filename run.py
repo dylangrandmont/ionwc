@@ -20,30 +20,18 @@ from constants import IONWC_HOME
 # Update raw data collection
 datastream.run_all()
 
-def run_licence_unit_tests():
-	suite = unittest.TestLoader().loadTestsFromTestCase(licence_test.TestABLicence)
+# Execute Unit Test Coverage
+def run_unit_tests_module(module):
+	suite = unittest.TestLoader().loadTestsFromTestCase(module)
 	result = unittest.TextTestRunner(verbosity=2).run(suite)
 	if len(result.errors) > 0:
 		sys.exit()
 
-def run_postings_unit_tests():
-	suite = unittest.TestLoader().loadTestsFromTestCase(postings_test.TestPosting)
-	result = unittest.TextTestRunner(verbosity=2).run(suite)
-	if len(result.errors) > 0:
-		sys.exit()
+run_unit_tests_module(licence_test.TestABLicence)
+run_unit_tests_module(postings_test.TestPosting)
+run_unit_tests_module(constants_test.TestConstants)
+run_unit_tests_module(utilities_test.TestUtilities)
 
-def run_constants_unit_tests():
-	suite = unittest.TestLoader().loadTestsFromTestCase(constants_test.TestConstants)
-	result = unittest.TextTestRunner(verbosity=2).run(suite)
-	if len(result.errors) > 0:
-		sys.exit()
-
-def run_unit_tests():
-	run_licence_unit_tests()
-	run_postings_unit_tests()
-	run_constants_unit_tests()
-
-run_unit_tests();
 
 licenceDatabaseName = IONWC_HOME + '/dbs/licenceDBAll.csv'
 licenceDatabase = LicenceDatabase(licenceDatabaseName)

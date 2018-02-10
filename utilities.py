@@ -3,20 +3,32 @@
 import locale
 import math
 
-def getSubCode(substance):
+def get_substance_code(substance):
     substance = substance.lower()
-    if   'oil'     in substance:   substanceCode = '0'
-    elif 'gas'     in substance:   substanceCode = '1'
-    elif 'methane' in substance:   substanceCode = '1'
-    elif 'bitum'   in substance:   substanceCode = '2'
-    elif 'water'   in substance:   substanceCode = '3'
-    else:                          substanceCode = '4'
+
+    if 'oil' in substance:
+        substanceCode = '0'
+    elif 'gas' in substance: 
+        substanceCode = '1'
+    elif 'methane' in substance:
+        substanceCode = '1'
+    elif 'bitum' in substance:
+        substanceCode = '2'
+    elif 'water' in substance:
+        substanceCode = '3'
+    else:
+        substanceCode = '4'
+
     return substanceCode
 
-def conformSub(substance):
-    if substance == "0":                  substance = "Unknown"
-    elif 'gas'   in substance.lower():    substance = "Gas"
-    elif 'oil'   in substance.lower():    substance = "Crude Oil"
+def conform_substance(substance):
+    if substance == "0":
+        substance = "Unknown"
+    elif 'gas' in substance.lower():
+        substance = "Gas"
+    elif 'oil' in substance.lower():
+        substance = "Crude Oil"
+
     return substance
 
 def conformBCOGCLatLon(latitude, longitude):
@@ -24,25 +36,30 @@ def conformBCOGCLatLon(latitude, longitude):
     longitude = longitude.strip().split()
     latitude =         float(latitude[0]) + float(latitude[1]) / 60.0 + float(latitude[2]) / 3600.0
     longitude = -1.0 * (float(longitude[0]) + float(longitude[1]) / 60.0 + float(longitude[2]) / 3600.0)
+
     return latitude, longitude
 
-def formatDollars(dollarString):
-  if dollarString != '':
-    dollarString = dollarString.replace('$', '')
-    dollarString = dollarString.replace(',', '')
+def reformat_dollars(dollar_string):
+    dollar_string = dollar_string.replace('$', '')
+    dollar_string = dollar_string.replace(',', '')
     locale.setlocale(locale.LC_ALL, '')
-    dollarString = locale.currency(float(dollarString), grouping = True)
-  return dollarString
 
-def kmPerDegreeLatLng(lat):
-  # determine distance between degrees of latitude (const), using spheroid paramters
+    try:
+        dollar_string = locale.currency(float(dollar_string), grouping = True)
+    except ValueError:
+        print "Unable to reformat amount as dollars"
+
+    return dollar_string
+
+def km_per_degree_lat_lng(lat):
+  """ determine distance between degrees of latitude (const), using spheroid paramters """
   e2 = 0.00669437999014
   a = 6378.1370
   pi = math.pi
-  kmPerDegreeLat = pi * a * (1 - e2) / (180.0 * (1.0 - e2 * (math.sin(lat * pi / 180.0)**2)**(3.0/2.0)))
-  kmPerDegreeLng = (pi*a* math.cos(lat*pi/180.0)) / (180.0 * (1.0-e2*(math.sin(lat*pi/180.0)**2))**0.5 )
+  km_per_degree_lat = pi * a * (1 - e2) / (180.0 * (1.0 - e2 * (math.sin(lat * pi / 180.0)**2)**(3.0/2.0)))
+  km_per_degree_lon = (pi * a * math.cos((lat * pi)/180.0)) / (180.0 * (1.0 - e2 * (math.sin(lat * pi / 180.0)**2))**0.5 )
 
-  return kmPerDegreeLat, kmPerDegreeLng
+  return km_per_degree_lat, km_per_degree_lon
 
 
 def writeLicenseFile(licenseFile, licensee, wellname, licnum, uwi, year, month, day, field, zone, 
@@ -126,8 +143,8 @@ def writePostingResultDataBaseFile(psrDataBaseFile, saleDate, status, bonus, dol
                                    baseAge, geometry, province):
   psrDataBaseFile.write(saleDate + ':' 
                         + status + ':' 
-                        + formatDollars(bonus) + ':' 
-                        + formatDollars(dollarPerHectare) + ':' 
+                        + reformat_dollars(bonus) + ':' 
+                        + reformat_dollars(dollarPerHectare) + ':' 
                         + clientDescription.title() + ':' 
                         + contractType + ':' 
                         + contractNumber + ':' 
@@ -145,8 +162,8 @@ def writePostingResultAggregateDataBaseFile(psrAggregateDataBaseFile, saleDate, 
                                    contractType, contractNumber, hectares, aggregateLatitude, aggregateLongitude, province):
   psrAggregateDataBaseFile.write(saleDate + ':' 
                                 + status + ':' 
-                                + formatDollars(bonus) + ':' 
-                                + formatDollars(dollarPerHectare) + ':' 
+                                + reformat_dollars(bonus) + ':' 
+                                + reformat_dollars(dollarPerHectare) + ':' 
                                 + clientDescription.title() + ':' 
                                 + contractType + ':'
                                 + contractNumber + ':'

@@ -5,7 +5,7 @@ import numpy as np
 import xml.etree.ElementTree as ET
 
 from constants import IONWC_HOME
-from utilities import kmPerDegreeLatLng
+from utilities import km_per_degree_lat_lng
 
 pi = math.pi 
 
@@ -92,7 +92,7 @@ class UWIToLatLng:
        near_bl = bls[(np.abs(np.array(bls) - (twp + 1))).argmin()]
        # estimate latitude of nearest baseline                                                                          
        near_bl_lat = 49.0 + 11.0*((near_bl-1)/126.0)
-       deg_lat, deg_lon = kmPerDegreeLatLng(near_bl_lat)
+       deg_lat, deg_lon = km_per_degree_lat_lng(near_bl_lat)
 
        x_offset, y_offset = 0, 0
 
