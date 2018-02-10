@@ -3,6 +3,28 @@
 Eye on Western Canada Code Package README
 Author: Dylan Grandmont, (C) 2016-2018
 
+# Looking to Contribute?
+Below is a list of potential improvements
+
+## Reduce manual steps needed
+* Automate SK posting web crawling retrieval
+
+## Remove dependency on wget
+* wget is used for web crawling (data retrieval). This can be replaced with python functionality
+
+## Migrate to Python 3.x
+* Project currently makes use for 2.7
+
+## Add Facilities Map
+* Need to introduce a facilities view and manage database
+
+## Unit Test Coverage
+* Measurement and improvement of python unit tests
+* Introduction of Javascript unit test coverage
+
+## Build Automation
+* Potentially use gulp or some other library to minimize javascript code, run tests
+
 # Introduction
 
 Eye on Western Canada (IONWC) has three components: 
@@ -99,14 +121,10 @@ SK_POSTING_NUMBER_TO_SALE_DATE
 * BC: https://ams-reports.bcogc.ca/ords-prod/f?p=200:58:15168409196395:CSV::::
 * AB: http://www.aer.ca/data/codes/ActiveFacility.txt
 * SK: http://economy.gov.sk.ca/files/Registry%20Downloads/NewAndActiveFacilitiesReport.csv
-* MB: 
+* MB: Unavailable?
 
 ## Formations
 https://landman.ca/pdf/CORELAB.pdf
-
-# Known Issues / Improvements / Technical Debt
-* Remove dependencies on wget, replace with python libraries
-* Automate SK posting retrieval
 
 # Copyright Notice
 This README and the entire contents of this directory are copyright of Dylan Grandmont, 2016-2018.
