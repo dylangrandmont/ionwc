@@ -7,9 +7,10 @@ import datastream
 import licencescreatedatabases
 import postingscreatedatabase
 import unittest
-import licence_test
-import postings_test
-import constants_test
+import test_licences
+import test_postings
+import test_constants
+import test_utilities
 import sys
 from licences import ABLicenceManager, BCLicenceManager, SKLicenceManager, MBLicenceManager, LicenceDatabase
 
@@ -27,10 +28,10 @@ def run_unit_tests_module(module):
 	if len(result.errors) > 0:
 		sys.exit()
 
-run_unit_tests_module(licence_test.TestABLicence)
-run_unit_tests_module(postings_test.TestPosting)
-run_unit_tests_module(constants_test.TestConstants)
-run_unit_tests_module(utilities_test.TestUtilities)
+run_unit_tests_module(test_licences.TestABLicence)
+run_unit_tests_module(test_postings.TestPosting)
+run_unit_tests_module(test_constants.TestConstants)
+run_unit_tests_module(test_utilities.TestUtilities)
 
 
 licenceDatabaseName = IONWC_HOME + '/dbs/licenceDBAll.csv'

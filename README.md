@@ -3,27 +3,6 @@
 Eye on Western Canada Code Package README
 Author: Dylan Grandmont, (C) 2016-2018
 
-# Looking to Contribute?
-Below is a list of potential improvements
-
-## Reduce manual steps needed
-* Automate SK posting web crawling retrieval
-
-## Remove dependency on wget
-* wget is used for web crawling (data retrieval). This can be replaced with python functionality
-
-## Migrate to Python 3.x
-* Project currently makes use for 2.7
-
-## Add Facilities Map
-* Need to introduce a facilities view and manage database
-
-## Unit Test Coverage
-* Measurement and improvement of python unit tests
-* Introduction of Javascript unit test coverage
-
-## Build Automation
-* Potentially use gulp or some other library to minimize javascript code, run tests
 
 # Introduction
 
@@ -72,6 +51,41 @@ To perform updates and run this package, simply type
 into your command line. This will update all raw data, determine any new additions, and 
 then send those additions to the Fusion Tables Database.
 You will be prompted with login credentials in order to update the Fusion Tables Database.
+
+
+# Information for Developers
+
+## Running Unit Tests
+
+To run the full suite, execute
+
+```
+python -m unittest discover
+```
+
+## Looking to Contribute?
+Below is a list of potential improvements
+
+### Reduce manual steps needed
+* Automate SK posting web crawling retrieval
+
+### Remove dependency on wget
+* wget is used for web crawling (data retrieval). This can be replaced with python functionality
+
+### Migrate to Python 3.x
+* Project currently makes use for 2.7
+
+### Add Facilities Map
+* Need to introduce a facilities view and manage database
+
+### Unit Test Coverage
+* Measurement and improvement of python unit tests
+* Introduction of Javascript unit test coverage
+
+### Build Automation
+* Potentially use gulp or some other library to minimize javascript code, run tests
+
+
 
 # Manual Maintainence
 
