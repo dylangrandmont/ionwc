@@ -117,14 +117,14 @@ def writePostingOfferingDataBaseFile(outKmlFile, saleDate, contractType, contrac
                                      topQualifiedZone, baseQualifiedZone, topAge, baseAge, kmlPolygon, province):
   outKmlFile.write(saleDate + ':'
                    + contractType + ':'
-                   + contractNo + ':'
-                   + hectares + ':'
-                   + tractNo + ':'
+                   + str(contractNo) + ':'
+                   + str(hectares) + ':'
+                   + str(tractNo) + ':'
                    + uwi + ':'
                    + topQualifiedZone +':'
                    + baseQualifiedZone + ':'
-                   + topAge + ':'
-                   + baseAge + ':'
+                   + str(topAge) + ':'
+                   + str(baseAge) + ':'
                    + kmlPolygon + ':'
                    + province + '\n')
 
