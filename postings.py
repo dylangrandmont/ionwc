@@ -117,7 +117,6 @@ class ResultsAggregateDatabase(Database):
 ##################################################################
 
 class Posting:
-
     def __init__(self, sale_date, contract_type, contract_number, hectares, tract_no, uwi, top_qualified_zone,
                  base_qualified_zone, top_age, base_age, kml_polygon, province):
 
@@ -135,7 +134,6 @@ class Posting:
         self.province = province
 
 class PostingAggregate:
-
     def __init__(self, sale_date, contract_type, contract_number, hectares, aggregate_latitude, aggregate_longitude, province):
 
         self.sale_date = sale_date
@@ -216,9 +214,11 @@ class BCPostingsManager(PostingsManager):
     TRACT_STRING = 'TRACT\s+[0-9]+'
     TRACT_1_STRING = '([0-9]+\s+TRACT\s+1\s+[0-9]+)'
 
+
     def populate_databases(self):
         self._populate_posting_database()
         self._populate_results_database()
+
 
     def _populate_posting_database(self):
         """ Add all postings to the offerings database """
@@ -232,6 +232,7 @@ class BCPostingsManager(PostingsManager):
             for posting_aggregate in posting_aggregates:
                 self.posting_aggregates_database.add_row(posting_aggregate)
 
+
     def _populate_results_database(self):
         """ Add all results to the offerings database """
         results_files  = self._get_results_files()
@@ -243,12 +244,15 @@ class BCPostingsManager(PostingsManager):
             for results_aggregate in results_aggregates:
                 self.results_aggregates_database.add_row(results_aggregate)
 
+
     def _get_postings_files(self):
         """ Retreive all the BC posting files """
         return glob.glob(IONWC_HOME + '/data/postings/bc/*sal.rpt')
 
+
     def _get_results_files(self):
         return glob.glob(IONWC_HOME + '/data/postings/bc/*res.rpt')
+
 
     def _get_postings_from_file(self, file):
         """ Return postings and aggregates of postings for a single file """
@@ -394,6 +398,7 @@ class BCPostingsManager(PostingsManager):
 
         return postings, posting_aggregates
 
+
     def _get_results_from_file(self, file):
 
         results = []
@@ -520,6 +525,7 @@ class BCPostingsManager(PostingsManager):
 
         return top_qualifier, top_zone, base_qualifier, base_zone
 
+
     def _uwi_to_kml_polygon(self, uwi, grid = 'dls'):
 
       if grid == 'dls':
@@ -631,6 +637,7 @@ class ABPostingsManager(PostingsManager):
         self._populate_posting_database()
         self._populate_results_database()
 
+
     def _populate_posting_database(self):
         """ Add all postings to the offerings database """
         posting_files  = self._get_postings_files()
@@ -643,6 +650,7 @@ class ABPostingsManager(PostingsManager):
             for posting_aggregate in posting_aggregates:
                 self.posting_aggregates_database.add_row(posting_aggregate)
 
+
     def _populate_results_database(self):
         """ Add all results to the offerings database """
         results_files  = self._get_results_files()
@@ -654,13 +662,16 @@ class ABPostingsManager(PostingsManager):
             for results_aggregate in results_aggregates:
                 self.results_aggregates_database.add_row(results_aggregate)
 
+
     def _get_postings_files(self):
         """ Retreive all the AB posting files """
         return glob.glob(IONWC_HOME + '/data/postings/ab/*PON.xml')
 
+
     def _get_results_files(self):
         """ Retreive all the AB results files """
         return glob.glob(IONWC_HOME + '/data/postings/ab/*PSR.xml')        
+
 
     def _get_postings_from_file(self, file):
         """ From each AB postings file, find all patterns for posting contracts """
@@ -866,6 +877,7 @@ class SKPostingsManager(PostingsManager):
         self._populate_posting_database()
         self._populate_results_database()
 
+
     def _populate_posting_database(self):
         """ Add all postings to the offerings database """
         posting_files  = self._get_postings_files()
@@ -878,6 +890,7 @@ class SKPostingsManager(PostingsManager):
             for posting_aggregate in posting_aggregates:
                 self.posting_aggregates_database.add_row(posting_aggregate)
 
+
     def _populate_results_database(self):
         """ Add all results to the offerings database """
         results_files  = self._get_results_files()
@@ -889,13 +902,16 @@ class SKPostingsManager(PostingsManager):
             for results_aggregate in results_aggregates:
                 self.results_aggregates_database.add_row(results_aggregate)
 
+
     def _get_postings_files(self):
         """ Retreive all the SK posting files """
         return glob.glob(IONWC_HOME + '/data/postings/sk/*otice*.txt')
 
+
     def _get_results_files(self):
         """ Retreive all the SK results files """
         return glob.glob(IONWC_HOME + '/data/postings/sk/*result*.txt')
+
 
     def _get_postings_from_file(self, file):
         postings = []
@@ -1364,9 +1380,11 @@ class MBPostingsManager(PostingsManager):
     TOP_AGE = 0
     BASE_AGE = 9999
 
+
     def populate_databases(self):
         self._populate_posting_database()
         self._populate_results_database()
+
 
     def _populate_posting_database(self):
         """ Add all postings to the offerings database """
@@ -1380,6 +1398,7 @@ class MBPostingsManager(PostingsManager):
             for posting_aggregate in posting_aggregates:
                 self.posting_aggregates_database.add_row(posting_aggregate)
 
+
     def _populate_results_database(self):
         """ Add all results to the offerings database """
         results_files  = self._get_results_files()
@@ -1391,13 +1410,16 @@ class MBPostingsManager(PostingsManager):
             for results_aggregate in results_aggregates:
                 self.results_aggregates_database.add_row(results_aggregate)
 
+
     def _get_postings_files(self):
         """ Retreive all the SK posting files """
         return glob.glob(IONWC_HOME + '/data/postings/mb/*sale.txt')
 
+
     def _get_results_files(self):
         """ Retreive all the SK results files """
         return glob.glob(IONWC_HOME + '/data/postings/mb/*results.txt')
+
 
     def _get_postings_from_file(self, file):
         file_contents = ''.join(open(file).readlines())

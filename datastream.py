@@ -203,8 +203,8 @@ class DataStreamMB:
 
 	def retrieve_licenses(self):
 		oneKiloByte = 1000
-		uwiWeekly = urllib.urlopen('http://www.gov.mb.ca/iem/petroleum/reports/uwi_weekly.xls')
-		if (uwiWeekly.info().getheaders("Content-Length")[0] > oneKiloByte):
+		uwi_weekly = urllib.urlopen('http://www.gov.mb.ca/iem/petroleum/reports/uwi_weekly.xls')
+		if (self._is_content_length_over_1kB(uwi_weekly.info())):
 			os.system('wget -N http://www.gov.mb.ca/iem/petroleum/reports/uwi_weekly.xls -P ' + self.wells_directory_raw)
 			os.system('libreoffice --headless --convert-to csv ' + self.wells_directory_raw + 'uwi_weekly.xls --outdir ' + self.wells_directory_data)
 
@@ -220,6 +220,14 @@ class DataStreamMB:
 		os.system('find -name \'*results.txt\' -exec mv {} ' + self.postings_directory_data + ' \;')
 		os.system('find -name \'*sale.txt\' -exec mv {} ' + self.postings_directory_data + ' \;')
 
+
+	def _is_content_length_over_1kB(self, http_message):
+		oneKiloByte = 1000
+		try:
+			return http_message.getheaders("Content-Length")[0] > oneKiloByte
+		except:
+			# This is due to a bug on the MB website
+			return http_message.getheaders("Cteonnt-Length")[0] > oneKiloByte
 
 def create_archive():
 	now = datetime.datetime.now()

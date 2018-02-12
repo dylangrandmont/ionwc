@@ -73,7 +73,7 @@ Below is a list of potential improvements
 * wget is used for web crawling (data retrieval). This can be replaced with python functionality
 
 ### Migrate to Python 3.x
-* Project currently makes use for 2.7
+* Project currently makes use of 2.7
 
 ### Add Facilities Map
 * Need to introduce a facilities view and manage database
