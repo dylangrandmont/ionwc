@@ -5,14 +5,26 @@
 import os
 import datastream
 import licencescreatedatabases
-import postingscreatedatabase
 import unittest
 import test_licences
 import test_postings
 import test_constants
 import test_utilities
 import sys
-from licences import ABLicenceManager, BCLicenceManager, SKLicenceManager, MBLicenceManager, LicenceDatabase
+from licences import ABLicenceManager
+from licences import BCLicenceManager
+from licences import SKLicenceManager
+from licences import MBLicenceManager
+from licences import LicenceDatabase
+from postings import PostingsDatabase
+from postings import PostingsAggregateDatabase
+from postings import ResultsDatabase
+from postings import ResultsAggregateDatabase
+from postings import BCPostingsManager
+from postings import ABPostingsManager
+from postings import SKPostingsManager
+from postings import MBPostingsManager
+from postings import ResultsDatabase
 
 os.system('export IONWC_HOME=/home/dylan/Development/ionwc')
 
@@ -50,14 +62,41 @@ mbLicenceManager = MBLicenceManager(licenceDatabase)
 mbLicenceManager.populate_database()
 
 licenceDatabase.write_to_csv()
-
 licencescreatedatabases.run()
-postingscreatedatabase.run()
 
-#postingsDatabaseName = IONWC_HOME + '/dbs/PostingsDataBase.csv'
-#postingsDatabase = PostingsDatabase()
-#abPostingsManager = ABPostingsManager(postingsDatabase)
-#postingsDatabase.write_to_csv()
+postings_database = PostingsDatabase(IONWC_HOME + '/dbs/PostingsDataBase.csv')
+postings_aggregate_database = PostingsAggregateDatabase(IONWC_HOME + '/dbs/PostingsAggregateDataBase.csv')
+results_database = ResultsDatabase(IONWC_HOME + '/dbs/PostingsResultsDataBase.csv')
+results_aggregate_database = ResultsAggregateDatabase(IONWC_HOME + '/dbs/PostingsAggregateResultsDataBase.csv')
+
+bc_postings_manager = BCPostingsManager(postings_database,
+                                        postings_aggregate_database,
+                                        results_database,
+                                        results_aggregate_database)
+bc_postings_manager.populate_databases()
+
+ab_postings_manager = ABPostingsManager(postings_database,
+                                        postings_aggregate_database,
+                                        results_database,
+                                        results_aggregate_database)
+ab_postings_manager.populate_databases()
+
+sk_postings_manager = SKPostingsManager(postings_database,
+                                        postings_aggregate_database,
+                                        results_database,
+                                        results_aggregate_database)
+sk_postings_manager.populate_databases()
+
+mb_postings_manager = MBPostingsManager(postings_database,
+                                        postings_aggregate_database,
+                                        results_database,
+                                        results_aggregate_database)
+mb_postings_manager.populate_databases()
+
+postings_database.write_to_csv()
+postings_aggregate_database.write_to_csv()
+results_database.write_to_csv()
+results_aggregate_database.write_to_csv()
 
 
 # Generate Differences between new and submitted databases
