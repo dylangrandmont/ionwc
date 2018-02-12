@@ -10,6 +10,8 @@ from postings import ResultsDatabase
 from postings import ResultsAggregateDatabase
 from postings import BCPostingsManager
 from postings import ABPostingsManager
+from postings import SKPostingsManager
+from postings import MBPostingsManager
 from postings import ResultsDatabase
 
 IONWC_HOME = "/home/dylan/Development/ionwc"
@@ -30,6 +32,18 @@ ab_postings_manager = ABPostingsManager(postings_database,
                                         results_database,
                                         results_aggregate_database)
 ab_postings_manager.populate_databases()
+
+sk_postings_manager = SKPostingsManager(postings_database,
+                                        postings_aggregate_database,
+                                        results_database,
+                                        results_aggregate_database)
+sk_postings_manager.populate_databases()
+
+mb_postings_manager = MBPostingsManager(postings_database,
+                                        postings_aggregate_database,
+                                        results_database,
+                                        results_aggregate_database)
+mb_postings_manager.populate_databases()
 
 postings_database.write_to_csv()
 postings_aggregate_database.write_to_csv()

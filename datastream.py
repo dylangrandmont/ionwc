@@ -228,6 +228,7 @@ def create_archive():
 
 def run_all():
 	dataStreamBC = DataStreamBC()
+	#TODO: fix BC data retrieval
 	#dataStreamBC.retrieve_licenses()
 	#dataStreamBC.retrieve_spuds()
 	dataStreamBC.retrieve_land_postings()

@@ -52,14 +52,14 @@ def reformat_dollars(dollar_string):
     return dollar_string
 
 def km_per_degree_lat_lng(lat):
-  """ determine distance between degrees of latitude (const), using spheroid paramters """
-  e2 = 0.00669437999014
-  a = 6378.1370
-  pi = math.pi
-  km_per_degree_lat = pi * a * (1 - e2) / (180.0 * (1.0 - e2 * (math.sin(lat * pi / 180.0)**2)**(3.0/2.0)))
-  km_per_degree_lon = (pi * a * math.cos((lat * pi)/180.0)) / (180.0 * (1.0 - e2 * (math.sin(lat * pi / 180.0)**2))**0.5 )
+    """ determine distance between degrees of latitude (const), using spheroid paramters """
+    e2 = 0.00669437999014
+    a = 6378.1370
+    pi = math.pi
+    km_per_degree_lat = pi * a * (1 - e2) / (180.0 * (1.0 - e2 * (math.sin(lat * pi / 180.0)**2)**(3.0/2.0)))
+    km_per_degree_lon = (pi * a * math.cos((lat * pi)/180.0)) / (180.0 * (1.0 - e2 * (math.sin(lat * pi / 180.0)**2))**0.5 )
 
-  return km_per_degree_lat, km_per_degree_lon
+    return km_per_degree_lat, km_per_degree_lon
 
 
 def writeLicenseFile(licenseFile, licensee, wellname, licnum, uwi, year, month, day, field, zone, 
@@ -132,8 +132,8 @@ def writePostingOfferingAggregateDataBaseFile(ponAggregateDataBaseFile, saleDate
                                               aggregateLatitude, aggregateLongitude, province):
   ponAggregateDataBaseFile.write(saleDate + ':'
                                  + contractType + ':'
-                                 + contractNo + ':'
-                                 + hectares + ':'
+                                 + str(contractNo) + ':'
+                                 + str(hectares) + ':'
                                  + str(aggregateLatitude) + ':'
                                  + str(aggregateLongitude) + ':'
                                  + province + '\n')
@@ -147,9 +147,9 @@ def writePostingResultDataBaseFile(psrDataBaseFile, saleDate, status, bonus, dol
                         + reformat_dollars(dollarPerHectare) + ':' 
                         + clientDescription.title() + ':' 
                         + contractType + ':' 
-                        + contractNumber + ':' 
+                        + str(contractNumber) + ':' 
                         + str(hectares) + ':' 
-                        + tractNo + ':' 
+                        + str(tractNo) + ':' 
                         + uwi + ':' 
                         + topZone + ':' 
                         + baseZone + ':' 
