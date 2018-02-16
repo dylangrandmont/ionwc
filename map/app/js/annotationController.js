@@ -1,35 +1,5 @@
 app.controller('annotationController', ['$scope', '$sce', function($scope, $sce) {
 
-  $scope.advert = {
-    label:"Petrel Robertson Consulting Ltd. Reports",
-    val: false,
-    edges: [{
-      url: 'http://ionwc.com/prcl/kml/wilrich.kml?v=3',
-      text: "../prcl/prcl-wilrich-report",
-      php: 'prcl-wilrich-contactform.php'
-    },{
-      url:'http://ionwc.com/prcl/kml/bivouac.kml?v=3',
-      text: "../prcl/prcl-bivouac-report",
-      php: 'prcl-bivouac-contactform.php'
-    },{
-      url:'http://ionwc.com/prcl/kml/kaybob_notikewin.kml?v=3',
-      text: "../prcl/prcl-kaybob-report",
-      php: 'prcl-kaybob-contactform.php'
-    },{
-      url:'http://ionwc.com/prcl/kml/rock_creek.kml?v=3',
-      text: "../prcl/prcl-rock-creek-report",
-      php: 'prcl-rock-creek-contactform.php'
-    },{
-      url:'http://ionwc.com/prcl/kml/sagd_screening.kml?v=3',
-      text: "../prcl/prcl-sagd-report",
-      php: 'prcl-sagd-contactform.php'
-    },{
-      url:'http://ionwc.com/prcl/kml/wild_river.kml?v3',
-      text: "../prcl/prcl-wild-river-report",
-      php: 'prcl-wild-river-contactform.php'
-    }]
-  };
-
   $scope.geoEdgesCheckboxes = [{
     label:"Upper Cardium Shoreface",
     val:false,
@@ -126,107 +96,8 @@ app.controller('annotationController', ['$scope', '$sce', function($scope, $sce)
     queryWhere: "'TerminatingZone' CONTAINS IGNORING CASE 'viking'"
   }];
 
-  $scope.advertEdges = []
   $scope.geologicalEdges = [];
   $scope.licensingTrends = [];
-
-  var generatePrefix = function(phpFile) {
-    return "<img src='../prcl/prcl-logo.jpg' ><div class='ribbon'><span>SUMMARY</span></div><br><br><button class='btn btn-danger' data-toggle='collapse' data-target='#contact-form' style='color: white; background-color: #f4511e'><b>Click to Arrange a Presentation on this Study</b></button><div id='contact-form' class='collapse'><iframe src='../prcl/" + phpFile + "' frameborder='0' width='100%' height='480' ></iframe></div><br>";
-  };
-
-  for (var i in $scope.advert.edges) {
-    var advertEdge = new google.maps.KmlLayer($scope.advert.edges[i].url, {
-      preserveViewport: true,
-      suppressInfoWindows: true
-    });
-
-    $scope.advertEdges.push(advertEdge);
-  }
-
-  angular.element(document).ready(function () {
-
-    google.maps.event.addListener($scope.advertEdges[0], 'click', function(event) {
-      var text = $.ajax({
-        url: "../prcl/prcl-wilrich-report",
-        async: false
-      }).responseText;
-
-      pfx = generatePrefix('prcl-wilrich-contactform.php');
-      text = pfx + text;
-
-      adContent.innerHTML = text;
-      adModal.style.display = "block";
-    });
-
-    google.maps.event.addListener($scope.advertEdges[1], 'click', function(event) {
-      var text = $.ajax({
-        url: "../prcl/prcl-bivouac-report",
-        async: false
-      }).responseText;
-
-      pfx = generatePrefix('prcl-bivouac-contactform.php');
-      text = pfx + text;
-
-      adContent.innerHTML = text;
-      adModal.style.display = "block";
-    });
-
-    google.maps.event.addListener($scope.advertEdges[2], 'click', function(event) {
-      var text = $.ajax({
-        url: "../prcl/prcl-kaybob-report",
-        async: false
-      }).responseText;
-
-      pfx = generatePrefix('prcl-kaybob-contactform.php');
-      text = pfx + text;
-
-      adContent.innerHTML = text;
-      adModal.style.display = "block";
-    });
-
-    google.maps.event.addListener($scope.advertEdges[3], 'click', function(event) {
-      var text = $.ajax({
-        url: "../prcl/prcl-rock-creek-report",
-        async: false
-      }).responseText;
-
-      pfx = generatePrefix('prcl-rock-creek-contactform.php');
-      text = pfx + text;
-
-      adContent.innerHTML = text;
-      adModal.style.display = "block";
-    });
-
-    google.maps.event.addListener($scope.advertEdges[4], 'click', function(event) {
-      var text = $.ajax({
-        url: "../prcl/prcl-sagd-report",
-        async: false
-      }).responseText;
-
-      pfx = generatePrefix('prcl-sagd-contactform.php');
-      text = pfx + text;
-
-      adContent.innerHTML = text;
-      adModal.style.display = "block";
-    });
-
-    google.maps.event.addListener($scope.advertEdges[5], 'click', function(event) {
-      var text = $.ajax({
-        url: "../prcl/prcl-wild-river-report",
-        async: false
-      }).responseText;
-
-      pfx = generatePrefix('prcl-wild-river-contactform.php');
-      text = pfx + text;
-
-      adContent.innerHTML = text;
-      adModal.style.display = "block";
-    });
-
-    for (var i in $scope.advertEdges) {
-      $scope.advertEdges[i].setMap(null);
-    }
-  });
 
   for (var i in $scope.geoEdgesCheckboxes) {
     var geologicalEdge = new google.maps.KmlLayer($scope.geoEdgesCheckboxes[i].url, {
@@ -250,17 +121,6 @@ app.controller('annotationController', ['$scope', '$sce', function($scope, $sce)
     });
     $scope.licensingTrends.push(licensingTrend);
   }
-
-  $scope.$watch("advert.val", function(n){
-    for (var i in $scope.advertEdges)
-    {
-      if ($scope.advertEdges[i].getMap() != null) {
-        $scope.advertEdges[i].setMap(null);
-      } else {
-        $scope.advertEdges[i].setMap(map);
-      }
-    }
-  }, true );
 
   $scope.$watch("geoEdgesCheckboxes", function(n){
     for (var i in n) {
