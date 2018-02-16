@@ -28,6 +28,7 @@ This code package was developed on Ubuntu operating system but will work on most
 Depedencies: 
 * Python 2.7
 * wget
+* Node.js
 
 ## Setting Environment Variables
 
@@ -52,6 +53,18 @@ into your command line. This will update all raw data, determine any new additio
 then send those additions to the Fusion Tables Database.
 You will be prompted with login credentials in order to update the Fusion Tables Database.
 
+## Building the web client
+
+On the command line, run the following
+```
+npm install browser-sync --save-dev
+npm install --save-dev gulp-zip
+```
+
+To run the web client, execute
+```
+gulp watch
+```
 
 # Information for Developers
 
