@@ -59,6 +59,7 @@ On the command line, run the following
 ```
 npm install browser-sync --save-dev
 npm install --save-dev gulp-zip
+npm install --save-dev gulp-chmod
 ```
 
 To run the web client, execute
