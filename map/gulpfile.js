@@ -1,45 +1,27 @@
 const gulp = require('gulp');
+const browserSync = require('browser-sync').create();
+const jasmine = require('gulp-jasmine');
+const zip = require('gulp-zip');
 
-var browserSync = require('browser-sync').create();
-
-gulp.task('browserSync', function() {
+gulp.task('watch', ()=>
   browserSync.init({
     server: {
       baseDir: 'app'
     },
   })
-})
-
-gulp.task('watch', ['browserSync'], function (){
-});
-
-const chmod = require('gulp-chmod');
-gulp.task('chmod', () =>
-    gulp.src('src/app.js')
-        .pipe(chmod({
-            owner: {
-                read: true,
-                write: true,
-                execute: true
-            },
-            group: {
-            	read: true,
-                execute: true
-            },
-            others: {
-            	read: true,
-                execute: true
-            }
-        }))
-        .pipe(gulp.dest('dist'))
+);
+ 
+gulp.task('test', () =>
+  gulp.src('test/*.js')
+    // gulp-jasmine works on filepaths so you can't have any plugins before it
+    .pipe(jasmine())
 );
 
-const zip = require('gulp-zip');
 gulp.task('zip', () =>
-    gulp.src('app/**')
-        .pipe(zip('map.zip'))
-        .pipe(gulp.dest('dist'))
+  gulp.src('app/**')
+    .pipe(zip('map.zip'))
+    .pipe(gulp.dest('dist'))
 );
 
-gulp.task('build', ['chmod', 'zip'], function (){
+gulp.task('build', ['test', 'zip'], function (){
 });

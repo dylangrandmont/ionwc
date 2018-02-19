@@ -60,6 +60,7 @@ On the command line, run the following
 npm install browser-sync --save-dev
 npm install --save-dev gulp-zip
 npm install --save-dev gulp-chmod
+npm install --save-dev gulp-jasmine
 ```
 
 To run the web client, execute

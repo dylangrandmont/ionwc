@@ -12,6 +12,11 @@
     "browser-sync": "^2.23.6",
     "gulp": "^3.9.1",
     "gulp-chmod": "^2.0.0",
+    "gulp-jasmine": "^3.0.0",
     "gulp-zip": "^4.1.0"
+  },
+  "dependencies": {
+    "jasmine": "^3.0.0",
+    "jasmine-node": "^1.14.5"
   }
 }
