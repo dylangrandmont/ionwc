@@ -10,3 +10,10 @@ DateService.prototype.getReformatedDate = function(date) {
 
     return year + "." + month + "." + day;
 };
+
+DateService.prototype.getDefaultWellStartDate = function() {
+  var defaultWellStartDate = new Date();
+  defaultWellStartDate.setDate(defaultWellStartDate.getDate() - 21);
+
+  return defaultWellStartDate;
+};

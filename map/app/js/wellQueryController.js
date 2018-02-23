@@ -5,15 +5,13 @@ app.controller('wellQueryController', ['$scope', '$rootScope', '$location', func
   $scope.fluid = '';
   $scope.format = 'dd-MMM-yyyy';
   $scope.toDate = new Date();
-  $scope.fromDate = defaultWellStartDate;
-
-  const dateService = new DateService();
+  $scope.fromDate = $rootScope.dateService.getDefaultWellStartDate();
 
   localStorage.licensee = $scope.licensee;
   localStorage.zone = $scope.zone;
   localStorage.fluid = $scope.fluid;
-  localStorage.fromDate = dateService.getReformatedDate($scope.fromDate);
-  localStorage.toDate = dateService.getReformatedDate($scope.toDate);
+  localStorage.fromDate = $rootScope.dateService.getReformatedDate($scope.fromDate);
+  localStorage.toDate = $rootScope.dateService.getReformatedDate($scope.toDate);
 
   $scope.fromDateOptions = {
     maxDate: new Date(2020, 0, 0),
@@ -109,8 +107,8 @@ app.controller('wellQueryController', ['$scope', '$rootScope', '$location', func
       "query": "SELECT count(Licensee) AS '" + statsTableTotalLabel + "' FROM " + tableID + 
         " WHERE 'Licensee' CONTAINS IGNORING CASE '" + $scope.licensee + "' AND 'TerminatingZone' CONTAINS IGNORING CASE '" + 
         $scope.zone + "' AND 'Substance' CONTAINS IGNORING CASE '" + $scope.fluid + "' AND  '" + 
-        dateString + "' >= '" + dateService.getReformatedDate($scope.fromDate) + "' AND '" + dateString + "' <= '" + 
-        dateService.getReformatedDate($scope.toDate) + "' AND 'latitude' >= '" + $rootScope.swLat + "' AND 'latitude' <= '" + 
+        dateString + "' >= '" + $rootScope.dateService.getReformatedDate($scope.fromDate) + "' AND '" + dateString + "' <= '" + 
+        $rootScope.dateService.getReformatedDate($scope.toDate) + "' AND 'latitude' >= '" + $rootScope.swLat + "' AND 'latitude' <= '" + 
         $rootScope.neLat + "' AND 'longitude' <= '" + $rootScope.neLng + "' AND 'longitude' >= '" + 
         $rootScope.swLng + "'",
       "chartType": "Table",
@@ -123,8 +121,8 @@ app.controller('wellQueryController', ['$scope', '$rootScope', '$location', func
       "query":"SELECT 'Licensee' AS 'Top Operators', count(Licensee) AS Count FROM " + tableID + 
         " WHERE 'Licensee' CONTAINS IGNORING CASE '" + $scope.licensee + "' AND 'TerminatingZone' CONTAINS IGNORING CASE '" + 
         $scope.zone + "' AND 'Substance' CONTAINS IGNORING CASE '" + $scope.fluid + "' AND  '" + 
-        dateString + "' >= '" + dateService.getReformatedDate($scope.fromDate) + "' AND '" + dateString + "' <= '" + 
-        dateService.getReformatedDate($scope.toDate) + "' AND 'latitude' >= '" + $rootScope.swLat + "' AND 'latitude' <= '" + 
+        dateString + "' >= '" + $rootScope.dateService.getReformatedDate($scope.fromDate) + "' AND '" + dateString + "' <= '" + 
+        $rootScope.dateService.getReformatedDate($scope.toDate) + "' AND 'latitude' >= '" + $rootScope.swLat + "' AND 'latitude' <= '" + 
         $rootScope.neLat + "' AND 'longitude' <= '" + $rootScope.neLng + "' AND 'longitude' >= '" + 
         $rootScope.swLng + "' GROUP BY 'Licensee' ORDER BY count(Licensee) desc LIMIT 15 ",
        "chartType": "Table",
@@ -137,8 +135,8 @@ app.controller('wellQueryController', ['$scope', '$rootScope', '$location', func
       "query":"SELECT 'TerminatingZone' AS 'Top Terminating Zones', count(TerminatingZone) AS Count FROM " + tableID + 
         " WHERE 'Licensee' CONTAINS IGNORING CASE '" + $scope.licensee + "' AND 'TerminatingZone' CONTAINS IGNORING CASE '" + 
         $scope.zone + "' AND 'Substance' CONTAINS IGNORING CASE '" + $scope.fluid + "' AND  '" + 
-        dateString + "' >= '" + dateService.getReformatedDate($scope.fromDate) + "' AND '" + dateString + "' <= '" + 
-        dateService.getReformatedDate($scope.toDate) + "' AND 'latitude' >= '" + $rootScope.swLat + "' AND 'latitude' <= '" + 
+        dateString + "' >= '" + $rootScope.dateService.getReformatedDate($scope.fromDate) + "' AND '" + dateString + "' <= '" + 
+        $rootScope.dateService.getReformatedDate($scope.toDate) + "' AND 'latitude' >= '" + $rootScope.swLat + "' AND 'latitude' <= '" + 
         $rootScope.neLat + "' AND 'longitude' <= '" + $rootScope.neLng + "' AND 'longitude' >= '" + 
         $rootScope.swLng + "' GROUP BY 'TerminatingZone' ORDER BY count(TerminatingZone) desc LIMIT 15 ",
       "chartType": "Table",
@@ -151,7 +149,7 @@ app.controller('wellQueryController', ['$scope', '$rootScope', '$location', func
       "query":"SELECT 'Licensee', count(Licensee) AS '' FROM " + tableID + " WHERE 'Licensee' CONTAINS IGNORING CASE '" + 
         $scope.licensee + "' AND 'TerminatingZone' CONTAINS IGNORING CASE '" + $scope.zone + 
         "' AND 'Substance' CONTAINS IGNORING CASE '" + $scope.fluid  + "' AND  '" + dateString + 
-        "' >= '" + dateService.getReformatedDate($scope.fromDate) + "' AND '" + dateString + "' <= '" + dateService.getReformatedDate($scope.toDate) + 
+        "' >= '" + $rootScope.dateService.getReformatedDate($scope.fromDate) + "' AND '" + dateString + "' <= '" + $rootScope.dateService.getReformatedDate($scope.toDate) + 
         "' AND 'latitude' >= '" + $rootScope.swLat + "' AND 'latitude' <= '" + 
           $rootScope.neLat + "' AND 'longitude' <= '" + $rootScope.neLng + "' AND 'longitude' >= '" + 
           $rootScope.swLng + "' GROUP BY 'Licensee' ORDER BY count(Licensee) desc LIMIT 15 ",
@@ -165,7 +163,7 @@ app.controller('wellQueryController', ['$scope', '$rootScope', '$location', func
       "query":"SELECT 'TerminatingZone' AS 'Terminating Zone', count(TerminatingZone) AS '' FROM " + tableID + 
         " WHERE 'Licensee' CONTAINS IGNORING CASE '" + $scope.licensee + "' AND 'TerminatingZone' CONTAINS IGNORING CASE '" + 
         $scope.zone + "' AND 'Substance' CONTAINS IGNORING CASE '" + $scope.fluid + "' AND  '" + dateString + "' >= '" + 
-        dateService.getReformatedDate($scope.fromDate) + "' AND '" + dateString + "' <= '" + dateService.getReformatedDate($scope.toDate) + 
+        $rootScope.dateService.getReformatedDate($scope.fromDate) + "' AND '" + dateString + "' <= '" + $rootScope.dateService.getReformatedDate($scope.toDate) + 
         "' AND 'latitude' >= '" + $rootScope.swLat + "' AND 'latitude' <= '" + 
         $rootScope.neLat + "' AND 'longitude' <= '" + $rootScope.neLng + "' AND 'longitude' >= '" + 
         $rootScope.swLng + "' GROUP BY 'TerminatingZone' ORDER BY count(TerminatingZone) desc LIMIT 15 ",
@@ -176,7 +174,7 @@ app.controller('wellQueryController', ['$scope', '$rootScope', '$location', func
     var query = "SELECT '" + dateString + "', count(" + dateString + ") AS " + chartDataType + " FROM " + tableID + 
       " WHERE 'Licensee' CONTAINS IGNORING CASE '" + $scope.licensee + "' AND 'TerminatingZone' CONTAINS IGNORING CASE '" + 
       $scope.zone + "' AND 'Substance' CONTAINS IGNORING CASE '" + $scope.fluid + "' AND '" + dateString + "' >= '" + 
-      dateService.getReformatedDate($scope.fromDate) + "' AND '" + dateString + "' <= '" + dateService.getReformatedDate($scope.toDate) + 
+      $rootScope.dateService.getReformatedDate($scope.fromDate) + "' AND '" + dateString + "' <= '" + $rootScope.dateService.getReformatedDate($scope.toDate) + 
       "' AND 'latitude' >= '" + $rootScope.swLat + "' AND 'latitude' <= '" + 
       $rootScope.neLat + "' AND 'longitude' <= '" + $rootScope.neLng + "' AND 'longitude' >= '" + 
       $rootScope.swLng + "' GROUP BY '" + dateString + "' ORDER BY '" + dateString + "'";
@@ -194,7 +192,7 @@ app.controller('wellQueryController', ['$scope', '$rootScope', '$location', func
     query = "SELECT 'Substance', count(Substance) FROM " + tableID + " WHERE 'Licensee' CONTAINS IGNORING CASE '" + 
       $scope.licensee + "' AND 'TerminatingZone' CONTAINS IGNORING CASE '" + $scope.zone + 
       "' AND 'Substance' CONTAINS IGNORING CASE '" + $scope.fluid + "' AND  '" + dateString + "' >= '" + 
-      dateService.getReformatedDate($scope.fromDate) + "' AND '" + dateString + "' <= '" + dateService.getReformatedDate($scope.toDate) + 
+      $rootScope.dateService.getReformatedDate($scope.fromDate) + "' AND '" + dateString + "' <= '" + $rootScope.dateService.getReformatedDate($scope.toDate) + 
       "' AND 'latitude' >= '" + $rootScope.swLat + "' AND 'latitude' <= '" + 
       $rootScope.neLat + "' AND 'longitude' <= '" + $rootScope.neLng + "' AND 'longitude' >= '" + 
       $rootScope.swLng + "' GROUP BY 'Substance'";           
@@ -242,24 +240,24 @@ app.controller('wellQueryController', ['$scope', '$rootScope', '$location', func
   };
 
   $scope.onWellQueryChange = function(updateLocalStorage) {
-    drillingLayer.setOptions({
+    $rootScope.drillingLayer.setOptions({
       query: {
         select: 'address',
         from: tableIDs.drilling,
         where: "'Licensee' CONTAINS IGNORING CASE '" + $scope.licensee + "' AND 'Substance' CONTAINS IGNORING CASE '" + 
         $scope.fluid + "' AND 'TerminatingZone' CONTAINS IGNORING CASE '" + $scope.zone + "' AND  'DrillDate' >= '" + 
-        dateService.getReformatedDate($scope.fromDate) + "' AND 'DrillDate' <= '" + dateService.getReformatedDate($scope.toDate) + "'" 
+        $rootScope.dateService.getReformatedDate($scope.fromDate) + "' AND 'DrillDate' <= '" + $rootScope.dateService.getReformatedDate($scope.toDate) + "'" 
       },
       styles: markerColors 
     });
 
-    licencingLayer.setOptions({
+    $rootScope.licencingLayer.setOptions({
       query: {
         select: 'address',
         from: tableIDs.licensing,
         where: "'Licensee' CONTAINS IGNORING CASE '" + $scope.licensee + "' AND 'Substance' CONTAINS IGNORING CASE '" + 
         $scope.fluid + "' AND 'TerminatingZone' CONTAINS IGNORING CASE '" + $scope.zone + "' AND  'Date' >= '" + 
-        dateService.getReformatedDate($scope.fromDate) + "' AND 'Date' <= '" + dateService.getReformatedDate($scope.toDate) + "'" 
+        $rootScope.dateService.getReformatedDate($scope.fromDate) + "' AND 'Date' <= '" + $rootScope.dateService.getReformatedDate($scope.toDate) + "'" 
       },
       styles: markerColors 
     });
@@ -271,8 +269,8 @@ app.controller('wellQueryController', ['$scope', '$rootScope', '$location', func
         localStorage.licensee = $scope.licensee;
         localStorage.zone = $scope.zone;
         localStorage.fluid = $scope.fluid;
-        localStorage.fromDate = dateService.getReformatedDate($scope.fromDate);
-        localStorage.toDate = dateService.getReformatedDate($scope.toDate);
+        localStorage.fromDate = $rootScope.dateService.getReformatedDate($scope.fromDate);
+        localStorage.toDate = $rootScope.dateService.getReformatedDate($scope.toDate);
       }
     }
   };

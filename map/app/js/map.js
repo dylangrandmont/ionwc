@@ -6,32 +6,7 @@ var getFormatDate = function(date) {
   return year + "." + month + "." + day;
 };
 
-var defaultWellStartDate = new Date();
-defaultWellStartDate.setDate(defaultWellStartDate.getDate() - 21);
-
-var wellFromDate = getFormatDate(defaultWellStartDate);
-
 var map;
-
-var drillingLayer = new google.maps.FusionTablesLayer({
-  suppressInfoWindows: true,
-  query: {
-    select: 'address',
-    from: tableIDs.drilling,
-    where:  "'DrillDate' >= '" + wellFromDate + "'"
-  },
-  styles: markerColors
-});
-
-var licencingLayer = new google.maps.FusionTablesLayer({
-  suppressInfoWindows: true,
-  query: {
-    select: 'address',
-    from: tableIDs.licensing,
-    where: "'Date' >= '" + wellFromDate + "'"
-  },
-  styles: markerColors
-});
 
 var upComingLandSaleLayer = new google.maps.FusionTablesLayer({
   suppressInfoWindows: true,
@@ -68,7 +43,29 @@ var app = angular.module('mapApp', ['ngAnimate', 'ngSanitize', 'ui.bootstrap', '
   infowindow = new google.maps.InfoWindow();
   infowindow.setZIndex(100);
 
-  google.maps.event.addListener(drillingLayer, 'click', function(e) {
+  $rootScope.dateService = new DateService();
+
+  $rootScope.drillingLayer = new google.maps.FusionTablesLayer({
+    suppressInfoWindows: true,
+    query: {
+      select: 'address',
+      from: tableIDs.drilling,
+      where:  "'DrillDate' >= '" + $rootScope.dateService.getDefaultWellStartDate() + "'"
+    },
+    styles: markerColors
+  });
+
+  $rootScope.licencingLayer = new google.maps.FusionTablesLayer({
+    suppressInfoWindows: true,
+    query: {
+      select: 'address',
+      from: tableIDs.licensing,
+      where: "'Date' >= '" + $rootScope.dateService.getDefaultWellStartDate() + "'"
+    },
+    styles: markerColors
+  });
+
+  google.maps.event.addListener($rootScope.drillingLayer, 'click', function(e) {
     if (infowindow) {
       infowindow.close();
     } else {
@@ -91,7 +88,7 @@ var app = angular.module('mapApp', ['ngAnimate', 'ngSanitize', 'ui.bootstrap', '
     infowindow.open(map);
   });
 
-  google.maps.event.addListener(licencingLayer, 'click', function(e) {
+  google.maps.event.addListener($rootScope.licencingLayer, 'click', function(e) {
     if (infowindow) {
       infowindow.close();
     } else {
@@ -236,10 +233,10 @@ var app = angular.module('mapApp', ['ngAnimate', 'ngSanitize', 'ui.bootstrap', '
     $scope.dataRangeTable = $sce.trustAsHtml(drillingDateRangeTable);
     $scope.dataAttributions = $sce.trustAsHtml(wellAttributions);
 
-    licencingLayer.setMap(null);
+    $rootScope.licencingLayer.setMap(null);
     upComingLandSaleLayer.setMap(null);
     previousLandSaleLayer.setMap(null);
-    drillingLayer.setMap(map);
+    $rootScope.drillingLayer.setMap(map);
   };
 
   $scope.onSelectLicencing = function() {
@@ -251,10 +248,10 @@ var app = angular.module('mapApp', ['ngAnimate', 'ngSanitize', 'ui.bootstrap', '
     $scope.dataRangeTable = $sce.trustAsHtml(licensingDateRangeTable);
     $scope.dataAttributions = $sce.trustAsHtml(wellAttributions);
 
-    drillingLayer.setMap(null);
+    $rootScope.drillingLayer.setMap(null);
     upComingLandSaleLayer.setMap(null);
     previousLandSaleLayer.setMap(null);
-    licencingLayer.setMap(map);
+    $rootScope.licencingLayer.setMap(map);
   };
 
   $scope.onSelectLandSales = function() {
@@ -266,8 +263,8 @@ var app = angular.module('mapApp', ['ngAnimate', 'ngSanitize', 'ui.bootstrap', '
     $scope.dataRangeTable = $sce.trustAsHtml(landSaleDateRangeTable);
     $scope.dataAttributions = $sce.trustAsHtml(landSaleAttributions);
 
-    drillingLayer.setMap(null);
-    licencingLayer.setMap(null);
+    $rootScope.drillingLayer.setMap(null);
+    $rootScope.licencingLayer.setMap(null);
 
     if ($rootScope.showUpcoming) {
       upComingLandSaleLayer.setMap(map);
