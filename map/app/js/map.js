@@ -1,33 +1,4 @@
-var getFormatDate = function(date) {
-  var day = ('0' + date.getDate()).slice(-2),
-      month = ('0' + (date.getMonth() + 1)).slice(-2), //January is 0!
-      year = date.getFullYear();
-
-  return year + "." + month + "." + day;
-};
-
 var map;
-
-var upComingLandSaleLayer = new google.maps.FusionTablesLayer({
-  suppressInfoWindows: true,
-  query: {
-    select: '\'Geocodable address\'',
-    from: tableIDs.upComingLandSale,
-    where: "'saleDate' >= '" + getFormatDate(new Date()) + "'"
-  },
-  options: {
-    styleId: 2,
-    templateId: 2
-  }
-});
-
-var previousLandSaleLayer = new google.maps.FusionTablesLayer({
-  suppressInfoWindows: true,
-  query: {
-    select: '\'Geocodable address\'',
-    from: tableIDs.previousLandSale
-  },
-});
 
 var app = angular.module('mapApp', ['ngAnimate', 'ngSanitize', 'ui.bootstrap', 'ngRoute'])
 .config(['$locationProvider', function($locationProvider) {
@@ -63,6 +34,27 @@ var app = angular.module('mapApp', ['ngAnimate', 'ngSanitize', 'ui.bootstrap', '
       where: "'Date' >= '" + $rootScope.dateService.getDefaultWellStartDate() + "'"
     },
     styles: markerColors
+  });
+
+  $rootScope.upComingLandSaleLayer = new google.maps.FusionTablesLayer({
+    suppressInfoWindows: true,
+    query: {
+      select: '\'Geocodable address\'',
+      from: tableIDs.upComingLandSale,
+      where: "'saleDate' >= '" + $rootScope.dateService.getReformatedDate(new Date()) + "'"
+    },
+    options: {
+      styleId: 2,
+      templateId: 2
+    }
+  });
+
+  $rootScope.previousLandSaleLayer = new google.maps.FusionTablesLayer({
+    suppressInfoWindows: true,
+    query: {
+      select: '\'Geocodable address\'',
+      from: tableIDs.previousLandSale
+    },
   });
 
   google.maps.event.addListener($rootScope.drillingLayer, 'click', function(e) {
@@ -111,7 +103,7 @@ var app = angular.module('mapApp', ['ngAnimate', 'ngSanitize', 'ui.bootstrap', '
     infowindow.open(map);
   });
 
-  google.maps.event.addListener(upComingLandSaleLayer, 'click', function(e) 
+  google.maps.event.addListener($rootScope.upComingLandSaleLayer, 'click', function(e) 
   {
     if (infowindow) {
       infowindow.close();
@@ -134,7 +126,7 @@ var app = angular.module('mapApp', ['ngAnimate', 'ngSanitize', 'ui.bootstrap', '
     infowindow.open(map);   
   });
 
-  google.maps.event.addListener(previousLandSaleLayer, 'click', function(e) 
+  google.maps.event.addListener($rootScope.previousLandSaleLayer, 'click', function(e) 
   {
     if (infowindow) {
       infowindow.close();
@@ -234,8 +226,8 @@ var app = angular.module('mapApp', ['ngAnimate', 'ngSanitize', 'ui.bootstrap', '
     $scope.dataAttributions = $sce.trustAsHtml(wellAttributions);
 
     $rootScope.licencingLayer.setMap(null);
-    upComingLandSaleLayer.setMap(null);
-    previousLandSaleLayer.setMap(null);
+    $rootScope.upComingLandSaleLayer.setMap(null);
+    $rootScope.previousLandSaleLayer.setMap(null);
     $rootScope.drillingLayer.setMap(map);
   };
 
@@ -249,8 +241,8 @@ var app = angular.module('mapApp', ['ngAnimate', 'ngSanitize', 'ui.bootstrap', '
     $scope.dataAttributions = $sce.trustAsHtml(wellAttributions);
 
     $rootScope.drillingLayer.setMap(null);
-    upComingLandSaleLayer.setMap(null);
-    previousLandSaleLayer.setMap(null);
+    $rootScope.upComingLandSaleLayer.setMap(null);
+    $rootScope.previousLandSaleLayer.setMap(null);
     $rootScope.licencingLayer.setMap(map);
   };
 
@@ -267,15 +259,15 @@ var app = angular.module('mapApp', ['ngAnimate', 'ngSanitize', 'ui.bootstrap', '
     $rootScope.licencingLayer.setMap(null);
 
     if ($rootScope.showUpcoming) {
-      upComingLandSaleLayer.setMap(map);
+      $rootScope.upComingLandSaleLayer.setMap(map);
     } else {
-      upComingLandSaleLayer.setMap(null);
+      $rootScope.upComingLandSaleLayer.setMap(null);
     }
 
     if ($rootScope.showPrevious) {
-      previousLandSaleLayer.setMap(map);
+      $rootScope.previousLandSaleLayer.setMap(map);
     } else {
-      previousLandSaleLayer.setMap(null);
+      $rootScope.previousLandSaleLayer.setMap(null);
     }
   };
 

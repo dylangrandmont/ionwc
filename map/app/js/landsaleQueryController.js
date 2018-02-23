@@ -67,15 +67,15 @@ app.controller('landsaleQueryController', ['$scope', '$rootScope', '$location', 
 
   if ($rootScope.viewType == 'Land Sales') { 
     if ($rootScope.showUpcoming) {
-      upComingLandSaleLayer.setMap(map);
+      $rootScope.upComingLandSaleLayer.setMap(map);
     } else {
-      upComingLandSaleLayer.setMap(null);
+      $rootScope.upComingLandSaleLayer.setMap(null);
     }
 
     if ($rootScope.showPrevious) {
-      previousLandSaleLayer.setMap(map);
+      $rootScope.previousLandSaleLayer.setMap(map);
     } else {
-      previousLandSaleLayer.setMap(null);
+      $rootScope.previousLandSaleLayer.setMap(null);
     }
   }
 
@@ -141,7 +141,7 @@ app.controller('landsaleQueryController', ['$scope', '$rootScope', '$location', 
   });
 
     var querySales = "SELECT 'saleDate' AS 'Select Sale Date', count(contractNo) AS 'Contracts', SUM(hectares) AS 'Hectares' FROM " +
-    "1HUapBmqcSP_Dkz1OA_L1LAv7flecCkVeK8gQrJnV" + " WHERE 'saleDate' >= '" + getFormatDate(new Date()) + 
+    "1HUapBmqcSP_Dkz1OA_L1LAv7flecCkVeK8gQrJnV" + " WHERE 'saleDate' >= '" + $rootScope.dateService.getReformatedDate(new Date()) + 
     "' GROUP BY 'saleDate' ORDER BY 'saleDate' ASC";
 
     var queryTextSales = encodeURIComponent(querySales);
@@ -307,18 +307,18 @@ app.controller('landsaleQueryController', ['$scope', '$rootScope', '$location', 
   $scope.toggleShowPrevious = function() {
     $rootScope.showPrevious = !$rootScope.showPrevious;
     if ($rootScope.showPrevious) {
-      previousLandSaleLayer.setMap(map);
+      $rootScope.previousLandSaleLayer.setMap(map);
     } else {
-      previousLandSaleLayer.setMap(null);
+      $rootScope.previousLandSaleLayer.setMap(null);
     }
   };
 
   $scope.toggleShowUpcoming = function () {
     $rootScope.showUpcoming = !$rootScope.showUpcoming;
     if ($rootScope.showUpcoming) {
-      upComingLandSaleLayer.setMap(map);
+      $rootScope.upComingLandSaleLayer.setMap(map);
     } else {
-      upComingLandSaleLayer.setMap(null);
+      $rootScope.upComingLandSaleLayer.setMap(null);
     }
   };
 
@@ -341,14 +341,14 @@ app.controller('landsaleQueryController', ['$scope', '$rootScope', '$location', 
   $scope.onLandSaleQueryChange = function() {
 
     var queryStrings = getQueryStrings();
-    upComingLandSaleLayer.setOptions({
+    $rootScope.upComingLandSaleLayer.setOptions({
       query: {
         select: 'address',
         from: tableIDs.upComingLandSale,
         where: queryStrings.upComingQuery
       }
     });
-    previousLandSaleLayer.setOptions({
+    $rootScope.previousLandSaleLayer.setOptions({
       query: {
         select: 'address',
         from: tableIDs.previousLandSale,
@@ -382,8 +382,8 @@ app.controller('landsaleQueryController', ['$scope', '$rootScope', '$location', 
       }
     }
 
-    upComingQuery = queryString + "'saleDate' >= '" + getFormatDate($scope.fromDate) + "' AND 'saleDate' <= '" + getFormatDate($scope.toDate) + "'";
-    previousQuery = queryString + "'saleDate' >= '" + getFormatDate($scope.previousFromDate) + "' AND 'saleDate' <= '" + getFormatDate($scope.previousToDate) + "'";
+    upComingQuery = queryString + "'saleDate' >= '" + $rootScope.dateService.getReformatedDate($scope.fromDate) + "' AND 'saleDate' <= '" + $rootScope.dateService.getReformatedDate($scope.toDate) + "'";
+    previousQuery = queryString + "'saleDate' >= '" + $rootScope.dateService.getReformatedDate($scope.previousFromDate) + "' AND 'saleDate' <= '" + $rootScope.dateService.getReformatedDate($scope.previousToDate) + "'";
     queryStrings = {
       'upComingQuery': upComingQuery,
       'previousQuery': previousQuery
