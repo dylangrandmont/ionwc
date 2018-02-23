@@ -160,7 +160,7 @@ var app = angular.module('mapApp', ['ngAnimate', 'ngSanitize', 'ui.bootstrap', '
   });
 
   $scope.disclaimer = $sce.trustAsHtml(disclaimer);
-  $scope.copyrightRange = "2016-2017";
+  $scope.copyrightRange = COPYRIGHT_RANGE;
   $scope.dashboardOpen = false;
 
   $rootScope.showPrevious = false;

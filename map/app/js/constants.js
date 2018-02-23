@@ -37,6 +37,8 @@ var disclaimer = "The information contained within this page is believed to be t
 	of production. Nonetheless, Eye on Western Canada shall not be liable for the accuracy of such information and \
 	the information contained herein shall be used at the sole risk and discretion of the user.";
 
+const COPYRIGHT_RANGE = "2016-2018";
+
 var mapOptions = {
   center: {lat: 56, lng: -111},
   zoom: 5,

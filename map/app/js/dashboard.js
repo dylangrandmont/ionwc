@@ -52,6 +52,7 @@ var dashboardApp = angular.module('dashboardApp', [])
   google.visualization.events.addListener(topFluids, 'select', selectHandlerFluids);
 
   $scope.viewType = localStorage.viewType;
+  $scope.copyrightRange = COPYRIGHT_RANGE;
 
   window.addEventListener('storage', function() {
     updateCurrentView();
