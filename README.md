@@ -7,11 +7,13 @@ Author: Dylan Grandmont, (C) 2016-2018
 # Introduction
 
 Eye on Western Canada (IONWC) has three components: 
-* WEBSITE: web-based mapping platform hosted at http://ionwc.com/map, see public_html
-* SERVER CODE: collection of code to download, update, and parse data for mapping.
-* GOOGLE ACCOUNT: account hosts Fusion Tables, which act as the database which is read by (1). The account name is ionwestcan@gmail.com
+* Web client: web-based mapping platform hosted at http://ionwc.com/map.
+See https://github.com/dylangrandmont/ionwc-client
+* Database Parser: collection of code to download, update, and parse data for mapping.
+See https://github.com/dylangrandmont/ionwc
+* Google Account: hosts Fusion Tables, which act as the database which is read by (1). The account name is ionwestcan@gmail.com
 
-This folder contains component (2). It generally works as follows:
+This folder contains the Database Parser component. It generally works as follows:
 * Data is downloaded from online government sources
 * Data is parsed into consistent formats and placed in database files (csv files)
 * The databases are uploaded and stored in Google Fusion Tables
@@ -28,7 +30,6 @@ This code package was developed on Ubuntu operating system but will work on most
 Depedencies: 
 * Python 2.7
 * wget
-* Node.js
 
 ## Setting Environment Variables
 
@@ -53,20 +54,6 @@ into your command line. This will update all raw data, determine any new additio
 then send those additions to the Fusion Tables Database.
 You will be prompted with login credentials in order to update the Fusion Tables Database.
 
-## Building the web client
-
-On the command line, run the following
-```
-npm install browser-sync --save-dev
-npm install --save-dev gulp-zip
-npm install --save-dev gulp-chmod
-npm install --save-dev gulp-jasmine
-```
-
-To run the web client, execute
-```
-gulp watch
-```
 
 # Information for Developers
 
@@ -95,11 +82,6 @@ Below is a list of potential improvements
 
 ### Unit Test Coverage
 * Measurement and improvement of python unit tests
-* Introduction of Javascript unit test coverage
-
-### Build Automation
-* Potentially use gulp or some other library to minimize javascript code, run tests
-
 
 
 # Manual Maintainence
