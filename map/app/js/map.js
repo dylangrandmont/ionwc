@@ -221,7 +221,7 @@ var app = angular.module('mapApp', ['ngAnimate', 'ngSanitize', 'ui.bootstrap', '
     $rootScope.viewType = 'Drilling';
     localStorage.viewType = 'Drilling';
 
-    $scope.legend = $sce.trustAsHtml(wellLegend);
+    $scope.legend = $sce.trustAsHtml(WELL_LEGEND);
     $scope.dataRangeTable = $sce.trustAsHtml(drillingDateRangeTable);
     $scope.dataAttributions = $sce.trustAsHtml(wellAttributions);
 
@@ -236,7 +236,7 @@ var app = angular.module('mapApp', ['ngAnimate', 'ngSanitize', 'ui.bootstrap', '
     $rootScope.viewType = 'Licences';
     localStorage.viewType = 'Licences';
 
-    $scope.legend = $sce.trustAsHtml(wellLegend);
+    $scope.legend = $sce.trustAsHtml(WELL_LEGEND);
     $scope.dataRangeTable = $sce.trustAsHtml(licensingDateRangeTable);
     $scope.dataAttributions = $sce.trustAsHtml(wellAttributions);
 
@@ -251,7 +251,7 @@ var app = angular.module('mapApp', ['ngAnimate', 'ngSanitize', 'ui.bootstrap', '
     $rootScope.viewType = 'Land Sales';
     localStorage.viewType = 'Land Sales';
 
-    $scope.legend =  $sce.trustAsHtml(landsaleLegend);
+    $scope.legend = $sce.trustAsHtml(LAND_SALE_LEGEND);
     $scope.dataRangeTable = $sce.trustAsHtml(landSaleDateRangeTable);
     $scope.dataAttributions = $sce.trustAsHtml(landSaleAttributions);
 
@@ -343,6 +343,3 @@ google.charts.load("current", {
     angular.bootstrap(document, ['mapApp']);
   }
 });
-//google.charts.setOnLoadCallback(function() {
-//    angular.bootstrap(document, ['mapApp']);
-//});
