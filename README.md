@@ -65,24 +65,6 @@ To run the full suite, execute
 python -m unittest discover
 ```
 
-## Looking to Contribute?
-Below is a list of potential improvements
-
-### Reduce manual steps needed
-* Automate SK posting web crawling retrieval
-
-### Remove dependency on wget
-* wget is used for web crawling (data retrieval). This can be replaced with python functionality
-
-### Migrate to Python 3.x
-* Project currently makes use of 2.7
-
-### Add Facilities Map
-* Need to introduce a facilities view and manage database
-
-### Unit Test Coverage
-* Measurement and improvement of python unit tests
-
 
 # Manual Maintainence
 
